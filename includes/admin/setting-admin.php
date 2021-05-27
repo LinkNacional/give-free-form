@@ -78,7 +78,7 @@ add_filter( 'give_get_settings_general', 'lkn_give_free_form_add_setting_into_ne
  * @return array
  */
 function lkn_give_free_form_add_new_setting_section( $sections ) {
-    $sections['free_form'] = __( 'Formulário Customizado' );
+    $sections['free_form'] = __( 'Free Form - Formulário customizado' );
     return $sections;
 }
 

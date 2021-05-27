@@ -3,7 +3,7 @@
 include_once __DIR__ . '/misc-functions.php';
 
 /**
- * Give - free Form Frontend Actions
+ * Give - Free Form Frontend Actions
  *
  * @since 2.5.0
  *
@@ -146,8 +146,9 @@ function lkn_give_free_form_form( $form_id, $args ) {
     $id_prefix = !empty( $args['id_prefix'] ) ? $args['id_prefix'] : '';
     $configs = lkn_give_free_form_get_configs();
 
-    $color = get_post_meta( $form_id, 'free_form-fields_lkn_form_style_status', true);
-    $status = get_post_meta( $form_id, 'free_form-fields_lkn_form_color', true);
+    $status = get_post_meta( $form_id, 'free_form-fields_lkn_form_style_status', true);
+    $color = get_post_meta( $form_id, 'free_form-fields_lkn_form_color', true);
+    $colorDet = get_post_meta($form_id, 'free_form-fields_lkn_details_color', true);
 
     if ( !is_ssl() ) {
         Give()->notices->print_frontend_notice(
@@ -158,15 +159,13 @@ function lkn_give_free_form_form( $form_id, $args ) {
 				)
 			);
     } elseif ( $status !== 'enabled' ) {
-        echo 'estilização desabilitada.';
         return false;
     } else {
         $form = <<<HTML
-        <!--<button type="button" class="lkn-btn-stepper" onclick="showPaymentMethods(this)">Continuar</button> -->
         <style>
             #give-purchase-button{
-                background: $color;
-                color: white;
+                background-color: $color;
+                color: $colorDet;
                 margin-left: 50%;
                 margin-right: 50%;
             }
@@ -189,9 +188,9 @@ function lkn_give_free_form_form( $form_id, $args ) {
             }
 
             .give-donation-level-btn{
-                background: $color;
+                background-color: $color;
                 border: 2px solid #ccc;
-                color: #333;
+                color: $colorDet;
                 padding: 12px 15px;
                 cursor: pointer;
                 line-height: 1.4em;
@@ -199,19 +198,13 @@ function lkn_give_free_form_form( $form_id, $args ) {
             }
 
             .give-donation-level-btn:hover{
-                background: green;
+                background-color: $colorDet;
+                color: $color;
             }
 
-            .give-gateway{
-                background: blue;
-            }
-
-            .lkn-btn-stepper{
-                background: red;
-                color: white;
-                padding: 8px;
-                margin-left: 50%;
-                margin-right: 50%;
+            .give-default-level{
+                background-color: $colorDet;
+                color: $color;
             }
 
         </style>
@@ -220,43 +213,50 @@ function lkn_give_free_form_form( $form_id, $args ) {
             // @TODO é necessário levar em consideração quando o formulário tem apenas 1 forma de pagamento
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('reconheceu o script de modificação do formulário');
-                var giveRadioPayment = document.getElementsByName('payment-mode');
-                var listaPayments = document.getElementById('give-gateway-radio-list');
-                var sidebar = document.getElementById('give-sidebar-left');
-                var paymentFieldset = document.getElementById('give-payment-mode-select');
-                var btnReveal = document.getElementsByClassName('give-btn-reveal')[0];
-                var checkoutForm = document.getElementById('give_purchase_form_wrap');
+                var giveBtnReveal = document.getElementsByClassName('give-btn-reveal'); // verifica se o botão de revelar foi configurado pelo giveWP
+                var giveRadioPayment = document.getElementsByName('payment-mode'); // @TODO depreciado pode ser substituido por gateway list
+                var listaPayments = document.getElementById('give-gateway-radio-list'); // Contém a lista com todos os objetos <li></li>
+                var paymentFieldset = document.getElementById('give-payment-mode-select'); // contém os botões de seleção de métodos de pagamento
+                var checkoutForm = document.getElementById('give_purchase_form_wrap'); // formulário de pagamento
+                var donateBtn = document.getElementById('give-purchase-button'); // botão de finalizar compra
+                var paymentBtns = document.getElementsByClassName('give-donation-level-btn'); // botões de valores
+                var gatewayList = listaPayments.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
 
-                checkoutForm.id = 'lkn_give_purchase_form_wrap';
+                console.log('tamanho lista desordenada: ' + gatewayList.length);
 
+                // função para mostrar os métodos de pagamento
                 var paymentModeDisplay = function () {
                     paymentFieldset.style.display = 'block';
                     console.log('payment modes foram mostrados');
                 }
 
+                // função para mostrar o formulário de finalização de pagamento
                 var checkoutFormDisplay = function (){
                     checkoutForm.style.display = 'block';
                     checkoutForm.id = 'give_purchase_form_wrap';
                     console.log('checkout form foi mostrada');
                 };
 
-                // btnReveal.classList.remove('give-btn-reveal');
-                // btnReveal.addEventListener('click', paymentModeDisplay, false);
+                console.log('verifica array de pagamentos ativos: ' + giveRadioPayment.length);
 
-                console.log('verifica array de pagamentos: ' + giveRadioPayment);
-                // @TODO pode-se utilizar uma estrutura de repetição com array para garantir que nenhum gateway tá como 'checked'
-                giveRadioPayment[0].removeAttribute('checked');
-                listaPayments.addEventListener('click', checkoutFormDisplay, false);
-                // sidebar.appendChild(paymentFieldset);
+                // caso não exista botão para revelar o restante do formulário mostra os mesmos
+                if(giveBtnReveal.length == 0) {
+                    console.log('nenhum botão de revelar reconhecido');
+                    paymentFieldset.style.display = 'block';
+                    // checkoutForm.style.display = 'block';
+                    checkoutForm.id = 'give_purchase_form_wrap';
+                }
+
+                if(giveRadioPayment.length !== 1) {
+
+                    checkoutForm.id = 'lkn_give_purchase_form_wrap';
+
+                    // @TODO pode-se utilizar uma estrutura de repetição com array para garantir que nenhum gateway tá como 'checked'
+                    giveRadioPayment[0].removeAttribute('checked');
+                    listaPayments.addEventListener('click', checkoutFormDisplay, false);
+                }
 
             }, false);
-
-            function showPaymentMethods(button) {
-                var paymentMode = document.getElementById('give-payment-mode-select');
-                paymentMode.style.display = 'block';
-                button.style.display = 'none';
-                console.log('rodou função que mostra os metodos de pagamento obj:' + paymentMode);
-            }
 
         </script>
 

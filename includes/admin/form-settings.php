@@ -15,8 +15,8 @@ class Lkn_Free_Form_Settings {
      * Give_Metabox_Setting_Fields constructor.
      */
     function __construct() {
-        $this->id = 'custom_form-fields';
-        $this->prefix = '_custom_form_';
+        $this->id = 'free_form-fields';
+        $this->prefix = '_free_form_';
         add_filter( 'give_metabox_form_data_settings', [$this, 'setup_setting'], 999 );
     }
 
@@ -26,8 +26,8 @@ class Lkn_Free_Form_Settings {
         // Custom metabox settings.
         $settings["{$this->id}_tab"] = [
             'id' => "{$this->id}_tab",
-            'title' => __( 'Estilização do Formulário', 'sss4givewp' ),
-            'icon-html' => '<span class="dashicons dashicons-text-page"></span>',
+            'title' => __( 'Estilização do Formulário', 'lkn-title-ff' ),
+            'icon-html' => '<span class="dashicons dashicons-format-aside"></span>',
             'fields' => [
                 [
                     'id' => "{$this->id}_lkn_form_style_disabled",
@@ -37,21 +37,28 @@ class Lkn_Free_Form_Settings {
                 ],
                 [
                     'id' => "{$this->id}_lkn_form_style_status",
-                    'name' => __( 'Habilitar', 'pfconfs-4-givewp' ),
+                    'name' => __( 'Habilitar', 'lkn-pfconfs-status-e-givewp' ),
                     'type' => 'radio_inline',
-                    'desc' => __( 'Habilita a estilização do formulário legado.', 'pfconfs-4-givewp' ),
+                    'desc' => __( 'Habilita a estilização do formulário legado.', 'lkn-pfconfs-status-desc-givewp' ),
                     'options' => [
-                        'enabled' => __('Habilitado', 'pfconfs-4-givewp'),
-                        'disabled' => __('Desabilitado', 'pfconfs-4-givewp'),
+                        'enabled' => __('Habilitado', 'lkn-pfconfs-status-e-givewp'),
+                        'disabled' => __('Desabilitado', 'lkn-pfconfs-status-e-givewp'),
                     ],
                     'default' => 'disabled',
                 ],
                 [
                     'id' => "{$this->id}_lkn_form_color",
-                    'name' => __( 'Cor primária.', 'pfconfs-4-givewp' ),
-                    'desc' => 'A cor primária é usada em todo o modelo de formulário para vários elementos, incluindo botões, quebras de linha e elementos de foco. Defina uma cor que reflita sua marca ou imagem em destaque para obter os melhores resultados.',
+                    'name' => __( 'Cor primária.', 'lkn-pfconfs-color-givewp' ),
+                    'desc' => __('A cor primária é usada em todo o modelo de formulário para vários elementos, incluindo botões, quebras de linha e elementos de foco. Defina uma cor que reflita sua marca ou imagem em destaque para obter os melhores resultados.', 'lkn-pfconfs-color-desc-givewp'),
                     'type' => 'colorpicker',
                     'default' => '#2bc253',
+                ],
+                [
+                    'id' => "{$this->id}_lkn_details_color",
+                    'name' => __( 'Cor secundária.', 'lkn-pfconfs-color-givewp' ),
+                    'desc' => __('A cor secundária é utilizadas em detalhes do site e destaque para as palavras.', 'lkn-pfconfs-color-desc-givewp'),
+                    'type' => 'colorpicker',
+                    'default' => '#ffffff',
                 ],
             ],
         ];
@@ -60,7 +67,7 @@ class Lkn_Free_Form_Settings {
 
     public function disabled_for_non_legacy_templates_html() {
         ob_start(); ?>
-			<p class="pfconfs-disabled"><?php _e('Per Form Confirmations is not relevant for non-Legacy Form Templates. If you want to use Per Form Confirmations, then change your Form Template to the "Legacy" option.', 'pfconfs-4-givewp'); ?></p>
+			<p class="ffconfs-disabled"><?php _e('O formulário customizado não é relevante para o formulário novo do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', 'ffconfs-notice-givewp'); ?></p>
 		<?php 
 
 		$html = ob_get_contents();

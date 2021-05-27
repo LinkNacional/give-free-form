@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Give - Formulário Customizado
+ * Plugin Name: Give - Formulário Estilizado Grátis
  * Plugin URI:  https://www.linknacional.com.br
  * Description: Plugin de estilização de formulário de doação para GiveWP.
  * Version:     0.0.1
@@ -77,7 +77,7 @@ final class Lkn_Give_Free_Form {
     private function setup() {
         self::$instance->setup_constants();
 
-        register_activation_hook( LKN_GIVE_Free_Form_FILE, [$this, 'install'] );
+        register_activation_hook( LKN_GIVE_FREE_FORM_FILE, [$this, 'install'] );
         add_action( 'give_init', [$this, 'init'], 10, 1 );
         add_action( 'plugins_loaded', [$this, 'check_environment'], 999 );
     }
@@ -92,29 +92,29 @@ final class Lkn_Give_Free_Form {
      */
     private function setup_constants() {
         // Defines addon version number for easy reference.
-        if ( !defined( 'LKN_GIVE_Free_Form_VERSION' ) ) {
-            define( 'LKN_GIVE_Free_Form_VERSION', '1.0' );
+        if ( !defined( 'LKN_GIVE_FREE_FORM_VERSION' ) ) {
+            define( 'LKN_GIVE_FREE_FORM_VERSION', '1.0' );
         }
 
         // Set it to latest.
-        if ( !defined( 'LKN_GIVE_Free_Form_MIN_GIVE_VERSION' ) ) {
-            define( 'LKN_GIVE_Free_Form_MIN_GIVE_VERSION', '2.3.0' );
+        if ( !defined( 'LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION' ) ) {
+            define( 'LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION', '2.3.0' );
         }
 
-        if ( !defined( 'LKN_GIVE_Free_Form_FILE' ) ) {
-            define( 'LKN_GIVE_Free_Form_FILE', __FILE__ );
+        if ( !defined( 'LKN_GIVE_FREE_FORM_FILE' ) ) {
+            define( 'LKN_GIVE_FREE_FORM_FILE', __FILE__ );
         }
 
-        if ( !defined( 'LKN_GIVE_Free_Form_DIR' ) ) {
-            define( 'LKN_GIVE_Free_Form_DIR', plugin_dir_path( LKN_GIVE_Free_Form_FILE ) );
+        if ( !defined( 'LKN_GIVE_FREE_FORM_DIR' ) ) {
+            define( 'LKN_GIVE_FREE_FORM_DIR', plugin_dir_path( LKN_GIVE_FREE_FORM_FILE ) );
         }
 
-        if ( !defined( 'LKN_GIVE_Free_Form_URL' ) ) {
-            define( 'LKN_GIVE_Free_Form_URL', plugin_dir_url( LKN_GIVE_Free_Form_FILE ) );
+        if ( !defined( 'LKN_GIVE_FREE_FORM_URL' ) ) {
+            define( 'LKN_GIVE_FREE_FORM_URL', plugin_dir_url( LKN_GIVE_FREE_FORM_FILE ) );
         }
 
-        if ( !defined( 'LKN_GIVE_Free_Form_BASENAME' ) ) {
-            define( 'LKN_GIVE_Free_Form_BASENAME', plugin_basename( LKN_GIVE_Free_Form_FILE ) );
+        if ( !defined( 'LKN_GIVE_FREE_FORM_BASENAME' ) ) {
+            define( 'LKN_GIVE_FREE_FORM_BASENAME', plugin_basename( LKN_GIVE_FREE_FORM_FILE ) );
         }
     }
 
@@ -167,7 +167,7 @@ final class Lkn_Give_Free_Form {
     public function check_environment() {
         // Não é admin inserir aqui
         if ( !is_admin() || !current_user_can( 'activate_plugins' ) ) {
-            require_once LKN_GIVE_Free_Form_DIR . 'includes/actions.php';
+            require_once LKN_GIVE_FREE_FORM_DIR . 'includes/actions.php';
             return null;
         }
 
@@ -177,7 +177,7 @@ final class Lkn_Give_Free_Form {
         }
 
         // Load helper functions.
-        require_once LKN_GIVE_Free_Form_DIR . 'includes/misc-functions.php';
+        require_once LKN_GIVE_FREE_FORM_DIR . 'includes/misc-functions.php';
 
         // Flag to check whether deactivate plugin or not.
         $is_deactivate_plugin = false;
@@ -187,19 +187,19 @@ final class Lkn_Give_Free_Form {
 			case doing_action( 'give_init' ):
 				if (
 					defined( 'GIVE_VERSION' ) &&
-					version_compare( GIVE_VERSION, LKN_GIVE_Free_Form_MIN_GIVE_VERSION, '<' )
+					version_compare( GIVE_VERSION, LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION, '<' )
 				) {
 				    /* Min. Give. plugin version. */
 
 				    // Show admin notice.
-				    add_action( 'admin_notices', '__give_lkn_Free_Form_dependency_notice' );
+				    add_action( 'admin_notices', '__give_lkn_FREE_FORM_dependency_notice' );
 
 				    $is_deactivate_plugin = true;
 				}
 
 				break;
 
-			case doing_action( 'activate_' . LKN_GIVE_Free_Form_BASENAME ):
+			case doing_action( 'activate_' . LKN_GIVE_FREE_FORM_BASENAME ):
 			case doing_action( 'plugins_loaded' ) && !did_action( 'give_init' ):
 				/* Check to see if Give is activated, if it isn't deactivate and show a banner. */
 
@@ -207,7 +207,7 @@ final class Lkn_Give_Free_Form {
 				$is_give_active = defined( 'GIVE_PLUGIN_BASENAME' ) ? is_plugin_active( GIVE_PLUGIN_BASENAME ) : false;
 
 				if ( !$is_give_active ) {
-				    add_action( 'admin_notices', '__give_lkn_Free_Form_inactive_notice' );
+				    add_action( 'admin_notices', '__give_lkn_FREE_FORM_inactive_notice' );
 
 				    $is_deactivate_plugin = true;
 				}
@@ -218,7 +218,7 @@ final class Lkn_Give_Free_Form {
         // Don't let this plugin activate.
         if ( $is_deactivate_plugin ) {
             // Deactivate plugin.
-            deactivate_plugins( LKN_GIVE_Free_Form_BASENAME );
+            deactivate_plugins( LKN_GIVE_FREE_FORM_BASENAME );
 
             if ( isset( $_GET['activate'] ) ) {
                 unset( $_GET['activate'] );
@@ -237,12 +237,12 @@ final class Lkn_Give_Free_Form {
      * @access private
      */
     private function load_files() {
-        require_once LKN_GIVE_Free_Form_DIR . 'includes/misc-functions.php';
-        require_once LKN_GIVE_Free_Form_DIR . 'includes/actions.php';
+        require_once LKN_GIVE_FREE_FORM_DIR . 'includes/misc-functions.php';
+        require_once LKN_GIVE_FREE_FORM_DIR . 'includes/actions.php';
 
         if ( is_admin() ) {
-            require_once LKN_GIVE_Free_Form_DIR . 'includes/admin/setting-admin.php';
-            require_once LKN_GIVE_Free_Form_DIR . 'includes/admin/form-settings.php';
+            require_once LKN_GIVE_FREE_FORM_DIR . 'includes/admin/setting-admin.php';
+            require_once LKN_GIVE_FREE_FORM_DIR . 'includes/admin/form-settings.php';
         }
     }
 
@@ -254,7 +254,7 @@ final class Lkn_Give_Free_Form {
      */
     private function setup_hooks() {
         // Filters
-        add_filter( 'plugin_action_links_' . LKN_GIVE_Free_Form_BASENAME, '__give_lkn_Free_Form_plugin_row_meta', 10, 2 );
+        add_filter( 'plugin_action_links_' . LKN_GIVE_FREE_FORM_BASENAME, '__give_lkn_free_form_plugin_row_meta', 10, 2 );
     }
 
     /**
@@ -265,11 +265,11 @@ final class Lkn_Give_Free_Form {
      */
     private function load_license() {
         new Give_License(
-			LKN_GIVE_Free_Form_FILE,
-			'Give Free_Form',
-			LKN_GIVE_Free_Form_VERSION,
+			LKN_GIVE_FREE_FORM_FILE,
+			'Give Free Form',
+			LKN_GIVE_FREE_FORM_VERSION,
 			'WordImpress',
-			'lkn_give_Free_Form_license_key'
+			'lkn_give_free_form_license_key'
 		);
     }
 }
@@ -302,12 +302,12 @@ Lkn_Give_Free_Form();
  * 
  * @return object
  */
-function lkn_give_Free_Form_updater() {
+function lkn_give_free_form_updater() {
     return new Lkn_Puc_Plugin_UpdateChecker(
-		'https://api.linknacional.com.br/app/u/link_api_update.php?slug=give-Free_Form',
-		__DIR__ . '/lkn-give-Free_Form.php',//(caso o plugin não precise de compatibilidade com ioncube utilize: __FILE__), //Full path to the main plugin file or functions.php.
-		'give-Free_Form'
+		'https://api.linknacional.com.br/app/u/link_api_update.php?slug=give-free-form',
+		__FILE__,//(caso o plugin não precise de compatibilidade com ioncube utilize: __FILE__), //Full path to the main plugin file or functions.php.
+		'give-free-form'
 	);
 }
 
-// lkn_give_Free_Form_updater();
+// lkn_give_free_form_updater();
