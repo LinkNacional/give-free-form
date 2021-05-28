@@ -207,6 +207,24 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 color: $color;
             }
 
+            .give-gateway{
+                display: none !important;
+            }
+
+            .give-gateway-option-selected{
+                background-color: $colorDet !important;
+                color: $color !important;
+            }
+
+            form[id*=give-form] #give-gateway-radio-list>li{
+                background-color: $color;
+                color: $colorDet;
+                border: groove;
+                padding: 2px 5px;
+                margin: 5px; 
+                text-align: center;
+            }
+
         </style>
 
         <script>
@@ -214,7 +232,6 @@ function lkn_give_free_form_form( $form_id, $args ) {
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('reconheceu o script de modificação do formulário');
                 var giveBtnReveal = document.getElementsByClassName('give-btn-reveal'); // verifica se o botão de revelar foi configurado pelo giveWP
-                var giveRadioPayment = document.getElementsByName('payment-mode'); // @TODO depreciado pode ser substituido por gateway list
                 var listaPayments = document.getElementById('give-gateway-radio-list'); // Contém a lista com todos os objetos <li></li>
                 var paymentFieldset = document.getElementById('give-payment-mode-select'); // contém os botões de seleção de métodos de pagamento
                 var checkoutForm = document.getElementById('give_purchase_form_wrap'); // formulário de pagamento
@@ -237,23 +254,27 @@ function lkn_give_free_form_form( $form_id, $args ) {
                     console.log('checkout form foi mostrada');
                 };
 
-                console.log('verifica array de pagamentos ativos: ' + giveRadioPayment.length);
+                console.log('verifica array de pagamentos ativos: ' + gatewayList.length);
 
                 // caso não exista botão para revelar o restante do formulário mostra os mesmos
                 if(giveBtnReveal.length == 0) {
                     console.log('nenhum botão de revelar reconhecido');
                     paymentFieldset.style.display = 'block';
-                    // checkoutForm.style.display = 'block';
                     checkoutForm.id = 'give_purchase_form_wrap';
                 }
 
-                if(giveRadioPayment.length !== 1) {
+                if(gatewayList.length !== 1) {
 
                     checkoutForm.id = 'lkn_give_purchase_form_wrap';
 
-                    // @TODO pode-se utilizar uma estrutura de repetição com array para garantir que nenhum gateway tá como 'checked'
-                    giveRadioPayment[0].removeAttribute('checked');
-                    listaPayments.addEventListener('click', checkoutFormDisplay, false);
+                    // @TODO remover a classe de seleção? deixar seguir com o padrão selecionado?
+                    // gatewayList[0].classList.remove('give-gateway-option-selected');
+                    for(let c = 0; c < gatewayList.length; c++){
+                        console.log('lista index: ' + c + ' lista obj: ' + gatewayList[c]);
+                        
+                        gatewayList[c].addEventListener('click', checkoutFormDisplay, false);
+
+                    }
                 }
 
             }, false);
