@@ -163,6 +163,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
     } else {
         $form = <<<HTML
         <style>
+            /** @TODO necessário deixar o formulário e os botões responsivos */
             #give-purchase-button{
                 background-color: $color;
                 color: $colorDet;
@@ -190,11 +191,14 @@ function lkn_give_free_form_form( $form_id, $args ) {
             .give-donation-level-btn{
                 background-color: $color;
                 border: 2px solid #ccc;
+                border-radius: 5px;
                 color: $colorDet;
                 padding: 12px 15px;
                 cursor: pointer;
-                line-height: 1.4em;
-                font-size: 1em;
+                line-height: 1.7em;
+                font-size: 1.7em;
+                width: 100%;
+                height: 100%;
             }
 
             .give-donation-level-btn:hover{
@@ -225,6 +229,62 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 text-align: center;
             }
 
+            .give-btn-level-custom{
+                font-size: 14px !important;
+                font-weight: 600 !important;
+            }
+
+            .give-total-wrap{
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .give-currency-symbol{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 1.5em;
+                border: none !important;
+                background-color: transparent !important;
+            }
+
+            .give-donation-amount{
+                width: fit-content;
+                max-width: 80%;
+                justify-content: center;
+                align-items: center;
+                display: flex !important;
+                box-shadow: inset 0 1px 4px rgb(0 0 0 / 22%);
+                border: 1px solid #979797;
+                border-radius: 5px!important;
+                overflow: hidden;
+                padding: 12px 16px;
+                float: none!important;
+                margin: 5px auto 15px!important;
+            }
+
+            #give-amount{
+                display: flex;
+                text-align: center;
+                border: none !important;
+                line-height: 1.7em !important;
+                height: auto !important;
+                font-size: 1.7em !important;
+            }
+
+            #give-donation-level-button-wrap{
+                display: grid!important;
+                grid-gap: 10px;
+                grid-template-columns: repeat(3,minmax(0,1fr));
+                margin: 16px 20px 0!important;
+            }
+            #give-donation-level-button-wrap:after, #give-donation-level-button-wrap:before {
+                content: none !important;
+            }
+
+
         </style>
 
         <script>
@@ -238,6 +298,18 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 var donateBtn = document.getElementById('give-purchase-button'); // botão de finalizar compra
                 var paymentBtns = document.getElementsByClassName('give-donation-level-btn'); // botões de valores
                 var gatewayList = listaPayments.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
+                var inputAmount = document.getElementById('give-amount');
+
+                // @TODO fazer uma forma que também funcione com os botões
+                inputAmount.addEventListener('blur', function () {
+                    console.log('input do donation reconhecido');
+                    if(inputAmount.value.length >= 6){
+                        inputAmount.style.width = '200px';
+                    }else{
+                        inputAmount.style.width = '125px';
+                    }
+                }, false);
+
 
                 console.log('tamanho lista desordenada: ' + gatewayList.length);
 
