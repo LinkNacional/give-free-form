@@ -164,6 +164,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
         $form = <<<HTML
         <style>
             /** @TODO necessário deixar o formulário e os botões responsivos */
+            /** Colocar uma borda embaixo dos inputs com uma cor cinza que fica clara com a cor primária ao clicar */
             #give-purchase-button{
                 background-color: $color;
                 color: $colorDet;
@@ -189,6 +190,9 @@ function lkn_give_free_form_form( $form_id, $args ) {
             }
 
             .give-donation-level-btn{
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
                 background-color: $color;
                 border: 2px solid #ccc;
                 border-radius: 5px;
@@ -224,9 +228,18 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 background-color: $color;
                 color: $colorDet;
                 border: groove;
-                padding: 2px 5px;
                 margin: 5px; 
                 text-align: center;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                cursor: pointer;
+            }
+
+            form[id*=give-form] #give-gateway-radio-list {
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(3,minmax(0,1fr));
             }
 
             .give-btn-level-custom{
@@ -246,7 +259,11 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 justify-content: center;
                 text-align: center;
                 font-size: 1.5em;
-                border: none !important;
+                /*border: none !important;*/
+                border-top: none !important;
+                border-bottom: none !important;
+                border-left: none !important;
+                border-right: 2px solid darkgrey !important;
                 background-color: transparent !important;
             }
 
@@ -257,12 +274,17 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 align-items: center;
                 display: flex !important;
                 box-shadow: inset 0 1px 4px rgb(0 0 0 / 22%);
-                border: 1px solid #979797;
+                /*border: 1px solid #979797;*/
                 border-radius: 5px!important;
                 overflow: hidden;
                 padding: 12px 16px;
                 float: none!important;
                 margin: 5px auto 15px!important;
+                border-image: linear-gradient(to right, $colorDet, $color) 1;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                border-bottom: 3px solid;
             }
 
             #give-amount{
@@ -272,16 +294,47 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 line-height: 1.7em !important;
                 height: auto !important;
                 font-size: 1.7em !important;
+                min-width: 180px !important;
             }
 
             #give-donation-level-button-wrap{
                 display: grid!important;
                 grid-gap: 10px;
                 grid-template-columns: repeat(3,minmax(0,1fr));
-                margin: 16px 20px 0!important;
+                margin: 16px 80px !important;
             }
             #give-donation-level-button-wrap:after, #give-donation-level-button-wrap:before {
                 content: none !important;
+            }
+
+            form[id*=give-form] #give-gateway-radio-list:after, form[id*=give-form] #give-gateway-radio-list:before{
+                content: none !important;
+            }
+
+            @media screen and (max-width: 850px) { 
+                #give-donation-level-button-wrap{
+                    margin: 16px 20px !important;
+                }
+            }
+
+            @media screen and (max-width: 500px) { 
+                .give-donation-level-btn{
+                    font-size: 1.5em;
+                    border: none;
+                }
+                .give-donation-amount{
+                    max-width: 100%;
+                }
+                #give-donation-level-button-wrap{
+                    grid-gap: 8px;
+                    grid-template-columns: repeat(2,minmax(0,1fr));
+                    margin: 8px 0px !important;
+                }
+                form[id*=give-form] #give-gateway-radio-list {
+                    display: grid;
+                    grid-gap: 8px;
+                    grid-template-columns: repeat(2,minmax(0,1fr));
+                }
             }
 
 
@@ -300,16 +353,34 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 var gatewayList = listaPayments.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
                 var inputAmount = document.getElementById('give-amount');
 
-                // @TODO fazer uma forma que também funcione com os botões
-                inputAmount.addEventListener('blur', function () {
-                    console.log('input do donation reconhecido');
+                // custo benefício maior apenas deixar um valor fixo de 200px?
+                // ou precisa ser dinâmico?
+                if(inputAmount.value.length >= 6){
+                    inputAmount.style.width = '190px';
+                }
+
+                /*
+                for(var c = 0; c < paymentBtns.length; c++) {
+                    console.log('estrutura de repetição para adicionar eventos click aos botões');
+                    paymentBtns[c].addEventListener('click', function () {
+                        console.log('input do donation click reconhecido');
+                        if(inputAmount.value.length >= 6){
+                            inputAmount.style.width = '200px';
+                        }else{
+                            inputAmount.style.width = '125px';
+                        }
+                    }, false);
+                }
+
+                inputAmount.addEventListener('focus', function () {
+                    console.log('input focus rodou');
                     if(inputAmount.value.length >= 6){
                         inputAmount.style.width = '200px';
                     }else{
                         inputAmount.style.width = '125px';
                     }
                 }, false);
-
+                */
 
                 console.log('tamanho lista desordenada: ' + gatewayList.length);
 
@@ -344,7 +415,12 @@ function lkn_give_free_form_form( $form_id, $args ) {
                     for(let c = 0; c < gatewayList.length; c++){
                         console.log('lista index: ' + c + ' lista obj: ' + gatewayList[c]);
                         
-                        gatewayList[c].addEventListener('click', checkoutFormDisplay, false);
+                        gatewayList[c].addEventListener('click', function () {
+                            console.log('li foi clicado');
+                            var nodeChild = gatewayList[c].children;
+                            nodeChild[0].click();
+                            checkoutFormDisplay();
+                        }, false);
 
                     }
                 }
