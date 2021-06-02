@@ -60,6 +60,27 @@ class Lkn_Free_Form_Settings {
                     'type' => 'colorpicker',
                     'default' => '#ffffff',
                 ],
+                [
+                    'id' => "{$this->id}_lkn_title_color",
+                    'name' => __( 'Cor dos títulos.', 'lkn-pfconfs-color-givewp' ),
+                    'desc' => __('Define a cor da fonte das seções do formulário.', 'lkn-pfconfs-color-desc-givewp'),
+                    'type' => 'colorpicker',
+                    'default' => '#666',
+                ],
+                [
+                    'id' => "{$this->id}_lkn_title_size",
+                    'name' => __( 'Tamanho dos títulos.', 'lkn-pfconfs-color-givewp' ),
+                    'desc' => __('Define o tamanho da fonte das seções do formulário. É definida em px.', 'lkn-pfconfs-color-desc-givewp'),
+                    'type' => 'number',
+                    'default' => '16',
+                ],
+                [
+                    'id' => "{$this->id}_lkn_section_margin",
+                    'name' => __( 'Espaçamento entre as seções.', 'lkn-pfconfs-color-givewp' ),
+                    'desc' => __('A margem utilizada para separar as seções do formulário, apenas margem vertical. É definida em px.', 'lkn-pfconfs-color-desc-givewp'),
+                    'type' => 'number',
+                    'default' => '10',
+                ],
             ],
         ];
         return $settings;

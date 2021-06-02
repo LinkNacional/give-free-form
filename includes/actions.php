@@ -149,6 +149,12 @@ function lkn_give_free_form_form( $form_id, $args ) {
     $status = get_post_meta( $form_id, 'free_form-fields_lkn_form_style_status', true);
     $color = get_post_meta( $form_id, 'free_form-fields_lkn_form_color', true);
     $colorDet = get_post_meta($form_id, 'free_form-fields_lkn_details_color', true);
+    $titleColor = get_post_meta($form_id, 'free_form-fields_lkn_title_color', true);
+    $titleSize = get_post_meta($form_id, 'free_form-fields_lkn_title_size', true);
+    $margin = get_post_meta($form_id, 'free_form-fields_lkn_section_margin', true);
+
+    $titleSize .= 'px';
+    $margin .= 'px';
 
     if ( !is_ssl() ) {
         Give()->notices->print_frontend_notice(
@@ -227,13 +233,17 @@ function lkn_give_free_form_form( $form_id, $args ) {
             form[id*=give-form] #give-gateway-radio-list>li{
                 background-color: $color;
                 color: $colorDet;
-                border: groove;
+                border: solid 1px #ccc;
                 margin: 5px; 
                 text-align: center;
                 justify-content: center;
                 align-items: center;
                 display: flex;
                 cursor: pointer;
+                line-height: 2em;
+                font-size: 1.3em;
+                font-weight: 600;
+                height: 100%;
             }
 
             form[id*=give-form] #give-gateway-radio-list {
@@ -311,6 +321,24 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 content: none !important;
             }
 
+            #give_checkout_user_info, #give-payment-mode-select {
+                margin: $margin 0px !important;
+            }
+
+            legend{
+                color: $titleColor !important;
+                font-size: $titleSize !important;
+            }
+
+            .give-input{
+                font-size: 1.3em;
+                box-shadow: inset 0 1px 4px rgb(0 0 0 / 22%);
+                border: solid 2px !important;
+                border-radius: 5px !important;
+                border-image: linear-gradient(to right, #9a9a9a, $color) 1 !important;
+                line-height: 1.3em;
+            }
+
             @media screen and (max-width: 850px) { 
                 #give-donation-level-button-wrap{
                     margin: 16px 20px !important;
@@ -335,6 +363,9 @@ function lkn_give_free_form_form( $form_id, $args ) {
                     grid-gap: 8px;
                     grid-template-columns: repeat(2,minmax(0,1fr));
                 }
+                form[id*=give-form] #give-gateway-radio-list>li{
+                    font-size: 1em;
+                }
             }
 
 
@@ -344,6 +375,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
             // @TODO é necessário levar em consideração quando o formulário tem apenas 1 forma de pagamento
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('reconheceu o script de modificação do formulário');
+                var formGive = document.getElementById('give-form-$id_prefix');
                 var giveBtnReveal = document.getElementsByClassName('give-btn-reveal'); // verifica se o botão de revelar foi configurado pelo giveWP
                 var listaPayments = document.getElementById('give-gateway-radio-list'); // Contém a lista com todos os objetos <li></li>
                 var paymentFieldset = document.getElementById('give-payment-mode-select'); // contém os botões de seleção de métodos de pagamento
@@ -352,6 +384,8 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 var paymentBtns = document.getElementsByClassName('give-donation-level-btn'); // botões de valores
                 var gatewayList = listaPayments.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
                 var inputAmount = document.getElementById('give-amount');
+                var checkoutFieldsetWrap = document.getElementById('give_purchase_form_wrap');
+                var checkoutFieldset = document.getElementById('give_checkout_user_info');
 
                 // custo benefício maior apenas deixar um valor fixo de 200px?
                 // ou precisa ser dinâmico?
@@ -388,13 +422,18 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 var paymentModeDisplay = function () {
                     paymentFieldset.style.display = 'block';
                     console.log('payment modes foram mostrados');
-                }
+                };
 
                 // função para mostrar o formulário de finalização de pagamento
                 var checkoutFormDisplay = function (){
                     checkoutForm.style.display = 'block';
                     checkoutForm.id = 'give_purchase_form_wrap';
                     console.log('checkout form foi mostrada');
+                };
+
+                var userInfoFieldsScroll = function () {
+                    console.log('rodou rolagem');
+                    checkoutFieldsetWrap.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
                 };
 
                 console.log('verifica array de pagamentos ativos: ' + gatewayList.length);
@@ -420,6 +459,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
                             var nodeChild = gatewayList[c].children;
                             nodeChild[0].click();
                             checkoutFormDisplay();
+                            userInfoFieldsScroll();
                         }, false);
 
                     }
