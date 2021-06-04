@@ -169,13 +169,24 @@ function lkn_give_free_form_form( $form_id, $args ) {
     } else {
         $form = <<<HTML
         <style>
-            /** @TODO necessário deixar o formulário e os botões responsivos */
-            /** Colocar uma borda embaixo dos inputs com uma cor cinza que fica clara com a cor primária ao clicar */
             #give-purchase-button{
                 background-color: $color;
                 color: $colorDet;
-                margin-left: 50%;
-                margin-right: 50%;
+                padding: 18px 70px;
+                font-size: 1.4em;
+                line-height: 1.4em;
+                font-weight: 600;
+                border-radius: 15px;
+            }
+
+            .give-submit-button-wrap{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .give-submit-button-wrap:focus{
+                filter: brightness(120%);
             }
 
             [id*=give-form] div.summary{
@@ -313,6 +324,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 grid-template-columns: repeat(3,minmax(0,1fr));
                 margin: 16px 80px !important;
             }
+
             #give-donation-level-button-wrap:after, #give-donation-level-button-wrap:before {
                 content: none !important;
             }
@@ -330,13 +342,37 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 font-size: $titleSize !important;
             }
 
+            #give-recurring-form .form-row .give-input-field-wrapper, #give-recurring-form .form-row input[type=email], #give-recurring-form .form-row input[type=password], #give-recurring-form .form-row input[type=tel], #give-recurring-form .form-row input[type=text], #give-recurring-form .form-row input[type=url], #give-recurring-form .form-row select, #give-recurring-form .form-row textarea, form.give-form .form-row .give-input-field-wrapper, form.give-form .form-row input[type=email], form.give-form .form-row input[type=password], form.give-form .form-row input[type=tel], form.give-form .form-row input[type=text], form.give-form .form-row input[type=url], form.give-form .form-row select, form.give-form .form-row textarea, form[id*=give-form] .form-row .give-input-field-wrapper, form[id*=give-form] .form-row input[type=email], form[id*=give-form] .form-row input[type=password], form[id*=give-form] .form-row input[type=tel], form[id*=give-form] .form-row input[type=text], form[id*=give-form] .form-row input[type=url], form[id*=give-form] .form-row select, form[id*=give-form] .form-row textarea{
+                border: solid 2px #ccc;
+                border-radius: 5px;
+            }
+
             .give-input{
                 font-size: 1.3em;
                 box-shadow: inset 0 1px 4px rgb(0 0 0 / 22%);
-                border: solid 2px !important;
-                border-radius: 5px !important;
-                border-image: linear-gradient(to right, #9a9a9a, $color) 1 !important;
+                border: solid 2px #ccc;
+                border-radius: 5px;
+                /*border-image: linear-gradient(to right, #9a9a9a, $color) 1 !important;*/
                 line-height: 1.3em;
+            }
+
+            #give-recurring-form .form-row .give-input-field-wrapper:focus, #give-recurring-form .form-row input[type=email]:focus, #give-recurring-form .form-row input[type=password]:focus, #give-recurring-form .form-row input[type=tel]:focus, #give-recurring-form .form-row input[type=text]:focus, #give-recurring-form .form-row input[type=url]:focus, #give-recurring-form .form-row select:focus, #give-recurring-form .form-row textarea:focus, form.give-form .form-row .give-input-field-wrapper:focus, form.give-form .form-row input[type=email]:focus, form.give-form .form-row input[type=password]:focus, form.give-form .form-row input[type=tel]:focus, form.give-form .form-row input[type=text]:focus, form.give-form .form-row input[type=url]:focus, form.give-form .form-row select:focus, form.give-form .form-row textarea:focus, form[id*=give-form] .form-row .give-input-field-wrapper:focus, form[id*=give-form] .form-row input[type=email]:focus, form[id*=give-form] .form-row input[type=password]:focus, form[id*=give-form] .form-row input[type=tel]:focus, form[id*=give-form] .form-row input[type=text]:focus, form[id*=give-form] .form-row input[type=url]:focus, form[id*=give-form] .form-row select:focus, form[id*=give-form] .form-row textarea:focus{
+                border-image: linear-gradient(to right, #666, $color) 1;
+            }
+
+            #give-final-total-wrap{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            form[id*=give-form] #give-final-total-wrap .give-donation-total-label{
+                box-shadow: inset 0 1px 4px rgb(0 0 0 / 22%);
+            }
+
+            form[id*=give-form] #give-final-total-wrap .give-final-total-amount{
+                box-shadow: inset 0 1px 4px rgb(0 0 0 / 22%);
             }
 
             @media screen and (max-width: 850px) { 
@@ -366,6 +402,13 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 form[id*=give-form] #give-gateway-radio-list>li{
                     font-size: 1em;
                 }
+                form[id*=give-form] #give-final-total-wrap .give-donation-total-label{
+                    font-size: 13px;
+                }
+
+                form[id*=give-form] #give-final-total-wrap .give-final-total-amount{
+                    font-size: 13px;
+                }
             }
 
 
@@ -386,35 +429,6 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 var inputAmount = document.getElementById('give-amount');
                 var checkoutFieldsetWrap = document.getElementById('give_purchase_form_wrap');
                 var checkoutFieldset = document.getElementById('give_checkout_user_info');
-
-                // custo benefício maior apenas deixar um valor fixo de 200px?
-                // ou precisa ser dinâmico?
-                if(inputAmount.value.length >= 6){
-                    inputAmount.style.width = '190px';
-                }
-
-                /*
-                for(var c = 0; c < paymentBtns.length; c++) {
-                    console.log('estrutura de repetição para adicionar eventos click aos botões');
-                    paymentBtns[c].addEventListener('click', function () {
-                        console.log('input do donation click reconhecido');
-                        if(inputAmount.value.length >= 6){
-                            inputAmount.style.width = '200px';
-                        }else{
-                            inputAmount.style.width = '125px';
-                        }
-                    }, false);
-                }
-
-                inputAmount.addEventListener('focus', function () {
-                    console.log('input focus rodou');
-                    if(inputAmount.value.length >= 6){
-                        inputAmount.style.width = '200px';
-                    }else{
-                        inputAmount.style.width = '125px';
-                    }
-                }, false);
-                */
 
                 console.log('tamanho lista desordenada: ' + gatewayList.length);
 

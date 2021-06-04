@@ -21,12 +21,10 @@ class Lkn_Free_Form_Settings {
     }
 
     function setup_setting( $settings ) {
-        $screen = get_current_screen();
-
         // Custom metabox settings.
         $settings["{$this->id}_tab"] = [
             'id' => "{$this->id}_tab",
-            'title' => __( 'Estilização do Formulário', 'lkn-title-ff' ),
+            'title' => __( 'Estilização do Formulário', 'lkn-give-free-form' ),
             'icon-html' => '<span class="dashicons dashicons-format-aside"></span>',
             'fields' => [
                 [
@@ -37,47 +35,47 @@ class Lkn_Free_Form_Settings {
                 ],
                 [
                     'id' => "{$this->id}_lkn_form_style_status",
-                    'name' => __( 'Habilitar', 'lkn-pfconfs-status-e-givewp' ),
+                    'name' => __( 'Habilitar', 'lkn-give-free-form' ),
                     'type' => 'radio_inline',
-                    'desc' => __( 'Habilita a estilização do formulário legado.', 'lkn-pfconfs-status-desc-givewp' ),
+                    'desc' => __( 'Habilita a estilização do formulário legado.', 'lkn-give-free-form' ),
                     'options' => [
-                        'enabled' => __('Habilitado', 'lkn-pfconfs-status-e-givewp'),
-                        'disabled' => __('Desabilitado', 'lkn-pfconfs-status-e-givewp'),
+                        'enabled' => __('Habilitado', 'lkn-give-free-form'),
+                        'disabled' => __('Desabilitado', 'lkn-give-free-form'),
                     ],
                     'default' => 'disabled',
                 ],
                 [
                     'id' => "{$this->id}_lkn_form_color",
-                    'name' => __( 'Cor primária.', 'lkn-pfconfs-color-givewp' ),
-                    'desc' => __('A cor primária é usada em todo o modelo de formulário para vários elementos, incluindo botões, quebras de linha e elementos de foco. Defina uma cor que reflita sua marca ou imagem em destaque para obter os melhores resultados.', 'lkn-pfconfs-color-desc-givewp'),
+                    'name' => __( 'Cor primária.', 'lkn-give-free-form' ),
+                    'desc' => __('A cor primária é usada em todo o modelo de formulário para vários elementos, incluindo botões, quebras de linha e elementos de foco. Defina uma cor que reflita sua marca ou imagem em destaque para obter os melhores resultados.', 'lkn-give-free-form'),
                     'type' => 'colorpicker',
                     'default' => '#2bc253',
                 ],
                 [
                     'id' => "{$this->id}_lkn_details_color",
-                    'name' => __( 'Cor secundária.', 'lkn-pfconfs-color-givewp' ),
-                    'desc' => __('A cor secundária é utilizadas em detalhes do site e destaque para as palavras.', 'lkn-pfconfs-color-desc-givewp'),
+                    'name' => __( 'Cor secundária.', 'lkn-give-free-form' ),
+                    'desc' => __('A cor secundária é utilizadas em detalhes do site e destaque para as palavras.', 'lkn-give-free-form'),
                     'type' => 'colorpicker',
                     'default' => '#ffffff',
                 ],
                 [
                     'id' => "{$this->id}_lkn_title_color",
-                    'name' => __( 'Cor dos títulos.', 'lkn-pfconfs-color-givewp' ),
-                    'desc' => __('Define a cor da fonte das seções do formulário.', 'lkn-pfconfs-color-desc-givewp'),
+                    'name' => __( 'Cor dos títulos.', 'lkn-give-free-form' ),
+                    'desc' => __('Define a cor da fonte das seções do formulário.', 'lkn-give-free-form'),
                     'type' => 'colorpicker',
                     'default' => '#666',
                 ],
                 [
                     'id' => "{$this->id}_lkn_title_size",
-                    'name' => __( 'Tamanho dos títulos.', 'lkn-pfconfs-color-givewp' ),
-                    'desc' => __('Define o tamanho da fonte das seções do formulário. É definida em px.', 'lkn-pfconfs-color-desc-givewp'),
+                    'name' => __( 'Tamanho dos títulos.', 'lkn-give-free-form' ),
+                    'desc' => __('Define o tamanho da fonte das seções do formulário. É definida em px.', 'lkn-give-free-form'),
                     'type' => 'number',
                     'default' => '16',
                 ],
                 [
                     'id' => "{$this->id}_lkn_section_margin",
-                    'name' => __( 'Espaçamento entre as seções.', 'lkn-pfconfs-color-givewp' ),
-                    'desc' => __('A margem utilizada para separar as seções do formulário, apenas margem vertical. É definida em px.', 'lkn-pfconfs-color-desc-givewp'),
+                    'name' => __( 'Espaçamento entre as seções.', 'lkn-give-free-form' ),
+                    'desc' => __('A margem utilizada para separar as seções do formulário, apenas margem vertical. É definida em px.', 'lkn-give-free-form'),
                     'type' => 'number',
                     'default' => '10',
                 ],
@@ -88,7 +86,7 @@ class Lkn_Free_Form_Settings {
 
     public function disabled_for_non_legacy_templates_html() {
         ob_start(); ?>
-			<p class="ffconfs-disabled"><?php _e('O formulário customizado não é relevante para o formulário novo do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', 'ffconfs-notice-givewp'); ?></p>
+			<p class="ffconfs-disabled"><?php _e('O formulário customizado não é relevante para o formulário novo do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', 'lkn-give-free-form-notices'); ?></p>
 		<?php 
 
 		$html = ob_get_contents();
