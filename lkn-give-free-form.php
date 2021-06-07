@@ -241,7 +241,6 @@ final class Lkn_Give_Free_Form {
         require_once LKN_GIVE_FREE_FORM_DIR . 'includes/actions.php';
 
         if ( is_admin() ) {
-            require_once LKN_GIVE_FREE_FORM_DIR . 'includes/admin/setting-admin.php';
             require_once LKN_GIVE_FREE_FORM_DIR . 'includes/admin/form-settings.php';
         }
     }
@@ -305,9 +304,9 @@ Lkn_Give_Free_Form();
 function lkn_give_free_form_updater() {
     return new Lkn_Puc_Plugin_UpdateChecker(
 		'https://api.linknacional.com.br/app/u/link_api_update.php?slug=give-free-form',
-		__FILE__,//(caso o plugin não precise de compatibilidade com ioncube utilize: __FILE__), //Full path to the main plugin file or functions.php.
+		__FILE__, //Full path to the main plugin file or functions.php.
 		'give-free-form'
 	);
 }
 
-// lkn_give_free_form_updater();
+lkn_give_free_form_updater();
