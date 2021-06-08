@@ -84,9 +84,15 @@ class Lkn_Free_Form_Settings {
         return $settings;
     }
 
+    /**
+     * Add a form admin notice
+     * 
+     * @return string $html
+     * 
+     */
     public function disabled_for_non_legacy_templates_html() {
         ob_start(); ?>
-			<p class="ffconfs-disabled"><?php _e('O formulário customizado não é relevante para o formulário novo do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', 'lkn-give-free-form-notices'); ?></p>
+			<p class="ffconfs-disabled"><?php _e('O formulário customizado não é relevante para o formulário Multi-Step do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', 'lkn-give-free-form-notices'); ?></p>
 		<?php 
 
 		$html = ob_get_contents();

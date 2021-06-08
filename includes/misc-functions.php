@@ -45,26 +45,6 @@ function __give_lkn_free_form_inactive_notice() {
 }
 
 /**
- * Plugin row meta links.
- *
- * @since
- *
- * @param array $plugin_meta An array of the plugin's metadata.
- * @param string $plugin_file Path to the plugin file, relative to the plugins directory.
- *
- * @return array
-*/
-function __give_lkn_free_form_plugin_row_meta( $plugin_meta, $plugin_file ) {
-    $new_meta_links['setting'] = sprintf(
-		'<a href="%1$s">%2$s</a>',
-		admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=general&section=free_form' ),
-		__( 'Settings', 'lkn-give-free-form' )
-	);
-
-    return array_merge( $plugin_meta, $new_meta_links );
-}
-
-/**
  * Show activation banner
  *
  * @since
@@ -78,7 +58,6 @@ function __give_lkn_free_form_activation_gateway() {
             'file' => GIVE_FREE_FORM_FILE,
             'name' => __( 'Formulário Customizado', 'lkn-give-free-form' ),
             'version' => GIVE_FREE_FORM_VERSION,
-            'settings_url' => admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=general&section=free_form' ),
             'documentation_url' => 'https://givewp.com/documentation/add-ons/boilerplate/',
             'support_url' => 'https://givewp.com/support/',
             'testing' => false // Never leave true.

@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Give - Formulário Estilizado Grátis
+ * Plugin Name: Give - Free Form
  * Plugin URI:  https://www.linknacional.com.br
  * Description: Plugin de estilização de formulário de doação para GiveWP.
- * Version:     0.0.1
+ * Version:     1.0.0
  * Author:      Link Nacional
  * Author URI:  https://www.linknacional.com.br
  * License:     GNU General Public License v2 or later
@@ -253,7 +253,6 @@ final class Lkn_Give_Free_Form {
      */
     private function setup_hooks() {
         // Filters
-        add_filter( 'plugin_action_links_' . LKN_GIVE_FREE_FORM_BASENAME, '__give_lkn_free_form_plugin_row_meta', 10, 2 );
     }
 
     /**

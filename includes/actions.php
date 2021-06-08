@@ -193,7 +193,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
             }
 
             form[id*=give-form] .give-donation-amount #give-amount, form[id*=give-form] .give-donation-amount #give-amount-text{
-                display: flex;
+                display: block;
                 text-align: center;
                 border: none;
                 line-height: 1.7em;
@@ -279,6 +279,15 @@ function lkn_give_free_form_form( $form_id, $args ) {
             .give-btn-reveal:hover{
                 background: $colorDet;
                 color: $color;
+            }
+
+            [id*=give-form] .give-custom-amount-text{
+                margin: 5px auto 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-size: 1.2em;
             }
 
             @media screen and (max-width: 850px) { 

@@ -13,4 +13,16 @@ Versão: 0.0.1
 
 4) Clique em ativar;
 
+5) Clique na opção 'todos os formulários' do GiveWP;
 
+6) Selecione o formulário que deseja personalizar;
+
+7) Habilite o Modelo 'Formulário de doação legado';
+
+8) Nas opções de formulário selecione a seção 'Estilização do Formulário';
+
+9) Clique em habilitar e personalize as cores e espaçamento da maneira que preferir;
+
+10) Agora clique no botão de publicar (caso já esteja publicado será o botão de atualizar);
+
+Pronto, agora o seu plugin de personalização de formulário está devidamente configurado e pronto para uso.
