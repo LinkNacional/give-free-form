@@ -1,7 +1,7 @@
 # give-free-form
 
 Módulo de estilização de formulário
-Versão: 0.0.1
+Versão: 1.0.0
 
 ## Modo de Instalação
 
