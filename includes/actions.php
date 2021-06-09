@@ -37,9 +37,12 @@ function lkn_give_free_form_form( $form_id, $args ) {
     $titleColor = get_post_meta($form_id, 'free_form-fields_lkn_title_color', true);
     $titleSize = get_post_meta($form_id, 'free_form-fields_lkn_title_size', true);
     $margin = get_post_meta($form_id, 'free_form-fields_lkn_section_margin', true);
+    $btnBorderColor = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_color', true);
+    $btnBorderSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_size', true);
 
     $titleSize .= 'px';
     $margin .= 'px';
+    $btnBorderSize .= 'px';
 
     if ( $status !== 'enabled' ) {
         return false;
@@ -84,7 +87,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 align-items: center;
                 justify-content: center;
                 background-color: $color;
-                border: 2px solid #ccc;
+                border: $btnBorderSize solid $btnBorderColor;
                 border-radius: 5px;
                 color: $colorDet;
                 padding: 12px 15px;
@@ -117,7 +120,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
             form[id*=give-form] #give-gateway-radio-list>li{
                 background-color: $color;
                 color: $colorDet;
-                border: solid 1px #ccc;
+                border: solid $btnBorderSize $btnBorderColor;
                 margin: 5px; 
                 text-align: center;
                 justify-content: center;

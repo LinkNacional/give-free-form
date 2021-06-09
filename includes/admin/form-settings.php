@@ -66,6 +66,13 @@ class Lkn_Free_Form_Settings {
                     'default' => '#666',
                 ],
                 [
+                    'id' => "{$this->id}_lkn_btn_border_color",
+                    'name' => __( 'Cor das bordas dos botões.', 'lkn-give-free-form' ),
+                    'desc' => __('Define a cor das bordas para os botões de seleção de valor e de método de pagamento.', 'lkn-give-free-form'),
+                    'type' => 'colorpicker',
+                    'default' => '#ccc',
+                ],
+                [
                     'id' => "{$this->id}_lkn_title_size",
                     'name' => __( 'Tamanho dos títulos.', 'lkn-give-free-form' ),
                     'desc' => __('Define o tamanho da fonte das seções do formulário. É definida em px.', 'lkn-give-free-form'),
@@ -78,6 +85,13 @@ class Lkn_Free_Form_Settings {
                     'desc' => __('A margem utilizada para separar as seções do formulário, apenas margem vertical. É definida em px.', 'lkn-give-free-form'),
                     'type' => 'number',
                     'default' => '10',
+                ],
+                [
+                    'id' => "{$this->id}_lkn_btn_border_size",
+                    'name' => __( 'Tamanho das bordas dos botões.', 'lkn-give-free-form' ),
+                    'desc' => __('Define o tamanho das bordas dos botões de seleção de valor e de seleção de pagamento. É definida em px.', 'lkn-give-free-form'),
+                    'type' => 'number',
+                    'default' => '2',
                 ],
             ],
         ];
