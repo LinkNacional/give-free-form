@@ -13,41 +13,51 @@ include_once __DIR__ . '/misc-functions.php';
  */
 
 // Exit, if accessed directly.
-if ( !defined( 'ABSPATH' ) ) {
-    exit;
+if (!defined('ABSPATH')) {
+	exit;
 }
 
 /////// HELPERS
 
 /**
  * Function that styles the form
- * 
+ *
  * @param int $form_id - the form identificator
- * 
+ *
  * @param array $args - list of additional arguments
- * 
+ *
  * @return mixed
  */
-function lkn_give_free_form_form( $form_id, $args ) {
-    $id_prefix = !empty( $args['id_prefix'] ) ? $args['id_prefix'] : '';
+function lkn_give_free_form_form($form_id, $args) {
+	$id_prefix = !empty($args['id_prefix']) ? $args['id_prefix'] : '';
 
-    $status = get_post_meta( $form_id, 'free_form-fields_lkn_form_style_status', true);
-    $color = get_post_meta( $form_id, 'free_form-fields_lkn_form_color', true);
-    $colorDet = get_post_meta($form_id, 'free_form-fields_lkn_details_color', true);
-    $titleColor = get_post_meta($form_id, 'free_form-fields_lkn_title_color', true);
-    $titleSize = get_post_meta($form_id, 'free_form-fields_lkn_title_size', true);
-    $margin = get_post_meta($form_id, 'free_form-fields_lkn_section_margin', true);
-    $btnBorderColor = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_color', true);
-    $btnBorderSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_size', true);
+	$status = get_post_meta($form_id, 'free_form-fields_lkn_form_style_status', true);
+	$color = get_post_meta($form_id, 'free_form-fields_lkn_form_color', true);
+	$colorDet = get_post_meta($form_id, 'free_form-fields_lkn_details_color', true);
+	$titleColor = get_post_meta($form_id, 'free_form-fields_lkn_title_color', true);
+	$titleSize = get_post_meta($form_id, 'free_form-fields_lkn_title_size', true);
+	$margin = get_post_meta($form_id, 'free_form-fields_lkn_section_margin', true);
+	$btnBorderColor = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_color', true);
+	$btnBorderSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_size', true);
+	$btnBorderRadius = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_radius', true);
+	$paddingA = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingA', true);
+	$paddingL = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingL', true);
+	$textSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_text_size', true);
 
-    $titleSize .= 'px';
-    $margin .= 'px';
-    $btnBorderSize .= 'px';
+	$titleSize .= 'px';
+	$margin .= 'px';
+	$btnBorderSize .= 'px';
+	$btnBorderRadius .= 'px';
+	$paddingA .= 'px';
+	$paddingL .= 'px';
+	$textSize = number_format($textSize, 1);
+	$textSize .= 'vw';
 
-    if ( $status !== 'enabled' ) {
-        return false;
-    } else {
-        $form = <<<HTML
+
+	if ($status !== 'enabled') {
+		return false;
+	} else {
+		$form = <<<HTML
         <style>
             #give-purchase-button{
                 background-color: $color;
@@ -88,12 +98,12 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 justify-content: center;
                 background-color: $color;
                 border: $btnBorderSize solid $btnBorderColor;
-                border-radius: 5px;
+                border-radius: $btnBorderRadius;
                 color: $colorDet;
                 padding: 12px 15px;
                 cursor: pointer;
                 line-height: 1.7em;
-                font-size: 1.7em;
+                font-size: $textSize;
                 width: 100%;
                 height: 100%;
             }
@@ -128,9 +138,11 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 display: flex;
                 cursor: pointer;
                 line-height: 2em;
-                font-size: 1.3em;
                 font-weight: 600;
                 height: 100%;
+                font-size: $textSize;
+                padding: $paddingA $paddingL;
+                border-radius: $btnBorderRadius;
             }
 
             form[id*=give-form] #give-gateway-radio-list {
@@ -140,7 +152,7 @@ function lkn_give_free_form_form( $form_id, $args ) {
             }
 
             .give-btn-level-custom{
-                font-size: 14px;
+                font-size: $textSize;
                 font-weight: 600;
             }
 
@@ -268,14 +280,27 @@ function lkn_give_free_form_form( $form_id, $args ) {
                 text-align: center;
                 background-color: $color;
                 color: $colorDet;
-                padding: 15px 50px;
-                font-size: 1.4em;
+                padding: $paddingA $paddingL;
+                font-size: $textSize;
                 line-height: 1.4em;
                 font-weight: 600;
-                border-radius: 15px;
+                border-radius: $btnBorderRadius;
+            }
+
+            #give-purchase-button {
+                border-radius: $btnBorderRadius;
+                padding: $paddingA $paddingL;
+                font-size: $textSize;
+            }
+
+            #give-purchase-button:hover {
+                background: $colorDet;
+                color: $color;
+                border-radius: $btnBorderRadius;
             }
 
             [id*=give-form].give-display-modal .give-btn, [id*=give-form].give-display-reveal .give-btn{
+                padding: $paddingA $paddingL;
                 margin: 0px auto;
             }
 
@@ -376,8 +401,8 @@ function lkn_give_free_form_form( $form_id, $args ) {
 
 HTML;
 
-        echo $form;
-    }
+		echo $form;
+	}
 }
 
-add_action( 'give_donation_form_top', 'lkn_give_free_form_form', 10, 3 );
+add_action('give_donation_form_top', 'lkn_give_free_form_form', 10, 3);
