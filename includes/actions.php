@@ -44,15 +44,6 @@ function lkn_give_free_form_form($form_id, $args) {
 	$paddingL = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingL', true);
 	$textSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_text_size', true);
 
-	$titleSize .= 'px';
-	$margin .= 'px';
-	$btnBorderSize .= 'px';
-	$btnBorderRadius .= 'px';
-	$paddingA .= 'px';
-	$paddingL .= 'px';
-	$textSize = number_format($textSize, 1);
-	$textSize .= 'vw';
-
 
 	if ($status !== 'enabled') {
 		return false;
@@ -141,7 +132,6 @@ function lkn_give_free_form_form($form_id, $args) {
                 font-weight: 600;
                 height: 100%;
                 font-size: $textSize;
-                padding: $paddingA $paddingL;
                 border-radius: $btnBorderRadius;
             }
 
