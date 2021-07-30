@@ -95,9 +95,9 @@ class Lkn_Free_Form_Settings {
 				],
 				[
 					'id' => "{$this->id}_lkn_btn_border_radius",
-					'name' => __('Tipos de Bordas.', 'lkn-give-free-form'),
+					'name' => __('Curvatura das bordas.', 'lkn-give-free-form'),
 					'type' => 'text',
-					'desc' => __('Escolha o tipo de borda, para os botões de formulario.', 'lkn-give-free-form'),
+					'desc' => __('Escolha a curvatura das bordas dos botões, quanto menor o valor mais quadrada será. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
 					'default' => '15px',
 				],
 				[
