@@ -43,15 +43,7 @@ function lkn_give_free_form_form($form_id, $args) {
 	$paddingA = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingA', true);
 	$paddingL = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingL', true);
 	$textSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_text_size', true);
-
-	$titleSize .= 'px';
-	$margin .= 'px';
-	$btnBorderSize .= 'px';
-	$btnBorderRadius .= 'px';
-	$paddingA .= 'px';
-	$paddingL .= 'px';
-	$textSize = number_format($textSize, 1);
-	$textSize .= 'vw';
+	$css = get_post_meta($form_id, 'free_form-fields_lkn_css', true);
 
 
 	if ($status !== 'enabled') {
@@ -109,8 +101,15 @@ function lkn_give_free_form_form($form_id, $args) {
             }
 
             .give-donation-level-btn:hover{
+                background-color: $color;
+                color: $colorDet;
+                filter: brightness(120%);
+            }
+
+            .give-default-level:hover{
                 background-color: $colorDet;
                 color: $color;
+                filter: brightness(120%);
             }
 
             .give-default-level{
@@ -141,7 +140,6 @@ function lkn_give_free_form_form($form_id, $args) {
                 font-weight: 600;
                 height: 100%;
                 font-size: $textSize;
-                padding: $paddingA $paddingL;
                 border-radius: $btnBorderRadius;
             }
 
@@ -294,8 +292,8 @@ function lkn_give_free_form_form($form_id, $args) {
             }
 
             #give-purchase-button:hover {
-                background: $colorDet;
-                color: $color;
+                background: $color;
+                filter: brightness(120%);
                 border-radius: $btnBorderRadius;
             }
 
@@ -305,8 +303,8 @@ function lkn_give_free_form_form($form_id, $args) {
             }
 
             .give-btn-reveal:hover{
-                background: $colorDet;
-                color: $color;
+                background: $color;
+                filter: brightness(120%);
             }
 
             [id*=give-form] .give-custom-amount-text{
@@ -330,8 +328,7 @@ function lkn_give_free_form_form($form_id, $args) {
 
             @media screen and (max-width: 500px) { 
                 .give-donation-level-btn{
-                    font-size: 1.5em;
-                    border: none;
+                    font-size: 1.4em;
                 }
 
                 .give-donation-amount{
@@ -364,6 +361,27 @@ function lkn_give_free_form_form($form_id, $args) {
                 }
             }
 
+            .lkn-btn-gateway {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background-color: $color;
+                color: $colorDet;
+                padding: $paddingA $paddingL;
+                font-size: $textSize;
+                line-height: 1.4em;
+                font-weight: 600;
+                border-radius: $btnBorderRadius;
+            }
+
+            .lkn-btn-gateway:hover{
+                background-color: $color;
+                color: $colorDet;
+                filter: brightness(120%);
+            }
+            $css
+            {}
 
         </style>
 
