@@ -424,3 +424,46 @@ HTML;
 }
 
 add_action('give_donation_form_top', 'lkn_give_free_form_form', 10, 3);
+
+function lkn_give_free_form_notice($formId) {
+	$html = <<<HTML
+        <div class="lknNoticeWrapper">
+            <span class="dashicons dashicons-lock" style="color=#989898;"></span>
+            <span class="lknNoticeText"> Doação segura por <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank">Link</a></span>
+        </div>
+        
+        <script>
+            console.log('hello world!? + id: $formId');
+            window.addEventListener('DOMContentLoaded', function() {	
+				let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
+                let lknNoticeWrapper = document.getElementsByClassName('lknNoticeWrapper')[0];
+
+                if(iframeLoader){
+                    console.log('formulário com iframe')
+                    lknNoticeWrapper.setAttribute('style','display:none;');
+                    let secureNotice = document.getElementsByClassName('secure-notice')[0];
+                    secureNotice.innerHTML = '<i class="fas fa-lock"></i>Doação segura por <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank"> Link</a>';
+                }else{
+                    console.log('formulário sem iframe')
+                }
+            });
+        </script>
+
+        <style>
+            .lknNoticeWrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin: 4%;
+            }
+            .lknNoticeText {
+                font-size: 1em;
+                color: #989898;
+            }
+        </style>
+HTML;
+	echo $html;
+}
+
+add_action('give_donation_form_bottom', 'lkn_give_free_form_notice', 10, 3);
