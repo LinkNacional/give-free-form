@@ -425,26 +425,30 @@ HTML;
 
 add_action('give_donation_form_top', 'lkn_give_free_form_form', 10, 3);
 
-function lkn_give_free_form_notice($formId) {
+/**
+ * Adiciona notice com mensagem que redireciona para página da link nacional no rodapé do formulário
+ */
+function lkn_give_free_form_footer_notice() {
 	$html = <<<HTML
         <div class="lknNoticeWrapper">
             <span class="dashicons dashicons-lock" style="color=#989898;"></span>
-            <span class="lknNoticeText"> Doação segura por <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank">Link</a></span>
+            <span class="lknNoticeText"> Doação segura via <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank">Link</a></span>
         </div>
-        
         <script>
-            console.log('hello world!? + id: $formId');
-            window.addEventListener('DOMContentLoaded', function() {	
+            // Verifica se janela foi carregada
+            window.addEventListener('DOMContentLoaded', function() {
+                // Pega elemento específico de formulário com iframe
 				let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
+                // Pega elemento contendo a mensagem
                 let lknNoticeWrapper = document.getElementsByClassName('lknNoticeWrapper')[0];
 
+                // Verifica se formulário está dentro de um iframe
                 if(iframeLoader){
-                    console.log('formulário com iframe')
+                    // Caso esteja dentro de um iframe esconde <div> contendo a mensagem
                     lknNoticeWrapper.setAttribute('style','display:none;');
+                    // Pega o footer já existente e altera a mensagem para a da link nacional
                     let secureNotice = document.getElementsByClassName('secure-notice')[0];
-                    secureNotice.innerHTML = '<i class="fas fa-lock"></i>Doação segura por <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank"> Link</a>';
-                }else{
-                    console.log('formulário sem iframe')
+                    secureNotice.innerHTML = '<i class="fas fa-lock"></i>Doação segura via <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="padding: 3px;">Link</a>';
                 }
             });
         </script>
@@ -466,4 +470,4 @@ HTML;
 	echo $html;
 }
 
-add_action('give_donation_form_bottom', 'lkn_give_free_form_notice', 10, 3);
+add_action('give_donation_form_bottom', 'lkn_give_free_form_footer_notice', 10, 3);
