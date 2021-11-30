@@ -424,3 +424,50 @@ HTML;
 }
 
 add_action('give_donation_form_top', 'lkn_give_free_form_form', 10, 3);
+
+/**
+ * Adiciona notice com mensagem que redireciona para página da link nacional no rodapé do formulário
+ */
+function lkn_give_free_form_footer_notice() {
+	$html = <<<HTML
+        <div class="lknNoticeWrapper">
+            <span class="dashicons dashicons-lock" style="color=#989898;"></span>
+            <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Doação segura via Link</span></a>
+        </div>
+        <script>
+            // Verifica se janela foi carregada
+            window.addEventListener('DOMContentLoaded', function() {
+                // Pega elemento específico de formulário com iframe
+				let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
+                // Pega elemento contendo a mensagem
+                let lknNoticeWrapper = document.getElementsByClassName('lknNoticeWrapper')[0];
+
+                // Verifica se formulário está dentro de um iframe
+                if(iframeLoader){
+                    // Caso esteja dentro de um iframe esconde <div> contendo a mensagem
+                    lknNoticeWrapper.setAttribute('style','display:none;');
+                    // Pega o footer já existente e altera a mensagem para a da link nacional
+                    let secureNotice = document.getElementsByClassName('secure-notice')[0];
+                    secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;">Doação segura via Link</a>';
+                }
+            });
+        </script>
+
+        <style>
+            .lknNoticeWrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin: 4%;
+            }
+            .lknNoticeText {
+                font-size: 1em;
+                color: #989898;
+            }
+        </style>
+HTML;
+	echo $html;
+}
+
+add_action('give_donation_form_bottom', 'lkn_give_free_form_footer_notice', 10, 3);
