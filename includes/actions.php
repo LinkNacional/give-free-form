@@ -459,12 +459,11 @@ function lkn_give_free_form_footer_notice() {
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                margin: 4%;
+                margin-top: 75px;
+		font-size: 10px;
+		color: #989898;
             }
-            .lknNoticeText {
-                font-size: 1em;
-                color: #989898;
-            }
+            .lknNoticeText {}
         </style>
 HTML;
 	echo $html;
