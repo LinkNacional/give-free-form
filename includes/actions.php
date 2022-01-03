@@ -432,7 +432,7 @@ function lkn_give_free_form_footer_notice() {
 	$html = <<<HTML
         <div class="lknNoticeWrapper">
             <span class="dashicons dashicons-lock" style="color=#989898;"></span>
-            <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Doação segura via Link</span></a>
+            <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Plataforma de doação online</span></a>
         </div>
         <script>
             // Verifica se janela foi carregada
@@ -448,7 +448,7 @@ function lkn_give_free_form_footer_notice() {
                     lknNoticeWrapper.setAttribute('style','display:none;');
                     // Pega o footer já existente e altera a mensagem para a da link nacional
                     let secureNotice = document.getElementsByClassName('secure-notice')[0];
-                    secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;">Doação segura via Link</a>';
+                    secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;">Plataforma de doação online</a>';
                 }
             });
         </script>
