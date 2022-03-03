@@ -454,6 +454,7 @@ function lkn_give_free_form_footer_notice() {
                     }else{
                         lknNoticeText = document.getElementsByClassName('lknNoticeText')[0];
                         lknNoticeText.classList.add('lknIframeText');
+                        lknNoticeWrapper.classList.add('lknIframeWrapper');
                     }
                 }
             });
@@ -473,6 +474,8 @@ function lkn_give_free_form_footer_notice() {
             }
             .lknIframeText {
                 font-size: 13px;
+            }
+            .lknIframeWrapper {
                 margin-top: 25px;
                 margin-bottom: 25px;
             }
