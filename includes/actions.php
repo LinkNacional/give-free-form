@@ -386,32 +386,32 @@ function lkn_give_free_form_form($form_id, $args) {
         </style>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 
-                var listaPagemento = document.getElementById('give-gateway-radio-list'); // Contém a lista com todos os objetos <li></li>
-                var elemListaPagamento = listaPagemento.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
-                var checkoutFieldsetWrap = document.getElementById('give_purchase_form_wrap'); // campos de finalização de compra checkout
+            var listaPagemento = document.getElementById('give-gateway-radio-list'); // Contém a lista com todos os objetos <li></li>
+            var elemListaPagamento = listaPagemento.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
+            var checkoutFieldsetWrap = document.getElementById('give_purchase_form_wrap'); // campos de finalização de compra checkout
 
-                // função que da scroll ao clicar numa forma de pagamento
-                var userInfoFieldsScroll = function () {
-                    checkoutFieldsetWrap.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
-                };
+            // função que da scroll ao clicar numa forma de pagamento
+            var userInfoFieldsScroll = function () {
+                checkoutFieldsetWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            };
 
-                // Caso exista mais de 1 forma de pagamento insere eventos nos elementos html
-                if(elemListaPagamento.length !== 1) {
+            // Caso exista mais de 1 forma de pagamento insere eventos nos elementos html
+            if (elemListaPagamento.length !== 1) {
 
-                    // insere eventos em todos os botões
-                    for(let c = 0; c < elemListaPagamento.length; c++){
-                        
-                        // Ao clicar na lista o input também reconhecerá o click e irá rolar para os campos do checkout
-                        elemListaPagamento[c].addEventListener('click', function () {
-                            var nodeChild = elemListaPagamento[c].children;
-                            nodeChild[0].click();
-                            userInfoFieldsScroll();
-                        }, false);
+                // insere eventos em todos os botões
+                for (let c = 0; c < elemListaPagamento.length; c++) {
 
-                    }
+                    // Ao clicar na lista o input também reconhecerá o click e irá rolar para os campos do checkout
+                    elemListaPagamento[c].addEventListener('click', function () {
+                        var nodeChild = elemListaPagamento[c].children;
+                        nodeChild[0].click();
+                        userInfoFieldsScroll();
+                    }, false);
+
                 }
+            }
 
             }, false);
 
@@ -435,23 +435,23 @@ function lkn_give_free_form_footer_notice() {
             <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Plataforma de doação online</span></a>
         </div>
         <script>
-            // Verifica se janela foi carregada
-            window.addEventListener('DOMContentLoaded', function() {
+           // Verifica se janela foi carregada
+            window.addEventListener('DOMContentLoaded', function () {
                 // Pega elemento específico de formulário com iframe
-				let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
+                let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
                 // Pega elemento contendo a mensagem
                 let lknNoticeWrapper = document.getElementsByClassName('lknNoticeWrapper')[0];
 
                 // Verifica se formulário está dentro de um iframe
-                if(iframeLoader){
+                if (iframeLoader) {
                     // Pega o footer já existente e altera a mensagem para a da link nacional
                     let secureNotice = document.getElementsByClassName('secure-notice')[0];
-                    if(secureNotice) {
+                    if (secureNotice) {
                         // Caso esteja dentro de um iframe esconde <div> contendo a mensagem
-                        lknNoticeWrapper.setAttribute('style','display:none;');
+                        lknNoticeWrapper.setAttribute('style', 'display:none;');
 
                         secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="font-size: 10px;color: #666;text-decoration: none;">Plataforma de doação online</a>';
-                    }else{
+                    } else {
                         lknNoticeText = document.getElementsByClassName('lknNoticeText')[0];
                         lknNoticeText.classList.add('lknIframeText');
                         lknNoticeWrapper.classList.add('lknIframeWrapper');
