@@ -1,31 +1,34 @@
 # give-free-form
 
-Módulo de estilização de formulário
-Versão: 1.2.0
+Módulo de estilização e personalização de formulários do GiveWP.
 
 ## Modo de Instalação
 
-1) Faça o upload dos arquivos para a pasta /urldoseusite.com/wp-content/plugins/lkn-give-free-form/ caso a pasta do lkn-give-free-form não exista é necessário criá-la;
+1) Procure na barra lateral a área de plugins do Wordpress;
 
-2) Após o upload vá para a área de administrador do seu wordpress e selecione a opção 'plugins';
+2) Em plugins instalados procure pela opção 'adicionar novo' no cabeçalho;
 
-3) Procure pelo plugin de nome 'Give - Formulário Customizado'
+3) Clique na opção de 'enviar plugin' no título da página e faça o upload do plugin give-free-form.zip;
 
-4) Clique em ativar;
+4) Clique no botão 'instalar agora' e depois ative o plugin instalado;
 
-5) Clique na opção 'todos os formulários' do GiveWP;
+Pronto! Agora o plugin foi devidamente instalado.
 
-6) Selecione o formulário que deseja personalizar;
+## Modo de uso
 
-7) Habilite o Modelo 'Formulário de doação legado';
+1) Clique na opção 'todos os formulários' do GiveWP;
 
-8) Nas opções de formulário selecione a seção 'Estilização do Formulário';
+2) Selecione o formulário que deseja personalizar;
 
-9) Clique em habilitar e personalize as cores e espaçamento da maneira que preferir;
+3) Habilite o Template 'Legacy form';
 
-10) Agora clique no botão de publicar (caso já esteja publicado será o botão de atualizar);
+4) Nas opções laterais do formulário selecione a seção 'Estilização do Formulário';
 
-Pronto, agora o seu plugin de personalização de formulário está devidamente configurado e pronto para uso.
+5) Clique em habilitar e personalize as cores e espaçamento da maneira que preferir;
+
+6) Agora clique no botão de publicar (caso já esteja publicado será o botão de atualizar);
+
+Pronto! Agora seu formulário foi personalizado.
 
 ## Modo de personalização via CSS
 
@@ -74,3 +77,22 @@ form[id*=give-form] #give-gateway-radio-list>li{
     color: #ffffff;
     font-size: 1vw;
 }
+
+## Changelog
+
+### 1.3.2
+* Bug fixes on new Classical template
+
+### 1.3.1
+* Footer message fix
+
+### 1.3.0
+* Changes on CSS configuration
+* Added footer message
+* Bug fixes
+
+### 1.2.0
+* new CSS configuration
+
+### 1.0.0
+* First Release
