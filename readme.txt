@@ -3,7 +3,7 @@ Contributors: @linknacional
 Donate link: https://www.linknacional.com.br/wordpress/givewp/
 Tags: givewp, donate, form
 Requires at least: 4.7
-Tested up to: 5.8
+Tested up to: 5.9
 Stable tag: 4.3
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -32,11 +32,22 @@ Install the plugin, activated the plugin. Go to forms, edit a form, inside the o
 
 == Changelog ==
 
+= 1.3.2 =
+* Bug fixes on new Classical template
+
+= 1.3.1 =
+* Footer message fix
+
+= 1.3.0 =
+* Changes on CSS configuration
+* Added footer message
+* Bug fixes
+
 = 1.2.0 =
 * new CSS configuration
 
 = 1.0.0 =
-* First Releas
+* First Release
 
 == Upgrade Notice ==
 

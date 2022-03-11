@@ -14,7 +14,7 @@ include_once __DIR__ . '/misc-functions.php';
 
 // Exit, if accessed directly.
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 /////// HELPERS
@@ -29,27 +29,27 @@ if (!defined('ABSPATH')) {
  * @return mixed
  */
 function lkn_give_free_form_form($form_id, $args) {
-	$id_prefix = !empty($args['id_prefix']) ? $args['id_prefix'] : '';
+    $id_prefix = !empty($args['id_prefix']) ? $args['id_prefix'] : '';
 
-	$status = get_post_meta($form_id, 'free_form-fields_lkn_form_style_status', true);
-	$color = get_post_meta($form_id, 'free_form-fields_lkn_form_color', true);
-	$colorDet = get_post_meta($form_id, 'free_form-fields_lkn_details_color', true);
-	$titleColor = get_post_meta($form_id, 'free_form-fields_lkn_title_color', true);
-	$titleSize = get_post_meta($form_id, 'free_form-fields_lkn_title_size', true);
-	$margin = get_post_meta($form_id, 'free_form-fields_lkn_section_margin', true);
-	$btnBorderColor = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_color', true);
-	$btnBorderSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_size', true);
-	$btnBorderRadius = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_radius', true);
-	$paddingA = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingA', true);
-	$paddingL = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingL', true);
-	$textSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_text_size', true);
-	$css = get_post_meta($form_id, 'free_form-fields_lkn_css', true);
+    $status = get_post_meta($form_id, 'free_form-fields_lkn_form_style_status', true);
+    $color = get_post_meta($form_id, 'free_form-fields_lkn_form_color', true);
+    $colorDet = get_post_meta($form_id, 'free_form-fields_lkn_details_color', true);
+    $titleColor = get_post_meta($form_id, 'free_form-fields_lkn_title_color', true);
+    $titleSize = get_post_meta($form_id, 'free_form-fields_lkn_title_size', true);
+    $margin = get_post_meta($form_id, 'free_form-fields_lkn_section_margin', true);
+    $btnBorderColor = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_color', true);
+    $btnBorderSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_size', true);
+    $btnBorderRadius = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_radius', true);
+    $paddingA = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingA', true);
+    $paddingL = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingL', true);
+    $textSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_text_size', true);
+    $css = get_post_meta($form_id, 'free_form-fields_lkn_css', true);
 
 
-	if ($status !== 'enabled') {
-		return false;
-	} else {
-		$form = <<<HTML
+    if ($status !== 'enabled') {
+        return false;
+    } else {
+        $form = <<<HTML
         <style>
             #give-purchase-button{
                 background-color: $color;
@@ -386,32 +386,32 @@ function lkn_give_free_form_form($form_id, $args) {
         </style>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
 
-                var listaPagemento = document.getElementById('give-gateway-radio-list'); // Contém a lista com todos os objetos <li></li>
-                var elemListaPagamento = listaPagemento.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
-                var checkoutFieldsetWrap = document.getElementById('give_purchase_form_wrap'); // campos de finalização de compra checkout
+            var listaPagemento = document.getElementById('give-gateway-radio-list'); // Contém a lista com todos os objetos <li></li>
+            var elemListaPagamento = listaPagemento.getElementsByTagName('li'); // lista com todos os obj da lista de gateways para elecionar
+            var checkoutFieldsetWrap = document.getElementById('give_purchase_form_wrap'); // campos de finalização de compra checkout
 
-                // função que da scroll ao clicar numa forma de pagamento
-                var userInfoFieldsScroll = function () {
-                    checkoutFieldsetWrap.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
-                };
+            // função que da scroll ao clicar numa forma de pagamento
+            var userInfoFieldsScroll = function () {
+                checkoutFieldsetWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            };
 
-                // Caso exista mais de 1 forma de pagamento insere eventos nos elementos html
-                if(elemListaPagamento.length !== 1) {
+            // Caso exista mais de 1 forma de pagamento insere eventos nos elementos html
+            if (elemListaPagamento.length !== 1) {
 
-                    // insere eventos em todos os botões
-                    for(let c = 0; c < elemListaPagamento.length; c++){
-                        
-                        // Ao clicar na lista o input também reconhecerá o click e irá rolar para os campos do checkout
-                        elemListaPagamento[c].addEventListener('click', function () {
-                            var nodeChild = elemListaPagamento[c].children;
-                            nodeChild[0].click();
-                            userInfoFieldsScroll();
-                        }, false);
+                // insere eventos em todos os botões
+                for (let c = 0; c < elemListaPagamento.length; c++) {
 
-                    }
+                    // Ao clicar na lista o input também reconhecerá o click e irá rolar para os campos do checkout
+                    elemListaPagamento[c].addEventListener('click', function () {
+                        var nodeChild = elemListaPagamento[c].children;
+                        nodeChild[0].click();
+                        userInfoFieldsScroll();
+                    }, false);
+
                 }
+            }
 
             }, false);
 
@@ -419,8 +419,8 @@ function lkn_give_free_form_form($form_id, $args) {
 
 HTML;
 
-		echo $form;
-	}
+        echo $form;
+    }
 }
 
 add_action('give_donation_form_top', 'lkn_give_free_form_form', 10, 3);
@@ -429,26 +429,33 @@ add_action('give_donation_form_top', 'lkn_give_free_form_form', 10, 3);
  * Adiciona notice com mensagem que redireciona para página da link nacional no rodapé do formulário
  */
 function lkn_give_free_form_footer_notice() {
-	$html = <<<HTML
+    $html = <<<HTML
         <div class="lknNoticeWrapper">
             <span class="dashicons dashicons-lock" style="color=#989898;"></span>
             <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Plataforma de doação online</span></a>
         </div>
         <script>
-            // Verifica se janela foi carregada
-            window.addEventListener('DOMContentLoaded', function() {
+           // Verifica se janela foi carregada
+            window.addEventListener('DOMContentLoaded', function () {
                 // Pega elemento específico de formulário com iframe
-				let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
+                let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
                 // Pega elemento contendo a mensagem
                 let lknNoticeWrapper = document.getElementsByClassName('lknNoticeWrapper')[0];
 
                 // Verifica se formulário está dentro de um iframe
-                if(iframeLoader){
-                    // Caso esteja dentro de um iframe esconde <div> contendo a mensagem
-                    lknNoticeWrapper.setAttribute('style','display:none;');
+                if (iframeLoader) {
                     // Pega o footer já existente e altera a mensagem para a da link nacional
                     let secureNotice = document.getElementsByClassName('secure-notice')[0];
-                    secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;">Plataforma de doação online</a>';
+                    if (secureNotice) {
+                        // Caso esteja dentro de um iframe esconde <div> contendo a mensagem
+                        lknNoticeWrapper.setAttribute('style', 'display:none;');
+
+                        secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="font-size: 10px;color: #666;text-decoration: none;">Plataforma de doação online</a>';
+                    } else {
+                        lknNoticeText = document.getElementsByClassName('lknNoticeText')[0];
+                        lknNoticeText.classList.add('lknIframeText');
+                        lknNoticeWrapper.classList.add('lknIframeWrapper');
+                    }
                 }
             });
         </script>
@@ -460,13 +467,21 @@ function lkn_give_free_form_footer_notice() {
                 justify-content: center;
                 align-items: center;
                 margin-top: 75px;
-		font-size: 10px;
-		color: #989898;
             }
-            .lknNoticeText {}
+            .lknNoticeText {
+                font-size: 10px;
+                color: #989898;
+            }
+            .lknIframeText {
+                font-size: 13px;
+            }
+            .lknIframeWrapper {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
         </style>
 HTML;
-	echo $html;
+    echo $html;
 }
 
 add_action('give_donation_form_bottom', 'lkn_give_free_form_footer_notice', 10, 3);
