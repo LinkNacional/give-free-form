@@ -1,0 +1,36 @@
+name: Generate new release
+
+on:
+  pull_request:
+    types: [ closed ]
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'wc-invoice-payment.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig'
+        
+    - name: Bump version and push tag
+      id: tag_version
+      uses: mathieudutour/github-tag-action@v6.0
+      with:
+        tag_prefix: ''
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "wc-invoice-payment.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit: "dev"
+        tag: ${{ steps.tag_version.outputs.new_tag }}
+        name: Release ${{ steps.tag_version.outputs.new_tag }}
