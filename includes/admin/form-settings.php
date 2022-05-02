@@ -122,6 +122,19 @@ class Lkn_Free_Form_Settings {
                     'default' => '1em',
                 ],
                 [
+                    'id' => "{$this->id}_stripe_input_lkn_css",
+                    'name' => __('Campo para estilização avançada de campos do Stripe.', 'lkn-give-free-form'),
+                    'desc' => __('Utilize CSS, sem classes, para customizar os campos do Stripe do seu jeito.', 'lkn-give-free-form'),
+                    'type' => 'textarea',
+                    'default' => '
+font-size: 1.3em !important;
+box-shadow: inset 0 1px 4px rgb(0 0 0 / 22%) !important;
+border: solid 2px #ccc !important;
+border-radius: 5px !important;
+line-height: 1.3em !important;
+                    ',
+                ],
+                [
                     'id' => "{$this->id}_lkn_css",
                     'name' => __('Campo para estilização avançada.', 'lkn-give-free-form'),
                     'desc' => __('Utilize CSS para customizar o formulário do seu jeito.', 'lkn-give-free-form'),
