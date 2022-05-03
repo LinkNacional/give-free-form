@@ -32,6 +32,9 @@ Install the plugin, activated the plugin. Go to forms, edit a form, inside the o
 
 == Changelog ==
 
+= 1.4.1 =
+* Fix translation for warning messages
+
 = 1.4.0 =
 * Added field to style Stripe input on form styling options
 
