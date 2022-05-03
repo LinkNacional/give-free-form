@@ -3,7 +3,7 @@
  * Plugin Name: Give - Free Form
  * Plugin URI:  https://www.linknacional.com.br/wordpress/givewp/
  * Description: Plugin de estilização de formulário de doação para GiveWP.
- * Version:     1.4.0
+ * Version:     1.4.1
  * Author:      Link Nacional
  * Author URI:  https://www.linknacional.com.br
  * License:     GNU General Public License v2 or later
@@ -93,7 +93,7 @@ final class Lkn_Give_Free_Form {
     private function setup_constants() {
         // Defines addon version number for easy reference.
         if (!defined('LKN_GIVE_FREE_FORM_VERSION')) {
-            define('LKN_GIVE_FREE_FORM_VERSION', '1.0');
+            define('LKN_GIVE_FREE_FORM_VERSION', '1.4.1');
         }
 
         // Set it to latest.
@@ -147,14 +147,12 @@ final class Lkn_Give_Free_Form {
             //se não esta logado entra daqui
             self::$instance->load_files();
             self::$instance->setup_hooks();
-            self::$instance->load_license();
 
             return;
         }
 
         self::$instance->load_files();
         self::$instance->setup_hooks();
-        self::$instance->load_license();
     }
 
     /**
@@ -255,22 +253,6 @@ final class Lkn_Give_Free_Form {
      */
     private function setup_hooks() {
         // Filters
-    }
-
-    /**
-     * Load license
-     *
-     * @since
-     * @access private
-     */
-    private function load_license() {
-        new Give_License(
-            LKN_GIVE_FREE_FORM_FILE,
-            'Give Free Form',
-            LKN_GIVE_FREE_FORM_VERSION,
-            'WordImpress',
-            'lkn_give_free_form_license_key'
-        );
     }
 }
 
