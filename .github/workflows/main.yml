@@ -14,12 +14,14 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Create plugin root directory
-      run: "mkdir give-free-form && mv -t ./wc-invoice-payment ./assets ./includes ./plugin-updater *.php"
+      run: "mkdir give-free-form && mv -t ./give-free-form ./assets ./includes ./plugin-updater *.php"
 
     - name: Generate new Release
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
+        path: 'give-free-form'
+        directory: '.'
         filename: 'give-free-form.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
         
@@ -33,7 +35,7 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "wc-invoice-payment.zip"
+        artifacts: "give-free-form.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
         commit: "dev"
         tag: ${{ steps.tag_version.outputs.new_tag }}
