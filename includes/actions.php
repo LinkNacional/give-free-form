@@ -44,6 +44,7 @@ function lkn_give_free_form_form($form_id, $args) {
     $paddingL = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingL', true);
     $textSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_text_size', true);
     $css = get_post_meta($form_id, 'free_form-fields_lkn_css', true);
+    $stripeCss = get_post_meta($form_id, 'free_form-fields_stripe_input_lkn_css', true);
 
 
     if ($status !== 'enabled') {
@@ -252,8 +253,20 @@ function lkn_give_free_form_form($form_id, $args) {
                 line-height: 1.3em;
             }
 
+            .give-stripe-single-cc-field-wrap {
+                $stripeCss
+            }
+
+            .form-row .give-stripe-cc-field {
+                $stripeCss
+            }
+
             #give-recurring-form .form-row .give-input-field-wrapper:focus, #give-recurring-form .form-row input[type=email]:focus, #give-recurring-form .form-row input[type=password]:focus, #give-recurring-form .form-row input[type=tel]:focus, #give-recurring-form .form-row input[type=text]:focus, #give-recurring-form .form-row input[type=url]:focus, #give-recurring-form .form-row select:focus, #give-recurring-form .form-row textarea:focus, form.give-form .form-row .give-input-field-wrapper:focus, form.give-form .form-row input[type=email]:focus, form.give-form .form-row input[type=password]:focus, form.give-form .form-row input[type=tel]:focus, form.give-form .form-row input[type=text]:focus, form.give-form .form-row input[type=url]:focus, form.give-form .form-row select:focus, form.give-form .form-row textarea:focus, form[id*=give-form] .form-row .give-input-field-wrapper:focus, form[id*=give-form] .form-row input[type=email]:focus, form[id*=give-form] .form-row input[type=password]:focus, form[id*=give-form] .form-row input[type=tel]:focus, form[id*=give-form] .form-row input[type=text]:focus, form[id*=give-form] .form-row input[type=url]:focus, form[id*=give-form] .form-row select:focus, form[id*=give-form] .form-row textarea:focus{
                 border-image: linear-gradient(to right, #666, $color) 1;
+            }
+
+            .give-form .give-stripe-cc-field.focus, .give-form .give-stripe-cc-field:focus {
+                border-image: linear-gradient(to right, #666, $color) 1 !important;
             }
 
             #give-final-total-wrap{

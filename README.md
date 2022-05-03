@@ -80,6 +80,9 @@ form[id*=give-form] #give-gateway-radio-list>li{
 
 ## Changelog
 
+### 1.4.0
+* Added field to style Stripe input on form styling options
+
 ### 1.3.2
 * Bug fixes on new Classical template
 
