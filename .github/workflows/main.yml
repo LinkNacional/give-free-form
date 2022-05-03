@@ -16,7 +16,7 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: 'wc-invoice-payment.zip'
+        filename: 'give-free-form.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
         
     - name: Bump version and push tag
