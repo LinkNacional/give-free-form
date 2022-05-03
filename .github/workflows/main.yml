@@ -1,4 +1,4 @@
-name: Generate new release
+name: Generate new release for Give plugin
 
 on:
   pull_request:
@@ -12,7 +12,11 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v3
-    - name: Archive Release
+
+    - name: Create plugin root directory
+      run: "mkdir give-free-form && mv -t ./wc-invoice-payment ./assets ./includes ./plugin-updater *.php"
+
+    - name: Generate new Release
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
