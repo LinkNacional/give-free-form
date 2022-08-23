@@ -286,7 +286,7 @@ Lkn_Give_Free_Form();
  */
 function lkn_give_free_form_updater() {
     return new Lkn_Puc_Plugin_UpdateChecker(
-        'https://api.linknacional.com.br/app/u/link_api_update.php?slug=give-free-form',
+        'https://api.linknacional.com.br/v2/u/?slug=give-free-form',
         __FILE__, //Full path to the main plugin file or functions.php.
         'give-free-form'
     );
