@@ -1,42 +1,48 @@
-name: Generate new release for Give plugin
+name: Generate new release for plugin
 
 on:
   pull_request:
     types: [ closed ]
     branches: [ main ]
 
+env:
+  PLUGIN_NAME: give-free-form
+
 jobs:
-  build:
+  release-build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
     - uses: actions/checkout@v3
 
-    - name: Create plugin root directory
-      run: "mkdir give-free-form && mv -t ./give-free-form ./assets ./includes ./plugin-updater *.php"
+    # Add plugin files to a root directory
+    - name: Make plugin root directory
+      run: "mkdir $PLUGIN_NAME && mv -t ./$PLUGIN_NAME ./plugin-updater ./includes ./assets *.php && ls -lah"
 
-    - name: Generate new Release
+    # Compact plugin as .zip
+    - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        path: 'give-free-form'
+        path: '${{ env.PLUGIN_NAME }}'
         directory: '.'
-        filename: 'give-free-form.zip'
+        filename: '${{ env.PLUGIN_NAME }}.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-        
+
+    # Update version tag
     - name: Bump version and push tag
       id: tag_version
       uses: mathieudutour/github-tag-action@v6.0
       with:
-        tag_prefix: ''
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upload Release
+    # Generate new release
+    - name: Generate new Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "give-free-form.zip"
+        artifacts: "${{ env.PLUGIN_NAME }}.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit: "dev"
+        commit: "main"
         tag: ${{ steps.tag_version.outputs.new_tag }}
         name: Release ${{ steps.tag_version.outputs.new_tag }}
