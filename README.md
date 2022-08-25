@@ -80,6 +80,14 @@ form[id*=give-form] #give-gateway-radio-list>li{
 
 ## Changelog
 
+### 1.4.3
+* New update endpoint implemented;
+* GNU license implemented;
+* Cleaning code.
+
+### 1.4.2
+* Fixed WordPress header bugs.
+
 ### 1.4.1
 * Fix translation for warning messages
 
