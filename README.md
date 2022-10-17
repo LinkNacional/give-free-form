@@ -80,6 +80,9 @@ form[id*=give-form] #give-gateway-radio-list>li{
 
 ## Changelog
 
+### 1.4.4
+* Updated donation form label and link.
+
 ### 1.4.3
 * New update endpoint implemented;
 * GNU license implemented;
