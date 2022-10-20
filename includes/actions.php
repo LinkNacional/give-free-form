@@ -443,7 +443,7 @@ function lkn_give_free_form_footer_notice() {
     $html = <<<HTML
         <div class="lknNoticeWrapper">
             <span class="dashicons dashicons-lock" style="color=#989898;"></span>
-            <a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Plataforma de doação online</span></a>
+            <a href="https://www.linknacional.com.br/plataforma-de-doacoes/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Plataforma de doação segura</span></a>
         </div>
         <script>
            // Verifica se janela foi carregada
@@ -461,7 +461,7 @@ function lkn_give_free_form_footer_notice() {
                         // Caso esteja dentro de um iframe esconde <div> contendo a mensagem
                         lknNoticeWrapper.setAttribute('style', 'display:none;');
 
-                        secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/site-ong-doacao-internacional/" target="_blank" style="font-size: 10px;color: #666;text-decoration: none;">Plataforma de doação online</a>';
+                        secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/plataforma-de-doacoes/" target="_blank" style="font-size: 10px;color: #666;text-decoration: none;">Plataforma de doação segura</a>';
                     } else {
                         lknNoticeText = document.getElementsByClassName('lknNoticeText')[0];
                         lknNoticeText.classList.add('lknIframeText');
