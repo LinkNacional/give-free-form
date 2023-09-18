@@ -11,7 +11,7 @@
  */
 
 // Exit, if accessed directly.
-if (!defined('ABSPATH')) {
+if ( ! defined('ABSPATH')) {
     exit;
 }
 
@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
  * @return mixed
  */
 function lkn_give_free_form_form($form_id, $args) {
-    $id_prefix = !empty($args['id_prefix']) ? $args['id_prefix'] : '';
+    $id_prefix = ! empty($args['id_prefix']) ? $args['id_prefix'] : '';
 
     $status = get_post_meta($form_id, 'free_form-fields_lkn_form_style_status', true);
     $color = get_post_meta($form_id, 'free_form-fields_lkn_form_color', true);
@@ -44,8 +44,7 @@ function lkn_give_free_form_form($form_id, $args) {
     $css = get_post_meta($form_id, 'free_form-fields_lkn_css', true);
     $stripeCss = get_post_meta($form_id, 'free_form-fields_stripe_input_lkn_css', true);
 
-
-    if ($status !== 'enabled') {
+    if ('enabled' !== $status) {
         return false;
     } else {
         $form = <<<HTML
@@ -434,12 +433,12 @@ HTML;
     }
 }
 
-add_action('give_donation_form_top', 'lkn_give_free_form_form', 10, 3);
+add_action('give_fields_donation_form_top', 'lkn_give_free_form_form', 10, 3);
 
 /**
  * Adiciona notice com mensagem que redireciona para página da link nacional no rodapé do formulário
  */
-function lkn_give_free_form_footer_notice() {
+function lkn_give_free_form_footer_notice(): void {
     $html = <<<HTML
         <div class="lknNoticeWrapper">
             <span class="dashicons dashicons-lock" style="color=#989898;"></span>
