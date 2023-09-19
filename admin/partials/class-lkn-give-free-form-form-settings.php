@@ -20,7 +20,7 @@ final class Lkn_Give_Free_Form_Settings {
      */
     public static function lkn_give_free_form_setup_setting($settings) {
         $id = 'free_form-fields';
-
+        
         // Custom metabox settings.
         $settings["{$id}_tab"] = array(
             'id' => "{$id}_tab",
@@ -29,7 +29,7 @@ final class Lkn_Give_Free_Form_Settings {
             'fields' => array(
                 array(
                     'id' => "{$id}_lkn_form_style_disabled",
-                    'name' => '',
+                    'name' => 'Warning',
                     'type' => 'disabled_for_non_legacy_templates_html',
                     'callback' => Lkn_Give_Free_Form_Settings::disabled_for_non_legacy_templates_html(),
                 ),
@@ -146,7 +146,7 @@ line-height: 1.3em !important;',
         return $settings;
     }
 
-    // TODO melhorar um pouco essa função (Mostrar só em forms não-legado, arrumar html, etc).
+    // TODO melhorar um pouco essa função (Mostrar só em forms não-legado, etc).
     /**
      * Add a form admin notice
      *
@@ -154,20 +154,18 @@ line-height: 1.3em !important;',
      *
      */
     public static function disabled_for_non_legacy_templates_html() {
-        // $current_form_id = give_get_current_form_id();
+        ob_start();
 
-        // $form = give_get_form_object($current_form_id);
+        $warning = esc_html__('O formulário customizado não é relevante para o formulário Multi-Step do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', LKN_GIVE_FREE_FORM_TEXT_DOMAIN);
 
-        // $form_type = $form->get_form_type();
+        $formWarning = <<<HTML
+            <p class="ffconfs-disabled">
+                {$warning}
+            </p>
+        HTML;
 
-        ob_start(); ?>
-<p class="ffconfs-disabled">
-    <?php _e(/* $form_type . */ 'O formulário customizado não é relevante para o formulário Multi-Step do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', 'lkn-give-free-form-notices'); ?>
-</p>
-<?php
+        echo $formWarning;
 
-        $html = ob_get_contents();
-
-        return $html;
+        echo ob_get_clean();
     }
 }

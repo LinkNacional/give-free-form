@@ -116,29 +116,6 @@ final class Lkn_Give_Free_Form_Helper {
         add_action('admin_notices', array('Lkn_Give_Free_Form_Helper', 'lkn_give_free_form_inactive_notice'));
     }
 
-    /**
-     * Show activation banner
-     *
-     * @since
-     * @return void
-     */
-    public function __give_lkn_free_form_activation_gateway(): void {
-        // Initialize activation welcome banner.
-        if (class_exists('Lkn_Give_Free_Form')) {
-            // Only runs on admin.
-            $args = array(
-                'file' => LKN_GIVE_FREE_FORM_FILE,
-                'name' => __('Donation Form Customization for GiveWP', LKN_GIVE_FREE_FORM_TEXT_DOMAIN),
-                'version' => LKN_GIVE_FREE_FORM_VERSION,
-                'documentation_url' => 'https://www.linknacional.com.br/wordpress/givewp/',
-                'support_url' => 'https://www.linknacional.com.br/suporte/',
-                'testing' => false, // Never leave true.
-            );
-
-            new Lkn_Give_Free_Form($args);
-        }
-    }
-
     // TODO descomentar caso tenha uma aba de configurações. Aparentemente já será inserido dentro da configuração dos formulários.
     // /**
     //  * Plugin row meta links.
