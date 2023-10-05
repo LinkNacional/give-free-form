@@ -123,19 +123,7 @@ final class Lkn_Give_Free_Form {
          * The class responsible for useful functions of plugin.
          */
         require_once plugin_dir_path( __DIR__ ) . 'includes/class-lkn-give-free-form-helper.php';
-
-        /**
-         * The class responsible for actions of plugin.
-         */
-        require_once plugin_dir_path( __DIR__ ) . 'public/partials/class-lkn-give-free-form-actions.php';
         
-        /**
-         * The class responsible for form settings.
-         */
-        if (is_admin()) {
-            require_once plugin_dir_path( __DIR__ ) . 'admin/partials/class-lkn-give-free-form-form-settings.php';
-        }
-
         $this->loader = new Lkn_Give_Free_Form_Loader();
     }
 
@@ -166,7 +154,7 @@ final class Lkn_Give_Free_Form {
 
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-        $this->loader->add_filter('give_metabox_form_data_settings', 'Lkn_Give_Free_Form_Settings', 'lkn_give_free_form_setup_setting', 999);
+        $this->loader->add_filter('give_metabox_form_data_settings', 'Lkn_Give_Free_Form_Admin', 'lkn_give_free_form_setup_setting', 999);
         $this->loader->add_action('plugins_loaded', 'Lkn_Give_Free_Form_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999);
     }
 
@@ -182,6 +170,8 @@ final class Lkn_Give_Free_Form {
 
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+        $this->loader->add_action( 'give_fields_donation_form_top', $plugin_public, 'form_customization', 1, 3 );
+        $this->loader->add_action( 'give_donation_form_bottom', $plugin_public, 'lkn_give_free_form_footer_notice', 10, 3 );
     }
 
     /**

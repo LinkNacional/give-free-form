@@ -16,10 +16,10 @@ final class Lkn_Give_Free_Form_Helper {
      *
      * @since 1.0.0
      */
-    final public static function lkn_give_free_form_verify_plugin_dependencies(): bool {
+    final public static function lkn_give_free_form_verify_plugin_dependencies(): ?bool {
         // Not admin, insert here.
         if ( ! is_admin() || ! current_user_can('activate_plugins')) {
-            require_once LKN_GIVE_FREE_FORM_DIR . 'includes/actions.php'; // TODO atualizar path posteriormente.
+            require_once LKN_GIVE_FREE_FORM_DIR . 'public/class-lkn-give-free-form-public.php';
 
             return null;
         }
@@ -116,26 +116,28 @@ final class Lkn_Give_Free_Form_Helper {
         add_action('admin_notices', array('Lkn_Give_Free_Form_Helper', 'lkn_give_free_form_inactive_notice'));
     }
 
-    // TODO descomentar caso tenha uma aba de configurações. Aparentemente já será inserido dentro da configuração dos formulários.
-    // /**
-    //  * Plugin row meta links.
-    //  *
-    //  * @since 1.0.0
-    //  *
-    //  * @param array $plugin_meta An array of the plugin's metadata.
-    //  * @param string $plugin_file Path to the plugin file, relative to the plugins directory.
-    //  *
-    //  * @return array
-    //  */
-    // public static function lkn_give_free_form_plugin_row_meta($plugin_meta, $plugin_file) {
-    //     $new_meta_links['setting'] = sprintf(
-    //         '<a href="%1$s">%2$s</a>',
-    //         admin_url('admin.php?page=llms-settings&tab=checkout&section=pagseguro-v1'),
-    //         __('Settings', LKN_GIVE_FREE_FORM_TEXT_DOMAIN)
-    //     );
+    // TODO melhorar um pouco essa função (Mostrar só em forms não-legado, etc).
+    /**
+     * Add a form admin notice
+     *
+     * @return string $html
+     *
+     */
+    public static function disabled_for_non_legacy_templates_html() {
+        ob_start();
 
-    //     return array_merge($plugin_meta, $new_meta_links);
-    // }
+        $warning = esc_html__('O formulário customizado não é relevante para o formulário Multi-Step do giveWP. Caso você deseje utilizar o Free Form Plugin é necessário mudar o Template do formulário para opção "Legado".', LKN_GIVE_FREE_FORM_TEXT_DOMAIN);
+
+        $formWarning = <<<HTML
+        <p class="ffconfs-disabled">
+            {$warning}
+        </p>
+HTML;
+
+        echo $formWarning;
+
+        echo ob_get_clean();
+    }
 
     // /**
     //  * Array for pick the data of the settings in Give.
