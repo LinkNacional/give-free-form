@@ -9,8 +9,8 @@
  * @link       https://www.linknacional.com.br
  * @since      1.0.0
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/includes
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/includes
  */
 
 /**
@@ -23,18 +23,18 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/includes
- * @author     Link Nacional <email@email.com>
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/includes
+ * @author     Link Nacional
  */
-final class Lkn_Give_Free_Form {
+final class Lkn_Form_Customization_for_Give {
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
      * the plugin.
      *
      * @since    1.0.0
      * @access   protected
-     * @var      Lkn_Give_Free_Form_Loader    $loader    Maintains and registers all hooks for the plugin.
+     * @var      Lkn_Form_Customization_for_Give_Loader    $loader    Maintains and registers all hooks for the plugin.
      */
     protected $loader;
 
@@ -84,10 +84,10 @@ final class Lkn_Give_Free_Form {
      *
      * Include the following files that make up the plugin:
      *
-     * - Lkn_Give_Free_Form_Loader. Orchestrates the hooks of the plugin.
-     * - Lkn_Give_Free_Form_i18n. Defines internationalization functionality.
-     * - Lkn_Give_Free_Form_Admin. Defines all hooks for the admin area.
-     * - Lkn_Give_Free_Form_Public. Defines all hooks for the public side of the site.
+     * - Lkn_Form_Customization_for_Give_Loader. Orchestrates the hooks of the plugin.
+     * - Lkn_Form_Customization_for_Give_i18n. Defines internationalization functionality.
+     * - Lkn_Form_Customization_for_Give_Admin. Defines all hooks for the admin area.
+     * - Lkn_Form_Customization_for_Give_Public. Defines all hooks for the public side of the site.
      *
      * Create an instance of the loader which will be used to register the hooks
      * with WordPress.
@@ -124,20 +124,20 @@ final class Lkn_Give_Free_Form {
          */
         require_once plugin_dir_path( __DIR__ ) . 'includes/class-lkn-give-free-form-helper.php';
         
-        $this->loader = new Lkn_Give_Free_Form_Loader();
+        $this->loader = new Lkn_Form_Customization_for_Give_Loader();
     }
 
     /**
      * Define the locale for this plugin for internationalization.
      *
-     * Uses the Lkn_Give_Free_Form_i18n class in order to set the domain and to register the hook
+     * Uses the Lkn_Form_Customization_for_Give_i18n class in order to set the domain and to register the hook
      * with WordPress.
      *
      * @since    1.0.0
      * @access   private
      */
     private function set_locale(): void {
-        $plugin_i18n = new Lkn_Give_Free_Form_i18n();
+        $plugin_i18n = new Lkn_Form_Customization_for_Give_i18n();
 
         $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
     }
@@ -150,12 +150,12 @@ final class Lkn_Give_Free_Form {
      * @access   private
      */
     private function define_admin_hooks(): void {
-        $plugin_admin = new Lkn_Give_Free_Form_Admin( $this->get_plugin_name(), $this->get_version() );
+        $plugin_admin = new Lkn_Form_Customization_for_Give_Admin( $this->get_plugin_name(), $this->get_version() );
 
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-        $this->loader->add_filter('give_metabox_form_data_settings', 'Lkn_Give_Free_Form_Admin', 'lkn_give_free_form_setup_setting', 999);
-        $this->loader->add_action('plugins_loaded', 'Lkn_Give_Free_Form_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999);
+        $this->loader->add_filter('give_metabox_form_data_settings', 'Lkn_Form_Customization_for_Give_Admin', 'lkn_give_free_form_setup_setting', 999);
+        $this->loader->add_action('plugins_loaded', 'Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999);
     }
 
     /**
@@ -166,7 +166,7 @@ final class Lkn_Give_Free_Form {
      * @access   private
      */
     private function define_public_hooks(): void {
-        $plugin_public = new Lkn_Give_Free_Form_Public( $this->get_plugin_name(), $this->get_version() );
+        $plugin_public = new Lkn_Form_Customization_for_Give_Public( $this->get_plugin_name(), $this->get_version() );
 
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -198,7 +198,7 @@ final class Lkn_Give_Free_Form {
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since     1.0.0
-     * @return    Lkn_Give_Free_Form_Loader    Orchestrates the hooks of the plugin.
+     * @return    Lkn_Form_Customization_for_Give_Loader    Orchestrates the hooks of the plugin.
      */
     public function get_loader() {
         return $this->loader;

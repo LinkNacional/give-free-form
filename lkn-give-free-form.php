@@ -10,7 +10,7 @@
  *
  * @link              https://www.linknacional.com.br
  * @since             2.0.0
- * @package           Lkn_Give_Free_Form
+ * @package           Lkn_Form_Customization_for_Give
  *
  * @wordpress-plugin
  * Plugin Name:       Donation Form Customization for GiveWP
@@ -73,7 +73,7 @@ if ( ! defined('LKN_GIVE_FREE_FORM_TEXT_DOMAIN')) {
  */
 function activate_lkn_give_free_form(): void {
     require_once plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form-activator.php';
-    Lkn_Give_Free_Form_Activator::activate();
+    Lkn_Form_Customization_for_Give_Activator::activate();
 }
 
 /**
@@ -82,7 +82,7 @@ function activate_lkn_give_free_form(): void {
  */
 function deactivate_lkn_give_free_form(): void {
     require_once plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form-deactivator.php';
-    Lkn_Give_Free_Form_Deactivator::deactivate();
+    Lkn_Form_Customization_for_Give_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_lkn_give_free_form' );
@@ -104,7 +104,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form.php';
  * @since    1.0.0
  */
 function run_lkn_give_free_form(): void {
-    $plugin = new Lkn_Give_Free_Form();
+    $plugin = new Lkn_Form_Customization_for_Give();
     $plugin->run();
 }
 run_lkn_give_free_form();

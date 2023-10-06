@@ -9,8 +9,8 @@
  * @link       https://www.linknacional.com.br
  * @since      1.0.0
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/includes
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/includes
- * @author     Link Nacional <email@email.com>
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/includes
+ * @author     Link Nacional
  */
-final class Lkn_Give_Free_Form_i18n {
+final class Lkn_Form_Customization_for_Give_i18n {
     /**
      * Load the plugin text domain for translation.
      *

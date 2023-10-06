@@ -291,3 +291,27 @@ form[id*=give-form] #give-final-total-wrap .give-final-total-amount {
 .lkn-btn-gateway:hover {
     filter: brightness(120%);
 }
+
+/* FOOTER NOTICE */
+
+.lknNoticeWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.lknNoticeText {
+    font-size: 12px;
+    color: #989898;
+}
+
+.lknIframeText {
+    font-size: 13px;
+}
+
+.lknIframeWrapper {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

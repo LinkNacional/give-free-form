@@ -22,10 +22,10 @@
  * @link       https://www.linknacional.com.br
  * @since      1.0.0
  *
- * @package    Lkn_Give_Free_Form
+ * @package    Lkn_Form_Customization_for_Give
  */
 
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-	exit;
+    exit;
 }

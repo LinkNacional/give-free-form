@@ -6,8 +6,8 @@
  * @link       https://www.linknacional.com.br
  * @since      1.0.0
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/admin
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/admin
- * @author     Link Nacional <email@email.com>
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/admin
+ * @author     Link Nacional
  */
-final class Lkn_Give_Free_Form_Admin {
+final class Lkn_Form_Customization_for_Give_Admin {
     /**
      * The ID of this plugin.
      *
@@ -71,7 +71,7 @@ final class Lkn_Give_Free_Form_Admin {
                     'id' => "{$id}_lkn_form_style_disabled",
                     'name' => 'Warning',
                     'type' => 'disabled_for_non_legacy_templates_html',
-                    'callback' => Lkn_Give_Free_Form_Helper::disabled_for_non_legacy_templates_html(),
+                    // 'callback' => Lkn_Form_Customization_for_Give_Helper::disabled_for_non_legacy_templates_html(), // TODO descomentar depois
                 ),
                 array(
                     'id' => "{$id}_lkn_form_style_status",
@@ -196,10 +196,10 @@ line-height: 1.3em !important;',
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Lkn_Give_Free_Form_Loader as all of the hooks are defined
+         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
          * in that particular class.
          *
-         * The Lkn_Give_Free_Form_Loader will then create the relationship
+         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
          */
@@ -216,10 +216,10 @@ line-height: 1.3em !important;',
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Lkn_Give_Free_Form_Loader as all of the hooks are defined
+         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
          * in that particular class.
          *
-         * The Lkn_Give_Free_Form_Loader will then create the relationship
+         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
          */

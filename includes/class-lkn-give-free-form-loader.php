@@ -6,8 +6,8 @@
  * @link       https://www.linknacional.com.br
  * @since      1.0.0
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/includes
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/includes
- * @author     Link Nacional <email@email.com>
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/includes
+ * @author     Link Nacional
  */
-final class Lkn_Give_Free_Form_Loader {
+final class Lkn_Form_Customization_for_Give_Loader {
     /**
      * The array of actions registered with WordPress.
      *

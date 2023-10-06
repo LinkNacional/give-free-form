@@ -10,7 +10,7 @@ if ( ! defined('ABSPATH')) {
  * @since      1.0.0
  * @author     Link Nacional
  */
-final class Lkn_Give_Free_Form_Helper {
+final class Lkn_Form_Customization_for_Give_Helper {
     /**
      * Show plugin dependency notice.
      *
@@ -38,7 +38,7 @@ final class Lkn_Give_Free_Form_Helper {
             && version_compare(GIVE_VERSION, LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION, '<')
         ) {
             // Show admin notice.
-            Lkn_Give_Free_Form_Helper::lkn_give_free_form_dependency_alert();
+            Lkn_Form_Customization_for_Give_Helper::lkn_give_free_form_dependency_alert();
 
             $is_deactivate_plugin = true;
         }
@@ -49,7 +49,7 @@ final class Lkn_Give_Free_Form_Helper {
         // Verify if give plugin is actived.
         if ( ! $is_give_active) {
             // Show admin notice.
-            Lkn_Give_Free_Form_Helper::lkn_give_free_form_inactive_alert();
+            Lkn_Form_Customization_for_Give_Helper::lkn_give_free_form_inactive_alert();
 
             $is_deactivate_plugin = true;
         }
@@ -109,11 +109,11 @@ final class Lkn_Give_Free_Form_Helper {
     }
 
     final public static function lkn_give_free_form_dependency_alert(): void {
-        add_action('admin_notices', array('Lkn_Give_Free_Form_Helper', 'lkn_give_free_form_dependency_notice'));
+        add_action('admin_notices', array('Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_dependency_notice'));
     }
 
     final public static function lkn_give_free_form_inactive_alert(): void {
-        add_action('admin_notices', array('Lkn_Give_Free_Form_Helper', 'lkn_give_free_form_inactive_notice'));
+        add_action('admin_notices', array('Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_inactive_notice'));
     }
 
     // TODO melhorar um pouco essa função (Mostrar só em forms não-legado, etc).
@@ -138,33 +138,4 @@ HTML;
 
         echo ob_get_clean();
     }
-
-    // /**
-    //  * Array for pick the data of the settings in Give.
-    //  *
-    //  * @since 1.0.0
-    //  *
-    //  * @return array $configs
-    //  */
-    // final public static function lkn_pagseguro_get_configs() {
-    //     $configs = array();
-
-    //     $configs['logEnabled'] = get_option('llms_gateway_pagseguro-v1_logging_enabled', 'no');
-
-    //     $configs['paymentInstruction'] = get_option('llms_gateway_pagseguro-v1_payment_instructions', __('Check the payment area below.', LKN_GIVE_FREE_FORM_TEXT_DOMAIN));
-    //     $configs['lknLicense'] = get_option('llms_gateway_pagseguro-v1_plugin_license');
-    //     $configs['email'] = get_option('llms_gateway_pagseguro-v1_email');
-    //     $configs['tokenKey'] = get_option('llms_gateway_pagseguro-v1_token_key');
-    //     $configs['env'] = get_option('llms_gateway_pagseguro-v1_env_type', 'sandbox');
-
-    //     if ('production' === $configs['env']) {
-    //         $configs['urlQuery'] = 'https://pagseguro.uol.com.br/';
-    //         $configs['urlPost'] = 'https://ws.pagseguro.uol.com.br/';
-    //     } else {
-    //         $configs['urlQuery'] = 'https://sandbox.pagseguro.uol.com.br/';
-    //         $configs['urlPost'] = 'https://ws.sandbox.pagseguro.uol.com.br/';
-    //     }
-
-    //     return $configs;
-    // }
 }

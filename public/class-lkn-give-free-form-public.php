@@ -6,8 +6,8 @@
  * @link       https://www.linknacional.com.br
  * @since      1.0.0
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/public
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Lkn_Give_Free_Form
- * @subpackage Lkn_Give_Free_Form/public
- * @author     Link Nacional <email@email.com>
+ * @package    Lkn_Form_Customization_for_Give
+ * @subpackage Lkn_Form_Customization_for_Give/public
+ * @author     Link Nacional
  */
-final class Lkn_Give_Free_Form_Public {
+final class Lkn_Form_Customization_for_Give_Public {
     /**
      * The ID of this plugin.
      *
@@ -61,10 +61,10 @@ final class Lkn_Give_Free_Form_Public {
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Lkn_Give_Free_Form_Loader as all of the hooks are defined
+         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
          * in that particular class.
          *
-         * The Lkn_Give_Free_Form_Loader will then create the relationship
+         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
          */
@@ -81,10 +81,10 @@ final class Lkn_Give_Free_Form_Public {
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Lkn_Give_Free_Form_Loader as all of the hooks are defined
+         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
          * in that particular class.
          *
-         * The Lkn_Give_Free_Form_Loader will then create the relationship
+         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
          */
@@ -251,56 +251,10 @@ HTML;
      */
     public function lkn_give_free_form_footer_notice(): void {
         $html = <<<HTML
-        <div class="lknNoticeWrapper">
+        <div class="lkn_notice_wrapper">
             <span class="dashicons dashicons-lock" style="color=#989898;"></span>
             <a href="https://www.linknacional.com.br/plataforma-de-doacoes/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Plataforma de doação segura</span></a>
         </div>
-        <script>
-           // Verifica se janela foi carregada
-            window.addEventListener('DOMContentLoaded', function () {
-                // Pega elemento específico de formulário com iframe
-                let iframeLoader = parent.document.getElementsByClassName('iframe-loader')[0];
-                // Pega elemento contendo a mensagem
-                let lknNoticeWrapper = document.getElementsByClassName('lknNoticeWrapper')[0];
-
-                // Verifica se formulário está dentro de um iframe
-                if (iframeLoader) {
-                    // Pega o footer já existente e altera a mensagem para a da link nacional
-                    let secureNotice = document.getElementsByClassName('secure-notice')[0];
-                    if (secureNotice) {
-                        // Caso esteja dentro de um iframe esconde <div> contendo a mensagem
-                        lknNoticeWrapper.setAttribute('style', 'display:none;');
-
-                        secureNotice.innerHTML = '<i class="fas fa-lock"></i><a href="https://www.linknacional.com.br/plataforma-de-doacoes/" target="_blank" style="font-size: 10px;color: #666;text-decoration: none;">Plataforma de doação segura</a>';
-                    } else {
-                        lknNoticeText = document.getElementsByClassName('lknNoticeText')[0];
-                        lknNoticeText.classList.add('lknIframeText');
-                        lknNoticeWrapper.classList.add('lknIframeWrapper');
-                    }
-                }
-            });
-        </script>
-
-        <style>
-            .lknNoticeWrapper {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                margin-top: 75px;
-            }
-            .lknNoticeText {
-                font-size: 10px;
-                color: #989898;
-            }
-            .lknIframeText {
-                font-size: 13px;
-            }
-            .lknIframeWrapper {
-                margin-top: 25px;
-                margin-bottom: 25px;
-            }
-        </style>
 HTML;
         echo $html;
     }
