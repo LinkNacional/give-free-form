@@ -38,33 +38,33 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 1.0.0
  */
 // Defines plugin version number for easy reference.
-if ( ! defined('LKN_GIVE_FREE_FORM_VERSION')) {
-    define('LKN_GIVE_FREE_FORM_VERSION', '2.0.0');
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_VERSION')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_VERSION', '2.0.0');
 }
 
 // Set it to latest.
-if ( ! defined('LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION')) {
-    define('LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION', '2.3.0');
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION', '2.3.0');
 }
 
-if ( ! defined('LKN_GIVE_FREE_FORM_FILE')) {
-    define('LKN_GIVE_FREE_FORM_FILE', __FILE__);
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_FILE')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_FILE', __FILE__);
 }
 
-if ( ! defined('LKN_GIVE_FREE_FORM_DIR')) {
-    define('LKN_GIVE_FREE_FORM_DIR', plugin_dir_path(LKN_GIVE_FREE_FORM_FILE));
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_DIR')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_DIR', plugin_dir_path(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
 }
 
-if ( ! defined('LKN_GIVE_FREE_FORM_URL')) {
-    define('LKN_GIVE_FREE_FORM_URL', plugin_dir_url(LKN_GIVE_FREE_FORM_FILE));
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_URL')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_URL', plugin_dir_url(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
 }
 
-if ( ! defined('LKN_GIVE_FREE_FORM_BASENAME')) {
-    define('LKN_GIVE_FREE_FORM_BASENAME', plugin_basename(LKN_GIVE_FREE_FORM_FILE));
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_BASENAME')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_BASENAME', plugin_basename(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
 }
 
-if ( ! defined('LKN_GIVE_FREE_FORM_TEXT_DOMAIN')) {
-    define('LKN_GIVE_FREE_FORM_TEXT_DOMAIN', 'lkn-give-free-form');
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN', 'lkn-give-free-form');
 }
 
 /**

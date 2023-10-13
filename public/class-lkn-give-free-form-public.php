@@ -49,47 +49,7 @@ final class Lkn_Form_Customization_for_Give_Public {
     public function __construct( $plugin_name, $version ) {
         $this->plugin_name = $plugin_name;
         $this->version = $version;
-    }
-
-    /**
-     * Register the stylesheets for the public-facing side of the site.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_styles(): void {
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lkn-give-free-form-public.css', array(), $this->version, 'all' );
-    }
-
-    /**
-     * Register the JavaScript for the public-facing side of the site.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_scripts(): void {
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lkn-give-free-form-public.js', array('jquery'), $this->version, false );
-    }
+    }    
 
     /**
      * Function that styles the form
@@ -250,12 +210,55 @@ HTML;
      * Adiciona notice com mensagem que redireciona para página da link nacional no rodapé do formulário
      */
     public function lkn_give_free_form_footer_notice(): void {
+        $link = esc_html__('https://www.linknacional.com.br/plataforma-de-doacoes/', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN);
+        $message = esc_html__('Secure donation platform', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN);
+
         $html = <<<HTML
         <div class="lkn_notice_wrapper">
             <span class="dashicons dashicons-lock" style="color=#989898;"></span>
-            <a href="https://www.linknacional.com.br/plataforma-de-doacoes/" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> Plataforma de doação segura</span></a>
+            <a href="{$link}" target="_blank" style="color: #666;text-decoration: none;"><span class="lknNoticeText"> {$message}</span></a>
         </div>
 HTML;
         echo $html;
+    }
+
+    /**
+     * Register the stylesheets for the public-facing side of the site.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_styles(): void {
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
+        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lkn-give-free-form-public.css', array(), $this->version, 'all' );
+    }
+
+    /**
+     * Register the JavaScript for the public-facing side of the site.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_scripts(): void {
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lkn-give-free-form-public.js', array('jquery'), $this->version, false );
     }
 }

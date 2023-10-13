@@ -32,7 +32,7 @@ final class Lkn_Form_Customization_for_Give_i18n {
      */
     public function load_plugin_textdomain(): void {
         load_plugin_textdomain(
-            LKN_GIVE_FREE_FORM_TEXT_DOMAIN,
+            LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN,
             false,
             dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
         );

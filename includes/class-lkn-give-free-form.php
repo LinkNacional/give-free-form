@@ -66,10 +66,10 @@ final class Lkn_Form_Customization_for_Give {
      * @since    1.0.0
      */
     public function __construct() {
-        if ( defined( 'LKN_GIVE_FREE_FORM_VERSION' ) ) {
-            $this->version = LKN_GIVE_FREE_FORM_VERSION;
+        if ( defined( 'LKN_DONATION_FORM_CUSTOMIZATION_VERSION' ) ) {
+            $this->version = LKN_DONATION_FORM_CUSTOMIZATION_VERSION;
         } else {
-            $this->version = '2.0.0';
+            $this->version = '1.0.0';
         }
         $this->plugin_name = 'lkn-give-free-form';
 
@@ -152,10 +152,10 @@ final class Lkn_Form_Customization_for_Give {
     private function define_admin_hooks(): void {
         $plugin_admin = new Lkn_Form_Customization_for_Give_Admin( $this->get_plugin_name(), $this->get_version() );
 
-        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-        $this->loader->add_filter('give_metabox_form_data_settings', 'Lkn_Form_Customization_for_Give_Admin', 'lkn_give_free_form_setup_setting', 999);
-        $this->loader->add_action('plugins_loaded', 'Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999);
+
+        $this->loader->add_filter( 'give_metabox_form_data_settings', $plugin_admin, 'lkn_give_free_form_setup_setting', 999 );
+        $this->loader->add_action( 'plugins_loaded', 'Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999 );
     }
 
     /**
@@ -170,7 +170,8 @@ final class Lkn_Form_Customization_for_Give {
 
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-        $this->loader->add_action( 'give_fields_donation_form_top', $plugin_public, 'form_customization', 1, 3 );
+
+        $this->loader->add_action( 'give_fields_donation_form_top', $plugin_public, 'form_customization', 10, 2 );
         $this->loader->add_action( 'give_donation_form_bottom', $plugin_public, 'lkn_give_free_form_footer_notice', 10, 3 );
     }
 

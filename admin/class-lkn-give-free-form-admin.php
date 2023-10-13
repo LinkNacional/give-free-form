@@ -64,107 +64,101 @@ final class Lkn_Form_Customization_for_Give_Admin {
         // Custom metabox settings.
         $settings["{$id}_tab"] = array(
             'id' => "{$id}_tab",
-            'title' => __('Estilização do Formulário', 'lkn-give-free-form'),
+            'title' => esc_html__('Form Customization', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
             'icon-html' => '<span class="dashicons dashicons-format-aside"></span>',
             'fields' => array(
                 array(
-                    'id' => "{$id}_lkn_form_style_disabled",
-                    'name' => 'Warning',
-                    'type' => 'disabled_for_non_legacy_templates_html',
-                    // 'callback' => Lkn_Form_Customization_for_Give_Helper::disabled_for_non_legacy_templates_html(), // TODO descomentar depois
-                ),
-                array(
                     'id' => "{$id}_lkn_form_style_status",
-                    'name' => __('Habilitar', 'lkn-give-free-form'),
+                    'name' => esc_html__('Enable.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'radio_inline',
-                    'desc' => __('Habilita a estilização do formulário legado.', 'lkn-give-free-form'),
+                    'desc' => esc_html__('Enable the legacy form customization.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'options' => array(
-                        'enabled' => __('Habilitado', 'lkn-give-free-form'),
-                        'disabled' => __('Desabilitado', 'lkn-give-free-form'),
+                        'enabled' => esc_html__('Enabled', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                        'disabled' => esc_html__('Disabled', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     ),
                     'default' => 'disabled',
                 ),
                 array(
                     'id' => "{$id}_lkn_form_color",
-                    'name' => __('Cor primária.', 'lkn-give-free-form'),
-                    'desc' => __('A cor primária é usada em todo o modelo de formulário para vários elementos, incluindo botões, quebras de linha e elementos de foco. Defina uma cor que reflita sua marca ou imagem em destaque para obter os melhores resultados.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Primary color.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('The primary color is used throughout the form template for multiple elements, including buttons, line breaks and focus elements. Set a color that reflects your brand or featured image for the best results.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'colorpicker',
                     'default' => '#2bc253',
                 ),
                 array(
                     'id' => "{$id}_lkn_details_color",
-                    'name' => __('Cor secundária.', 'lkn-give-free-form'),
-                    'desc' => __('A cor secundária é utilizadas em detalhes do site e destaque para as palavras.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Secondary color.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('The secondary color is used in website details and highlights for the words.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'colorpicker',
                     'default' => '#ffffff',
                 ),
                 array(
                     'id' => "{$id}_lkn_title_color",
-                    'name' => __('Cor dos títulos.', 'lkn-give-free-form'),
-                    'desc' => __('Define a cor da fonte das seções do formulário.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Titles color.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Sets the font color for form sections.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'colorpicker',
                     'default' => '#666',
                 ),
                 array(
                     'id' => "{$id}_lkn_btn_border_color",
-                    'name' => __('Cor das bordas dos botões.', 'lkn-give-free-form'),
-                    'desc' => __('Define a cor das bordas para os botões de seleção de valor e de método de pagamento.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Color of buttons border.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Sets the border color for the amount selection and payment method buttons.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'colorpicker',
                     'default' => '#ccc',
                 ),
                 array(
                     'id' => "{$id}_lkn_title_size",
-                    'name' => __('Tamanho dos títulos.', 'lkn-give-free-form'),
-                    'desc' => __('Define o tamanho da fonte das seções do formulário. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Titles size.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Sets the font size for form sections. Can use units of measurement in px, em, rem or vw.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'text',
                     'default' => '16px',
                 ),
                 array(
                     'id' => "{$id}_lkn_section_margin",
-                    'name' => __('Espaçamento entre as seções.', 'lkn-give-free-form'),
-                    'desc' => __('A margem utilizada para separar as seções do formulário, apenas margem vertical. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Spacing between sections.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('The margin used to separate sections of the form (only vertical margin). Can use units of measurement in px, em, rem or vw.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'text',
                     'default' => '10px',
                 ),
                 array(
                     'id' => "{$id}_lkn_btn_border_size",
-                    'name' => __('Tamanho das bordas dos botões.', 'lkn-give-free-form'),
-                    'desc' => __('Define o tamanho das bordas dos botões de seleção de valor e de seleção de pagamento. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Size of buttons border.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Sets the border size for the amount selection and payment method buttons. Can use units of measurement in px, em, rem or vw.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'text',
                     'default' => '2px',
                 ),
                 array(
                     'id' => "{$id}_lkn_btn_border_radius",
-                    'name' => __('Curvatura das bordas.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Curvature of buttons border.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'text',
-                    'desc' => __('Escolha a curvatura das bordas dos botões, quanto menor o valor mais quadrada será. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
+                    'desc' => esc_html__('Choose the curvature of the buttons border, the lower the value, the more square it will be. Can use units of measurement in px, em, rem or vw.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'default' => '15px',
                 ),
                 array(
                     'id' => "{$id}_lkn_btn_paddingA",
-                    'name' => __('Altura dos Botões.', 'lkn-give-free-form'),
-                    'desc' => __('Escolha o altura das caixas dos botões. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Height of buttons.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Choose the height of buttons box. Can use units of measurement in px, em, rem or vw.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'text',
                     'default' => '15px',
                 ),
                 array(
                     'id' => "{$id}_lkn_btn_paddingL",
-                    'name' => __('Largura dos Botões.', 'lkn-give-free-form'),
-                    'desc' => __('Escolha a largura das caixas dos botões. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Width of buttons.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Choose the width of buttons box. Can use units of measurement in px, em, rem or vw.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'text',
                     'default' => '50px',
                 ),
                 array(
                     'id' => "{$id}_lkn_btn_text_size",
-                    'name' => __('Tamanho da Fonte do Texto dos Botões.', 'lkn-give-free-form'),
-                    'desc' => __('Escolha o tamanho da fonte do texto do conteúdo dos botões. Pode utilizar unidades de medida em px, em, rem ou vw.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Text font size of buttons.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Choose the text font size of buttons content. Can use units of measurement in px, em, rem or vw.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'text',
                     'default' => '1em',
                 ),
                 array(
                     'id' => "{$id}_stripe_input_lkn_css",
-                    'name' => __('Campo para estilização avançada de campos do Stripe.', 'lkn-give-free-form'),
-                    'desc' => __('Utilize CSS, sem classes, para customizar os campos do Stripe do seu jeito.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Field for advanced styling of Stripe fields.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Use CSS, without classes, to customize Stripe fields the way you want.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'textarea',
                     'default' => '
 font-size: 1.3em !important;
@@ -175,8 +169,8 @@ line-height: 1.3em !important;',
                 ),
                 array(
                     'id' => "{$id}_lkn_css",
-                    'name' => __('Campo para estilização avançada.', 'lkn-give-free-form'),
-                    'desc' => __('Utilize CSS para customizar o formulário do seu jeito.', 'lkn-give-free-form'),
+                    'name' => esc_html__('Field for advanced styling.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+                    'desc' => esc_html__('Use CSS to customize the form the way you want.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
                     'type' => 'textarea',
                     'default' => '',
                 ),
@@ -184,26 +178,6 @@ line-height: 1.3em !important;',
         );
 
         return $settings;
-    }
-
-    /**
-     * Register the stylesheets for the admin area.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_styles(): void {
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lkn-give-free-form-admin.css', array(), $this->version, 'all' );
     }
 
     /**
@@ -224,5 +198,12 @@ line-height: 1.3em !important;',
          * class.
          */
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lkn-give-free-form-admin.js', array('jquery'), $this->version, false );
+
+        $bannerStrings = array(
+            'message' => esc_html__('The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the "Legacy" option.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+            'label' => esc_html__('Warning: ', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN)
+        );
+
+        wp_localize_script( $this->plugin_name, 'bannerStrings', $bannerStrings);
     }
 }

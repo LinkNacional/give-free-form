@@ -15,25 +15,21 @@
     function userInfoFieldsScroll () {
       $('html, body').animate({
         scrollTop: checkoutFieldsetWrap.offset().top - 80
-      }, 750)
+      }, 400)
     }
 
-    // Pega os elementos filhos dos inputs radio.
-    const elemChildrens = elemListaPagamento.children()
-
-    // TODO Tentar fazer ou apagar.
-    // const arrayDeValores = Object.values(elemListaPagamento)
-    // arrayDeValores.pop()
-    // arrayDeValores.pop()
-
-    // for (let i = 0; i < arrayDeValores.length; i++) {
-    //   if (arrayDeValores[i].click()) {
-    //     arrayDeValores[i].addClass('give-gateway-option-selected')
-    //   }
-    // }
-
-    // Aciona o scroll para os campos de pagamento ao clicar no método de pagamento.
-    elemChildrens.click(() => userInfoFieldsScroll())
+    // Caso exista mais de uma forma de pagamento insere eventos nos elementos HTML.
+    if (elemListaPagamento.length !== 1) {
+      // Insere eventos em todos os botões.
+      for (let c = 0; c < elemListaPagamento.length; c++) {
+        // Ao clicar na lista o input também reconhecerá o click e irá rolar para os campos do checkout.
+        elemListaPagamento[c].addEventListener('click', function () {
+          const nodeChild = elemListaPagamento[c].children
+          nodeChild[0].click()
+          userInfoFieldsScroll()
+        }, false)
+      }
+    }
   })
 
   $(window).load(function () {
@@ -146,7 +142,6 @@
   /**
   * Filter elements by Class in an HTML element.
   *
-  * @return
   **/
   function filterElementsByClass (elementClass, parentElement, elementsArray) {
     for (let i = 0; i < parentElement.childNodes.length; i++) {
@@ -160,7 +155,6 @@
   /**
   * Filter elements by type in an HTML element.
   *
-  * @return
   **/
   function filterElementsByType (elementType, parentElement, elementsArray) {
     for (let i = 0; i < parentElement.childNodes.length; i++) {
