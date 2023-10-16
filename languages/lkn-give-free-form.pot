@@ -95,7 +95,7 @@ msgstr ""
 msgid "Use CSS to customize the form the way you want."
 msgstr ""
 
-msgid "The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the "Legacy" option."
+msgid "The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the `Legacy` option."
 msgstr ""
 
 msgid "Warning: "
@@ -120,7 +120,4 @@ msgid "plugin installed and activated for the Donation Form Customization for Gi
 msgstr ""
 
 msgid "Secure donation platform"
-msgstr ""
-
-msgid ""
 msgstr ""

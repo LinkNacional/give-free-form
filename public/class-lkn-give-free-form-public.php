@@ -58,30 +58,31 @@ final class Lkn_Form_Customization_for_Give_Public {
      *
      * @param array $args - list of additional arguments
      *
-     * @return mixed
      */
-    public function form_customization($form_id, $args) {
+    public function form_customization($form_id, $args): void {
         $id_prefix = ! empty($args) ? $args : '';
 
-        $status = get_post_meta($id_prefix, 'free_form-fields_lkn_form_style_status', true);
-        $color = get_post_meta($id_prefix, 'free_form-fields_lkn_form_color', true);
-        $colorDet = get_post_meta($id_prefix, 'free_form-fields_lkn_details_color', true);
-        $titleColor = get_post_meta($id_prefix, 'free_form-fields_lkn_title_color', true);
-        $titleSize = get_post_meta($id_prefix, 'free_form-fields_lkn_title_size', true);
-        $margin = get_post_meta($id_prefix, 'free_form-fields_lkn_section_margin', true);
-        $btnBorderColor = get_post_meta($id_prefix, 'free_form-fields_lkn_btn_border_color', true);
-        $btnBorderSize = get_post_meta($id_prefix, 'free_form-fields_lkn_btn_border_size', true);
-        $btnBorderRadius = get_post_meta($id_prefix, 'free_form-fields_lkn_btn_border_radius', true);
-        $paddingA = get_post_meta($id_prefix, 'free_form-fields_lkn_btn_paddingA', true);
-        $paddingL = get_post_meta($id_prefix, 'free_form-fields_lkn_btn_paddingL', true);
-        $textSize = get_post_meta($id_prefix, 'free_form-fields_lkn_btn_text_size', true);
-        $css = get_post_meta($id_prefix, 'free_form-fields_lkn_css', true);
-        $stripeCss = get_post_meta($id_prefix, 'free_form-fields_stripe_input_lkn_css', true);
+        $status = get_post_meta($form_id, 'free_form-fields_lkn_form_style_status', true);
+        $color = get_post_meta($form_id, 'free_form-fields_lkn_form_color', true);
+        $colorDet = get_post_meta($form_id, 'free_form-fields_lkn_details_color', true);
+        $titleColor = get_post_meta($form_id, 'free_form-fields_lkn_title_color', true);
+        $titleSize = get_post_meta($form_id, 'free_form-fields_lkn_title_size', true);
+        $margin = get_post_meta($form_id, 'free_form-fields_lkn_section_margin', true);
+        $btnBorderColor = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_color', true);
+        $btnBorderSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_size', true);
+        $btnBorderRadius = get_post_meta($form_id, 'free_form-fields_lkn_btn_border_radius', true);
+        $paddingA = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingA', true);
+        $paddingL = get_post_meta($form_id, 'free_form-fields_lkn_btn_paddingL', true);
+        $textSize = get_post_meta($form_id, 'free_form-fields_lkn_btn_text_size', true);
+        $css = get_post_meta($form_id, 'free_form-fields_lkn_css', true);
+        $stripeCss = get_post_meta($form_id, 'free_form-fields_stripe_input_lkn_css', true);
 
         if ('enabled' !== $status) {
-            return false;
+            echo '';
         } else {
-            $form = <<<HTML
+            wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lkn-give-free-form-public.css', array(), $this->version, 'all' );
+
+            $formCustomization = <<<HTML
         <style>
             #give-purchase-button{
                 background-color: $color;
@@ -201,8 +202,7 @@ final class Lkn_Form_Customization_for_Give_Public {
             {}
         </style>
 HTML;
-
-            echo $form;
+            echo $formCustomization;
         }
     }
 
@@ -220,27 +220,7 @@ HTML;
         </div>
 HTML;
         echo $html;
-    }
-
-    /**
-     * Register the stylesheets for the public-facing side of the site.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_styles(): void {
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Lkn_Form_Customization_for_Give_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Lkn_Form_Customization_for_Give_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/lkn-give-free-form-public.css', array(), $this->version, 'all' );
-    }
+    }    
 
     /**
      * Register the JavaScript for the public-facing side of the site.

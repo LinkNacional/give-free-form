@@ -123,6 +123,11 @@ final class Lkn_Form_Customization_for_Give {
          * The class responsible for useful functions of plugin.
          */
         require_once plugin_dir_path( __DIR__ ) . 'includes/class-lkn-give-free-form-helper.php';
+
+        /**
+         * The class responsible for plugin updater checker of plugin.
+         */
+        include_once plugin_dir_path( __DIR__ ) . 'includes/plugin-updater/plugin-update-checker.php';
         
         $this->loader = new Lkn_Form_Customization_for_Give_Loader();
     }
@@ -142,6 +147,18 @@ final class Lkn_Form_Customization_for_Give {
         $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
     }
 
+    public function updater_init(): ?object {
+        if (class_exists('Lkn_Puc_Plugin_UpdateChecker')) {
+            return new Lkn_Puc_Plugin_UpdateChecker(
+                'https://api.linknacional.com.br/v2/u/?slug=lkn-give-free-form',
+                LKN_DONATION_FORM_CUSTOMIZATION_FILE,
+                LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN
+            );
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Register all of the hooks related to the admin area functionality
      * of the plugin.
@@ -154,6 +171,7 @@ final class Lkn_Form_Customization_for_Give {
 
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+        $this->loader->add_action( 'init', $this, 'updater_init' );
         $this->loader->add_filter( 'give_metabox_form_data_settings', $plugin_admin, 'lkn_give_free_form_setup_setting', 999 );
         $this->loader->add_action( 'plugins_loaded', 'Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999 );
     }
@@ -168,10 +186,9 @@ final class Lkn_Form_Customization_for_Give {
     private function define_public_hooks(): void {
         $plugin_public = new Lkn_Form_Customization_for_Give_Public( $this->get_plugin_name(), $this->get_version() );
 
-        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-        $this->loader->add_action( 'give_fields_donation_form_top', $plugin_public, 'form_customization', 10, 2 );
+        $this->loader->add_action( 'give_donation_form_top', $plugin_public, 'form_customization', 10, 2 ); // Também realiza o enqueue_styles, caso contrário todos formulários seriam customizados ignorando a opção de "Habilitar".
         $this->loader->add_action( 'give_donation_form_bottom', $plugin_public, 'lkn_give_free_form_footer_notice', 10, 3 );
     }
 

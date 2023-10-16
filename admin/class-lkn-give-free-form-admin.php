@@ -200,7 +200,7 @@ line-height: 1.3em !important;',
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lkn-give-free-form-admin.js', array('jquery'), $this->version, false );
 
         $bannerStrings = array(
-            'message' => esc_html__('The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the "Legacy" option.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
+            'message' => esc_html__('The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the `Legacy` option.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN),
             'label' => esc_html__('Warning: ', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN)
         );
 

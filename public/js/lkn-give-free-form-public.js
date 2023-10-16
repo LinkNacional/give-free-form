@@ -41,7 +41,7 @@
       // Não faz nada.
     } else { // O formulário tem iframe.
       // iframe.
-      const iframe = iframeLoader.firstChild.contentDocument.childNodes[1]
+      const iframe = iframeLoader.firstChild.contentDocument.childNodes[0]
       let arrayAux = []
 
       // Body dentro do iframe.

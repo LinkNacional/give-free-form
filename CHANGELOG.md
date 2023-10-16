@@ -1,5 +1,7 @@
-# v2.0.0 - dd/mm/yyyy <!-- TODO atualizar data -->
-* <!-- TODO listar mudanças -->
+# v2.0.0 - 17/10/2023
+* Optimization and adaptation to Wordpress good pratices;
+* Plugin Internacionalization;
+* Name change.
 
 # v1.4.1
 * Fix translation for warning messages.
