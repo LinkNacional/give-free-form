@@ -1,22 +1,22 @@
 (function ($) {
   'use strict'
 
-  // Carregando strings via wp_localize_script.
+  // Load strings via wp_localize_script.
   const MESSAGE = window.bannerStrings.message
   const LABEL = window.bannerStrings.label
 
   $(window).on('load', () => {
-    // Pega as informações da URL para executar as funções nos locais corretos.
+    // Catch URL information for running function on correct places.
     const urlParams = new URLSearchParams(window.location.search)
 
     const action = urlParams.get('action')
 
     const templates = $('.template-info')
 
-    // Onde ficará armazenado o valor do template ativo.
+    // Variable for active template.
     let templateAtivo = null
 
-    // Procura qual o modelo de template do form, para decidir se irá mostrar o aviso ou não.
+    // Search the active form template to decide show warning or not.
     $.each(templates, function (index, elemento) {
       const classes = $(elemento).attr('class').split(' ')
       if (classes.includes('active')) {
@@ -24,12 +24,12 @@
       }
     })
 
-    // Caso seja um template diferente do legacy, mostra o aviso.
+    // If form template is different of 'Legacy', show warning.
     if (templateAtivo !== 'legacy') {
       if (action === 'edit') {
         const painel = $('#titlediv')
 
-        // Cria a div do aviso, coloca os atributos e insere no local correto.
+        // Create the warning div, set the attributes and insert on correct place.
         const noticeDiv = $('<div></div>')
         noticeDiv.addClass('lkn_notice_banner')
         noticeDiv.html(`<strong>${LABEL}</strong>${MESSAGE}`)

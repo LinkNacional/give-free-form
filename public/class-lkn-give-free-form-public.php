@@ -207,7 +207,7 @@ HTML;
     }
 
     /**
-     * Adiciona notice com mensagem que redireciona para página da link nacional no rodapé do formulário
+     * Adds the mensage notice that's redirect for Link Nacional page on form footer.
      */
     public function lkn_give_free_form_footer_notice(): void {
         $link = esc_html__('https://www.linknacional.com.br/plataforma-de-doacoes/', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN);
