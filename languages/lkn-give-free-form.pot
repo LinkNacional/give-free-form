@@ -1,0 +1,123 @@
+#: Donation Form Customization for GiveWP en_US translation
+msgid "Form styling plugin for GiveWP."
+msgstr ""
+
+msgid "Form Customization"
+msgstr ""
+
+msgid "Enable."
+msgstr ""
+
+msgid "Enable the legacy form customization."
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Primary color."
+msgstr ""
+
+msgid "The primary color is used throughout the form template for multiple elements, including buttons, line breaks and focus elements. Set a color that reflects your brand or featured image for the best results."
+msgstr ""
+
+msgid "Secondary color."
+msgstr ""
+
+msgid "The secondary color is used in website details and highlights for the words."
+msgstr ""
+
+msgid "Titles color."
+msgstr ""
+
+msgid "Sets the font color for form sections."
+msgstr ""
+
+msgid "Color of buttons border."
+msgstr ""
+
+msgid "Sets the border color for the amount selection and payment method buttons."
+msgstr ""
+
+msgid "Titles size."
+msgstr ""
+
+msgid "Sets the font size for form sections. Can use units of measurement in px, em, rem or vw."
+msgstr ""
+
+msgid "Spacing between sections."
+msgstr ""
+
+msgid "The margin used to separate sections of the form (only vertical margin). Can use units of measurement in px, em, rem or vw."
+msgstr ""
+
+msgid "Size of buttons border."
+msgstr ""
+
+msgid "Sets the border size for the amount selection and payment method buttons. Can use units of measurement in px, em, rem or vw."
+msgstr ""
+
+msgid "Curvature of buttons border."
+msgstr ""
+
+msgid "Choose the curvature of the buttons border, the lower the value, the more square it will be. Can use units of measurement in px, em, rem or vw."
+msgstr ""
+
+msgid "Height of buttons."
+msgstr ""
+
+msgid "Choose the height of buttons box. Can use units of measurement in px, em, rem or vw."
+msgstr ""
+
+msgid "Width of buttons."
+msgstr ""
+
+msgid "Choose the width of buttons box. Can use units of measurement in px, em, rem or vw."
+msgstr ""
+
+msgid "Text font size of buttons."
+msgstr ""
+
+msgid "Choose the text font size of buttons content. Can use units of measurement in px, em, rem or vw."
+msgstr ""
+
+msgid "Field for advanced styling of Stripe fields."
+msgstr ""
+
+msgid "Use CSS, without classes, to customize Stripe fields the way you want."
+msgstr ""
+
+msgid "Field for advanced styling."
+msgstr ""
+
+msgid "Use CSS to customize the form the way you want."
+msgstr ""
+
+msgid "The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the `Legacy` option."
+msgstr ""
+
+msgid "Warning: "
+msgstr ""
+
+msgid "Activation Error:"
+msgstr ""
+
+msgid "You must have"
+msgstr ""
+
+msgid "Give"
+msgstr ""
+
+msgid "version"
+msgstr ""
+
+msgid "for the Donation Form Customization for GiveWP to activate."
+msgstr ""
+
+msgid "plugin installed and activated for the Donation Form Customization for GiveWP."
+msgstr ""
+
+msgid "Secure donation platform"
+msgstr ""

@@ -1,295 +1,110 @@
 <?php
-/**
- * Plugin Name: Give - Free Form
- * Plugin URI:  https://www.linknacional.com.br/wordpress/givewp/
- * Description: Plugin de estilização de formulário de doação para GiveWP.
- * Version:     1.4.4
- * Author:      Link Nacional
- * Author URI:  https://www.linknacional.com.br
- * License:     GNU General Public License v2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: lkn-give-free-form
- */
-
-require_once __DIR__ . '/plugin-updater/plugin-update-checker.php';
 
 /**
- * Our Globals for easy Reference.
- * You'll want to make sure you replace "GIVE_ADDON_BOILERPLATE"
- * with your own prefix throughout this whole plugin.
+ * The plugin bootstrap file
  *
- * Functions are prefixed with "give_boilerplate" and should be replaced as well.
+ * This file is read by WordPress to generate the plugin information in the plugin
+ * admin area. This file also includes all of the dependencies used by the plugin,
+ * registers the activation and deactivation functions, and defines a function
+ * that starts the plugin.
  *
- * The text domain is give-addon-boilerplate and should be replaced as well.
+ * @link              https://www.linknacional.com.br
+ * @since             2.0.0
+ * @package           Lkn_Form_Customization_for_Give
+ *
+ * @wordpress-plugin
+ * Plugin Name:       Donation Form Customization for GiveWP
+ * Plugin URI:        https://www.linknacional.com.br/wordpress/givewp/give-free-form/
+ * Description:       Form styling plugin for GiveWP.
+ * Version:           2.0.0
+ * Author:            Link Nacional
+ * Author URI:        https://www.linknacional.com.br
+ * License:           GPL-3.0+
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:       lkn-give-free-form
+ * Domain Path:       /languages
  */
 
-// Exit if accessed directly. ABSPATH is attribute in wp-admin - plugin.php
-if (!defined('ABSPATH')) {
-    exit;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+    die;
 }
 
 /**
- * Class Lkn_Give_Free_Form
+ * Setup constants
+ *
+ * Defines useful constants to use throughout the plugin.
+ *
+ * @since 1.0.0
  */
-final class Lkn_Give_Free_Form {
-    /**
-     * Instance.
-     *
-     * @since
-     * @access private
-     * @var Lkn_Give_Free_Form
-     */
-    private static $instance;
+// Defines plugin version number for easy reference.
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_VERSION')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_VERSION', '2.0.0');
+}
 
-    /**
-     * Singleton pattern.
-     *
-     * @since
-     * @access private
-     */
-    private function __construct() {
-        self::$instance = $this;
-    }
+// Set it to latest.
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION', '2.3.0');
+}
 
-    /**
-     * Get instance.
-     *
-     * @return Lkn_Give_Free_Form
-     * @since
-     * @access public
-     *
-     */
-    public static function get_instance() {
-        if (!isset(self::$instance) && !(self::$instance instanceof Lkn_Give_Free_Form)) {
-            self::$instance = new Lkn_Give_Free_Form();
-            self::$instance->setup();
-        }
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_FILE')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_FILE', __FILE__);
+}
 
-        return self::$instance;
-    }
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_DIR')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_DIR', plugin_dir_path(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
+}
 
-    /**
-     * Setup
-     *
-     * @since
-     * @access private
-     */
-    private function setup() {
-        self::$instance->setup_constants();
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_URL')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_URL', plugin_dir_url(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
+}
 
-        register_activation_hook(LKN_GIVE_FREE_FORM_FILE, [$this, 'install']);
-        add_action('give_init', [$this, 'init'], 10, 1);
-        add_action('plugins_loaded', [$this, 'check_environment'], 999);
-    }
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_BASENAME')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_BASENAME', plugin_basename(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
+}
 
-    /**
-     * Setup constants
-     *
-     * Defines useful constants to use throughout the add-on.
-     *
-     * @since
-     * @access private
-     */
-    private function setup_constants() {
-        // Defines addon version number for easy reference.
-        if (!defined('LKN_GIVE_FREE_FORM_VERSION')) {
-            define('LKN_GIVE_FREE_FORM_VERSION', '1.4.4');
-        }
-
-        // Set it to latest.
-        if (!defined('LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION')) {
-            define('LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION', '2.3.0');
-        }
-
-        if (!defined('LKN_GIVE_FREE_FORM_FILE')) {
-            define('LKN_GIVE_FREE_FORM_FILE', __FILE__);
-        }
-
-        if (!defined('LKN_GIVE_FREE_FORM_DIR')) {
-            define('LKN_GIVE_FREE_FORM_DIR', plugin_dir_path(LKN_GIVE_FREE_FORM_FILE));
-        }
-
-        if (!defined('LKN_GIVE_FREE_FORM_URL')) {
-            define('LKN_GIVE_FREE_FORM_URL', plugin_dir_url(LKN_GIVE_FREE_FORM_FILE));
-        }
-
-        if (!defined('LKN_GIVE_FREE_FORM_BASENAME')) {
-            define('LKN_GIVE_FREE_FORM_BASENAME', plugin_basename(LKN_GIVE_FREE_FORM_FILE));
-        }
-    }
-
-    /**
-     * Plugin installation
-     *
-     * @since
-     * @access public
-     */
-    public function install() {
-        // Bailout.
-        if (!self::$instance->check_environment()) {
-            return;
-        }
-    }
-
-    /**
-     * Plugin installation
-     *
-     * @param Give $give
-     *
-     * @return void
-     * @since
-     * @access public
-     *
-     */
-    public function init($give) {
-        //echo "init";
-        if (!self::$instance->check_environment()) {
-            //se não esta logado entra daqui
-            self::$instance->load_files();
-            self::$instance->setup_hooks();
-
-            return;
-        }
-
-        self::$instance->load_files();
-        self::$instance->setup_hooks();
-    }
-
-    /**
-     * Check plugin environment
-     *
-     * @return bool|null
-     * @since
-     * @access public
-     *
-     */
-    public function check_environment() {
-        // Não é admin inserir aqui
-        if (!is_admin() || !current_user_can('activate_plugins')) {
-            require_once LKN_GIVE_FREE_FORM_DIR . 'includes/actions.php';
-
-            return null;
-        }
-
-        // Load plugin helper functions.
-        if (!function_exists('deactivate_plugins') || !function_exists('is_plugin_active')) {
-            require_once ABSPATH . '/wp-admin/includes/plugin.php';
-        }
-
-        // Load helper functions.
-        require_once LKN_GIVE_FREE_FORM_DIR . 'includes/misc-functions.php';
-
-        // Flag to check whether deactivate plugin or not.
-        $is_deactivate_plugin = false;
-
-        // Verify dependency cases.
-        switch (true) {
-            case doing_action('give_init'):
-                if (
-                    defined('GIVE_VERSION') &&
-                    version_compare(GIVE_VERSION, LKN_GIVE_FREE_FORM_MIN_GIVE_VERSION, '<')
-                ) {
-                    /* Min. Give. plugin version. */
-
-                    // Show admin notice.
-                    add_action('admin_notices', '__give_lkn_FREE_FORM_dependency_notice');
-
-                    $is_deactivate_plugin = true;
-                }
-
-                break;
-
-            case doing_action('activate_' . LKN_GIVE_FREE_FORM_BASENAME):
-            case doing_action('plugins_loaded') && !did_action('give_init'):
-                /* Check to see if Give is activated, if it isn't deactivate and show a banner. */
-
-                // Check for if give plugin activate or not.
-                $is_give_active = defined('GIVE_PLUGIN_BASENAME') ? is_plugin_active(GIVE_PLUGIN_BASENAME) : false;
-
-                if (!$is_give_active) {
-                    add_action('admin_notices', '__give_lkn_FREE_FORM_inactive_notice');
-
-                    $is_deactivate_plugin = true;
-                }
-
-                break;
-        }
-
-        // Don't let this plugin activate.
-        if ($is_deactivate_plugin) {
-            // Deactivate plugin.
-            deactivate_plugins(LKN_GIVE_FREE_FORM_BASENAME);
-
-            if (isset($_GET['activate'])) {
-                unset($_GET['activate']);
-            }
-
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Load plugin files.
-     *
-     * @since
-     * @access private
-     */
-    private function load_files() {
-        require_once LKN_GIVE_FREE_FORM_DIR . 'includes/misc-functions.php';
-        require_once LKN_GIVE_FREE_FORM_DIR . 'includes/actions.php';
-
-        if (is_admin()) {
-            require_once LKN_GIVE_FREE_FORM_DIR . 'includes/admin/form-settings.php';
-        }
-    }
-
-    /**
-     * Setup hooks
-     *
-     * @since
-     * @access private
-     */
-    private function setup_hooks() {
-        // Filters
-    }
+if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN')) {
+    define('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN', 'lkn-give-free-form');
 }
 
 /**
- * The main function responsible for returning the one true Lkn_Give_Free_Form instance
- * to functions everywhere.
- *
- * Use this function like you would a global variable, except without needing
- * to declare the global.
- *
- * Example: <?php $recurring = Lkn_Give_Free_Form(); ?>
- *
- * @return Lkn_Give_Free_Form|bool
- * @since 1.0
- *
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-lkn-give-free-form-activator.php
  */
-function Lkn_Give_Free_Form() {
-    return Lkn_Give_Free_Form::get_instance();
+function activate_lkn_give_free_form(): void {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form-activator.php';
+    Lkn_Form_Customization_for_Give_Activator::activate();
 }
-
-Lkn_Give_Free_Form();
 
 /**
- * Instância do updateChecker, ela exige os seguintes parâmetros:
- *
- * url do JSON
- * caminho completo do arquivo principal do plugin
- * nome do diretório para instalação
- *
- * @return object
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-lkn-give-free-form-deactivator.php
  */
-function lkn_give_free_form_updater() {
-    return new Lkn_Puc_Plugin_UpdateChecker(
-        'https://api.linknacional.com.br/v2/u/?slug=give-free-form',
-        __FILE__, //Full path to the main plugin file or functions.php.
-        'give-free-form'
-    );
+function deactivate_lkn_give_free_form(): void {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form-deactivator.php';
+    Lkn_Form_Customization_for_Give_Deactivator::deactivate();
 }
 
-lkn_give_free_form_updater();
+register_activation_hook( __FILE__, 'activate_lkn_give_free_form' );
+register_deactivation_hook( __FILE__, 'deactivate_lkn_give_free_form' );
+
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form.php';
+
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    1.0.0
+ */
+function run_lkn_give_free_form(): void {
+    $plugin = new Lkn_Form_Customization_for_Give();
+    $plugin->run();
+}
+run_lkn_give_free_form();

@@ -1,32 +1,38 @@
-# give-free-form
+# Donation Form Customization for GiveWP
 
-Módulo de estilização e personalização de formulários do GiveWP.
+O [Donation Form Customization for GiveWP](https://www.linknacional.com.br/wordpress/givewp/give-free-form/) é um plugin extensão que oferece uma opção de editar os valores CSS dos formulário de doação, dentro das configurações de formulário do GiveWP.
 
-## Modo de Instalação
+A estilização de formulário não é relevante para o formulário Multi-step do GiveWP. Caso você deseje utilizar o Donation Form Customization for GiveWP, você precisa mudar o template do formulário para a opção "Legado".
 
-1) Procure na barra lateral a área de plugins do Wordpress;
+## Dependencias
 
-2) Em plugins instalados procure pela opção 'adicionar novo' no cabeçalho;
+O plugin Donation Form Customization for GiveWP é dependente da ativação do [Give plugin](https://givewp.com/), por favor, tenha certeza de que ele esteja instalado e apropriadamente configurado antes de iniciar a instalação do Donation Form Customization for GiveWP.
 
-3) Clique na opção de 'enviar plugin' no título da página e faça o upload do plugin give-free-form.zip;
+## Instalação
 
-4) Clique no botão 'instalar agora' e depois ative o plugin instalado;
+1) Procure na barra lateral a área de "Plugins" do Wordpress;
 
-Pronto! Agora o plugin foi devidamente instalado.
+2) Clique no botão "Adicionar novo", ao lado do título "Plugins" no topo do página;
 
-## Modo de uso
+3) Clique no botão "Enviar plugin", ao lado do título no topo do página e faça o upload do plugin lkn-give-free-form.zip;
 
-1) Clique na opção 'todos os formulários' do GiveWP;
+4) Clique no botão 'Instalar agora' e depois ative o plugin instalado;
 
-2) Selecione o formulário que deseja personalizar;
+Ao terminar esses passos, o Donation Form Customization for GiveWP estará ativado e pronto para ser utilizado.
 
-3) Habilite o Template 'Legacy form';
+## Instruções uso
 
-4) Nas opções laterais do formulário selecione a seção 'Estilização do Formulário';
+1) Na sidebar do Wordpress, procure pela opção "Doações" e selecione-a;
 
-5) Clique em habilitar e personalize as cores e espaçamento da maneira que preferir;
+2) Na página "Formulário de doação", procure o formulário de doação - preferencialmente do template legado - para customizar e clique em "Editar";
 
-6) Agora clique no botão de publicar (caso já esteja publicado será o botão de atualizar);
+3) Na sidebar das Opções do formulário de doação, clique na opção "Estilização do formulário";
+
+4) No primeiro campo "Habilitar", selecione Habilitado;
+
+5) Configure o restante da estilização do formulário de acordo com suas necessidades;
+
+6) Agora, clique no botão de "Publicar" (caso já esteja publicado será o botão de "Atualizar");
 
 Pronto! Agora seu formulário foi personalizado.
 
@@ -78,38 +84,15 @@ form[id*=give-form] #give-gateway-radio-list>li{
     font-size: 1vw;
 }
 
-## Changelog
+## Notas de desenvolvimento
 
-### 1.4.4
-* Updated donation form label and link.
+### Documentações para o desenvolvimento
 
-### 1.4.3
-* New update endpoint implemented;
-* GNU license implemented;
-* Cleaning code.
+- Wordpress Plugin Development: <https://developer.wordpress.org/plugins/>
+- GiveWP: <https://github.com/impress-org/givewp>
 
-### 1.4.2
-* Fixed WordPress header bugs.
+### Estrutura de pastas
 
-### 1.4.1
-* Fix translation for warning messages
-
-### 1.4.0
-* Added field to style Stripe input on form styling options
-
-### 1.3.2
-* Bug fixes on new Classical template
-
-### 1.3.1
-* Footer message fix
-
-### 1.3.0
-* Changes on CSS configuration
-* Added footer message
-* Bug fixes
-
-### 1.2.0
-* new CSS configuration
-
-### 1.0.0
-* First Release
+- `/admin/`: contém o arquivo onde é executado as funções para o lado administrativo do plugin, que consiste na definição da definição das configurações de estilização, e do script de apresentação do aviso de irrelevância para outros templates de formulário.
+- `/includes/`: contém diversos arquivos responsáveis pelo funcionamento do plugin.
+- `/public/`: contém o arquivo onde é executado as funções para o lado público do plugin, como a definição da estilização do formulário, bem como o script de aviso de plataforma segura de doação.

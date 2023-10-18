@@ -630,7 +630,7 @@ if ( !class_exists('Lkn_Puc_UpdateChecker', false) ):
 				    'installed_version' => strval($this->getInstalledVersion()),
 				    'php' => phpversion(),
 				    'locale' => get_locale(),
-				    's' => '1f685366b804ef443c1620469b6aea3f',
+				    's' => '4823a0e58074af39154f19e3de1f7443',
 				],
 				$queryArgs
 			);

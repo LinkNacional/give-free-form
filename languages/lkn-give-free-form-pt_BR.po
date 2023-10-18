@@ -1,0 +1,123 @@
+#: Donation Form Customization for GiveWP tradução pt_BR
+msgid "Form styling plugin for GiveWP."
+msgstr "Plugin de estilização de formulário para GiveWP."
+
+msgid "Form Customization"
+msgstr "Estilização do Formulário"
+
+msgid "Enable."
+msgstr "Habilitar."
+
+msgid "Enable the legacy form customization."
+msgstr "Habilita a estilização do formulário legado."
+
+msgid "Enabled"
+msgstr "Habilitado"
+
+msgid "Disabled"
+msgstr "Desabilitado"
+
+msgid "Primary color."
+msgstr "Cor primária."
+
+msgid "The primary color is used throughout the form template for multiple elements, including buttons, line breaks and focus elements. Set a color that reflects your brand or featured image for the best results."
+msgstr "A cor primária é usada em todo o modelo do formulário por vários elementos, incluindo botões, quebras de linha e elementos de foco. Defina uma cor que reflita sua marca ou imagem em destaque para obter os melhores resultados."
+
+msgid "Secondary color."
+msgstr "Cor secundária."
+
+msgid "The secondary color is used in website details and highlights for the words."
+msgstr "A cor secundária é usada em detalhes do site e destaques para as palavras."
+
+msgid "Titles color."
+msgstr "Cor dos títulos."
+
+msgid "Sets the font color for form sections."
+msgstr "Define a cor da fonte das seções do formulário."
+
+msgid "Color of buttons border."
+msgstr "Cor da borda dos botões."
+
+msgid "Sets the border color for the amount selection and payment method buttons."
+msgstr "Define a cor da borda para os botões de seleção de valor e método de pagamento."
+
+msgid "Titles size."
+msgstr "Tamanho dos títulos."
+
+msgid "Sets the font size for form sections. Can use units of measurement in px, em, rem or vw."
+msgstr "Define o tamanho da fonte das seções do formulário. Pode utilizar unidades de medida em px, em, rem ou vw."
+
+msgid "Spacing between sections."
+msgstr "Espaçamento entre as seções."
+
+msgid "The margin used to separate sections of the form (only vertical margin). Can use units of measurement in px, em, rem or vw."
+msgstr "A margem utilizada para separar as seções do formulário (apenas margem vertical). Pode utilizar unidades de medida em px, em, rem ou vw."
+
+msgid "Size of buttons border."
+msgstr "Tamanho da borda dos botões."
+
+msgid "Sets the border size for the amount selection and payment method buttons. Can use units of measurement in px, em, rem or vw."
+msgstr "Define o tamanho da borda dos botões de seleção de valor e método de pagamentos. Pode utilizar unidades de medida em px, em, rem ou vw."
+
+msgid "Curvature of buttons border."
+msgstr "Curvatura da borda dos botões."
+
+msgid "Choose the curvature of the buttons border, the lower the value, the more square it will be. Can use units of measurement in px, em, rem or vw."
+msgstr "Escolha a curvatura da borda dos botões, quanto menor o valor, mais quadrada será. Pode utilizar unidades de medida em px, em, rem ou vw."
+
+msgid "Height of buttons."
+msgstr "Altura dos botões."
+
+msgid "Choose the height of buttons box. Can use units of measurement in px, em, rem or vw."
+msgstr "Escolha a altura da caixa dos botões. Pode utilizar unidades de medida em px, em, rem ou vw."
+
+msgid "Width of buttons."
+msgstr "Largura dos botões."
+
+msgid "Choose the width of buttons box. Can use units of measurement in px, em, rem or vw."
+msgstr "Escolha a largura da caixa dos botões. Pode utilizar unidades de medida em px, em, rem ou vw."
+
+msgid "Text font size of buttons."
+msgstr "Tamanho da fonte do texto dos botões."
+
+msgid "Choose the text font size of buttons content. Can use units of measurement in px, em, rem or vw."
+msgstr "Escolha o tamanho da fonte do texto do conteúdo dos botões. Pode utilizar unidades de medida em px, em, rem ou vw."
+
+msgid "Field for advanced styling of Stripe fields."
+msgstr "Campo para estilização avançada de campos do Stripe."
+
+msgid "Use CSS, without classes, to customize Stripe fields the way you want."
+msgstr "Utilize CSS, sem classes, para customizar os campos do Stripe do seu jeito."
+
+msgid "Field for advanced styling."
+msgstr "Campo para estilização avançada."
+
+msgid "Use CSS to customize the form the way you want."
+msgstr "Utilize CSS para customizar o formulário do seu jeito."
+
+msgid "The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the `Legacy` option."
+msgstr "A estilização de formulário não é relevante para o formulário Multi-step do GiveWP. Caso você deseje utilizar o Donation Form Customization for GiveWP, você precisa mudar o template do formulário para a opção `Legado`."
+
+msgid "Warning: "
+msgstr "Aviso: "
+
+msgid "Activation Error:"
+msgstr "Erro de Ativação:"
+
+msgid "You must have"
+msgstr "Você precisa ter o"
+
+msgid "Give"
+msgstr "Give"
+
+msgid "version"
+msgstr "versão"
+
+msgid "for the Donation Form Customization for GiveWP to activate."
+msgstr "para ativar o Donation Form Customization for GiveWP."
+
+msgid "plugin installed and activated for the Donation Form Customization for GiveWP."
+msgstr "plugin, instalado e ativado para o Donation Form customization for GiveWP."
+
+msgid "Secure donation platform"
+msgstr "Plataforma de doação segura"
