@@ -82,6 +82,28 @@ final class Lkn_Form_Customization_for_Give_Public {
         } else {
             $formCustomization = <<<HTML
         <style>
+            .lknNoticeWrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-top: 75px;
+            }
+
+            .lknNoticeText {
+                font-size: 10px;
+                color: #989898;
+            }
+
+            .lknIframeText {
+                font-size: 13px;
+            }
+
+            .lknIframeWrapper {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+
             #give-purchase-button{
                 background-color: $color;
                 color: $colorDet;
