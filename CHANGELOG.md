@@ -1,3 +1,6 @@
+# 2.0.1 - 23/10/2023
+* Fix design issues
+
 # v2.0.0 - 17/10/2023
 * Optimization and adaptation to Wordpress good pratices;
 * Plugin Internacionalization;
