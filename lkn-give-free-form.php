@@ -16,7 +16,7 @@
  * Plugin Name:       Donation Form Customization for GiveWP
  * Plugin URI:        https://www.linknacional.com.br/wordpress/givewp/give-free-form/
  * Description:       Form styling plugin for GiveWP.
- * Version:           2.0.1
+ * Version:           2.0.2
  * Author:            Link Nacional
  * Author URI:        https://www.linknacional.com.br
  * License:           GPL-3.0+

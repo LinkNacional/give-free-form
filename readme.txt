@@ -4,7 +4,7 @@ Donate link: https://www.linknacional.com.br/wordpress/givewp/give-free-form/
 Tags: givewp, donate, form, customization, styling
 Requires at least: 5.5
 Tested up to: 6.3
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 7.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -70,6 +70,11 @@ At finish this steps, the Donation Form Customization for GiveWP is now activate
 
 
 == Changelog ==
+
+= 2.0.2 =
+**24/10/2023**
+* Adjust slug
+
 
 = 2.0.1 =
 **23/10/2023**
