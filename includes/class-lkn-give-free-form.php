@@ -128,7 +128,7 @@ final class Lkn_Form_Customization_for_Give {
          * The class responsible for plugin updater checker of plugin.
          */
         include_once plugin_dir_path( __DIR__ ) . 'includes/plugin-updater/plugin-update-checker.php';
-        
+
         $this->loader = new Lkn_Form_Customization_for_Give_Loader();
     }
 
@@ -150,7 +150,7 @@ final class Lkn_Form_Customization_for_Give {
     public function updater_init(): ?object {
         if (class_exists('Lkn_Puc_Plugin_UpdateChecker')) {
             return new Lkn_Puc_Plugin_UpdateChecker(
-                'https://api.linknacional.com.br/v2/u/?slug=lkn-give-free-form',
+                'https://api.linknacional.com.br/v2/u/?slug=give-free-form',
                 LKN_DONATION_FORM_CUSTOMIZATION_FILE,
                 LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN
             );
