@@ -1,3 +1,6 @@
+# 2.0.2 - 24/10/2023
+* Adjust slug
+
 # 2.0.1 - 23/10/2023
 * Fix design issues
 
