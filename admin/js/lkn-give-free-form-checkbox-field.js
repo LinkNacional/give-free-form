@@ -1,10 +1,10 @@
 const cx = window.classNames
-const { __: lknFreeForm__ } = window.wp.i18n
 const {
-  RegisterBlockType: lknFreeFormRegisterBlockType,
+  registerBlockType: lknFreeFormRegisterBlockType,
   getCategories: lknFreeFormGetCategories,
   setCategories: lknFreeFormSetCategories
 } = window.wp.blocks
+
 const {
   PanelBody: lknFreeFormPanelBody,
   PanelRow: lknFreeFormPanelRow,
@@ -19,8 +19,8 @@ const { createElement: lknFreeFormCreateElement } = window.wp.element
 
 const blockProps = {
   name: 'givewp/lkn-form-checkbox',
-  title: lknFreeForm__('GiveWP Checkbox', 'lkn-give-free-form'),
-  description: lknFreeForm__('A simple checkbox block for GiveWP forms.', 'lkn-give-free-form'),
+  title: lknGiveFreeFormTranslations['givewp-checkbox'],
+  description: lknGiveFreeFormTranslations['checkbox-description'],
   category: 'custom',
   icon: () => {
     return lknFreeFormCreateElement(
@@ -89,46 +89,46 @@ const blockProps = {
           onChange: () => null,
           readOnly: true,
           class: checkboxClassName,
-          lknFreeForm__nextHasNoMarginBottom: true
+          __nextHasNoMarginBottom: true
         })
       ),
 
       lknFreeFormCreateElement(lknFreeFormInspectorControls, {},
-        lknFreeFormCreateElement(lknFreeFormPanelBody, { title: lknFreeForm__('Field Settings', 'lkn-give-free-form'), initialOpen: true },
+        lknFreeFormCreateElement(lknFreeFormPanelBody, { title: lknGiveFreeFormTranslations['field-settings'], initialOpen: true },
           lknFreeFormCreateElement(lknFreeFormPanelRow, {},
             lknFreeFormCreateElement(lknFreeFormTextControl, {
-              label: lknFreeForm__('Label', 'lkn-give-free-form'),
+              label: lknGiveFreeFormTranslations.label,
               value: attributes.label,
               onChange: (value) => setAttributes({ label: value })
             })
           ),
           lknFreeFormCreateElement(lknFreeFormPanelRow, {},
             lknFreeFormCreateElement(lknFreeFormToggleControl, {
-              label: lknFreeForm__('Required', 'lkn-give-free-form'),
+              label: lknGiveFreeFormTranslations.required,
               checked: attributes.isRequired,
               onChange: (checked) => setAttributes({ isRequired: checked })
             })
           ),
           lknFreeFormCreateElement(lknFreeFormPanelRow, {},
             lknFreeFormCreateElement(lknFreeFormToggleControl, {
-              label: lknFreeForm__('Checked by Default', 'lkn-give-free-form'),
+              label: lknGiveFreeFormTranslations['checked-by-default'],
               checked: attributes.isCheckedByDefault,
               onChange: (checked) => setAttributes({ isCheckedByDefault: checked })
             })
           )
         ),
 
-        lknFreeFormCreateElement(lknFreeFormPanelBody, { title: lknFreeForm__('Display Settings', 'lkn-give-free-form'), initialOpen: true },
+        lknFreeFormCreateElement(lknFreeFormPanelBody, { title: lknGiveFreeFormTranslations['display-settings'], initialOpen: true },
           lknFreeFormCreateElement(lknFreeFormPanelRow, {},
             lknFreeFormCreateElement(lknFreeFormToggleControl, {
-              label: lknFreeForm__('Show in Admin Panel', 'lkn-give-free-form'),
+              label: lknGiveFreeFormTranslations['show-in-admin'],
               checked: attributes.showInAdmin,
               onChange: (checked) => setAttributes({ showInAdmin: checked })
             })
           ),
           lknFreeFormCreateElement(lknFreeFormPanelRow, {},
             lknFreeFormCreateElement(lknFreeFormToggleControl, {
-              label: lknFreeForm__('Show in Receipt', 'lkn-give-free-form'),
+              label: lknGiveFreeFormTranslations['show-in-receipt'],
               checked: attributes.showInReceipt,
               onChange: (checked) => setAttributes({ showInReceipt: checked })
             })
@@ -145,9 +145,9 @@ const blockProps = {
 if (window.givewp && window.givewp.form && window.givewp.form.blocks) {
   const existingCategories = lknFreeFormGetCategories()
   const newCategories = [
-    { slug: 'input', title: lknFreeForm__('Input Fields', 'lkn-give-free-form') },
-    { slug: 'custom', title: lknFreeForm__('Custom', 'lkn-give-free-form') },
-    { slug: 'section', title: lknFreeForm__('Layout', 'lkn-give-free-form') }
+    { slug: 'input', title: lknGiveFreeFormTranslations['input-fields'] },
+    { slug: 'custom', title: lknGiveFreeFormTranslations.custom },
+    { slug: 'section', title: lknGiveFreeFormTranslations.layout }
   ]
 
   const categoriesToAdd = newCategories.filter(

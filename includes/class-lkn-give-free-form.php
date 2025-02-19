@@ -226,6 +226,12 @@ final class Lkn_Form_Customization_for_Give
             true
         );
 
+        wp_localize_script(
+            'lkn-give-free-form-checkbox-field',
+            'lknGiveFreeFormTranslations',
+            Lkn_Form_Customization_for_Give_Helper::lkn_give_free_form_translations()
+        );
+
         wp_enqueue_style(
             'lkn-give-free-form',
             plugin_dir_url(__FILE__) . '../admin/css/lkn-give-free-form.css',

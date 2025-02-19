@@ -1,7 +1,7 @@
 <?php
 
 // Exit, if accessed directly.
-if ( ! defined('ABSPATH')) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
@@ -10,25 +10,27 @@ if ( ! defined('ABSPATH')) {
  * @since      1.0.0
  * @author     Link Nacional
  */
-final class Lkn_Form_Customization_for_Give_Helper {
+final class Lkn_Form_Customization_for_Give_Helper
+{
     /**
      * Show plugin dependency notice.
      *
      * @since 1.0.0
      */
-    final public static function lkn_give_free_form_verify_plugin_dependencies(): ?bool {
+    final public static function lkn_give_free_form_verify_plugin_dependencies(): ?bool
+    {
         // Not admin, insert here.
-        if ( ! is_admin() || ! current_user_can('activate_plugins')) {
+        if (! is_admin() || ! current_user_can('activate_plugins')) {
             require_once LKN_DONATION_FORM_CUSTOMIZATION_DIR . 'public/class-lkn-give-free-form-public.php';
 
             return null;
         }
 
         // Load plugin helper functions.
-        if ( ! function_exists('deactivate_plugins') || ! function_exists('is_plugin_active')) {
+        if (! function_exists('deactivate_plugins') || ! function_exists('is_plugin_active')) {
             require_once ABSPATH . '/wp-admin/includes/plugin.php';
         }
-        
+
         // Flag to check whether deactivate plugin or not.
         $is_deactivate_plugin = null;
 
@@ -42,12 +44,12 @@ final class Lkn_Form_Customization_for_Give_Helper {
 
             $is_deactivate_plugin = true;
         }
-        
+
         // Check for if give plugin activate or not.
         $is_give_active = defined('GIVE_PLUGIN_BASENAME') ? is_plugin_active(GIVE_PLUGIN_BASENAME) : false;
 
         // Verify if give plugin is actived.
-        if ( ! $is_give_active) {
+        if (! $is_give_active) {
             // Show admin notice.
             Lkn_Form_Customization_for_Give_Helper::lkn_give_free_form_inactive_alert();
 
@@ -73,7 +75,8 @@ final class Lkn_Form_Customization_for_Give_Helper {
      *
      * @since 1.0.0
      */
-    final public static function lkn_give_free_form_dependency_notice(): void {
+    final public static function lkn_give_free_form_dependency_notice(): void
+    {
         // Admin notice.
         $message = sprintf(
             '<div class="notice notice-error"><p><strong>%1$s</strong> %2$s <a href="%3$s" target="_blank">%4$s</a>  %5$s %6$s+ %7$s</p></div>',
@@ -94,7 +97,8 @@ final class Lkn_Form_Customization_for_Give_Helper {
      *
      * @since 1.0.0
      */
-    final public static function lkn_give_free_form_inactive_notice(): void {
+    final public static function lkn_give_free_form_inactive_notice(): void
+    {
         // Admin notice.
         $message = sprintf(
             '<div class="notice notice-error"><p><strong>%1$s</strong> %2$s <a href="%3$s" target="_blank">%4$s</a> %5$s</p></div>',
@@ -108,11 +112,31 @@ final class Lkn_Form_Customization_for_Give_Helper {
         echo $message;
     }
 
-    final public static function lkn_give_free_form_dependency_alert(): void {
+    final public static function lkn_give_free_form_dependency_alert(): void
+    {
         add_action('admin_notices', array('Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_dependency_notice'));
     }
 
-    final public static function lkn_give_free_form_inactive_alert(): void {
+    final public static function lkn_give_free_form_inactive_alert(): void
+    {
         add_action('admin_notices', array('Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_inactive_notice'));
+    }
+
+    final public static function lkn_give_free_form_translations(): array
+    {
+        return [
+            'givewp-checkbox' => __('GiveWP Checkbox', 'lkn-give-free-form'),
+            'checkbox-description' => __('A simple checkbox block for GiveWP forms.', 'lkn-give-free-form'),
+            'field-settings' => __('Field Settings', 'lkn-give-free-form'),
+            'label' => __('Label', 'lkn-give-free-form'),
+            'required' => __('Required', 'lkn-give-free-form'),
+            'checked-by-default' => __('Checked by Default', 'lkn-give-free-form'),
+            'display-settings' => __('Display Settings', 'lkn-give-free-form'),
+            'show-in-admin' => __('Show in Admin Panel', 'lkn-give-free-form'),
+            'show-in-receipt' => __('Show in Receipt', 'lkn-give-free-form'),
+            'input-fields' => __('Input Fields', 'lkn-give-free-form'),
+            'custom' => __('Custom', 'lkn-give-free-form'),
+            'layout' => __('Layout', 'lkn-give-free-form')
+        ];
     }
 }

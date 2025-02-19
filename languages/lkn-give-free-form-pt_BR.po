@@ -1,123 +1,328 @@
-#: Donation Form Customization for GiveWP tradução pt_BR
-msgid "Form styling plugin for GiveWP."
-msgstr "Plugin de estilização de formulário para GiveWP."
+# WordPress Pot
+# Copyright 2014 ...
+# This file is distributed under the GNU General Public License v3 or later.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: give-free-form\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2025-02-19 11:16-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Your Name <you@example.com>\n"
+"Language-Team: https://www.linknacional.com.br/wordpress/\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-SearchPath-0: .\n"
 
+#: admin/class-lkn-give-free-form-admin.php:67
 msgid "Form Customization"
 msgstr "Estilização do Formulário"
 
+#: admin/class-lkn-give-free-form-admin.php:72
 msgid "Enable."
 msgstr "Habilitar."
 
+#: admin/class-lkn-give-free-form-admin.php:74
 msgid "Enable the legacy form customization."
 msgstr "Habilita a estilização do formulário legado."
 
+#: admin/class-lkn-give-free-form-admin.php:76
 msgid "Enabled"
 msgstr "Habilitado"
 
+#: admin/class-lkn-give-free-form-admin.php:77
 msgid "Disabled"
 msgstr "Desabilitado"
 
+#: admin/class-lkn-give-free-form-admin.php:83
 msgid "Primary color."
 msgstr "Cor primária."
 
-msgid "The primary color is used throughout the form template for multiple elements, including buttons, line breaks and focus elements. Set a color that reflects your brand or featured image for the best results."
-msgstr "A cor primária é usada em todo o modelo do formulário por vários elementos, incluindo botões, quebras de linha e elementos de foco. Defina uma cor que reflita sua marca ou imagem em destaque para obter os melhores resultados."
+#: admin/class-lkn-give-free-form-admin.php:84
+msgid ""
+"The primary color is used throughout the form template for multiple "
+"elements, including buttons, line breaks and focus elements. Set a color "
+"that reflects your brand or featured image for the best results."
+msgstr ""
+"A cor primária é usada em todo o modelo do formulário por vários elementos, "
+"incluindo botões, quebras de linha e elementos de foco. Defina uma cor que "
+"reflita sua marca ou imagem em destaque para obter os melhores resultados."
 
+#: admin/class-lkn-give-free-form-admin.php:90
 msgid "Secondary color."
 msgstr "Cor secundária."
 
-msgid "The secondary color is used in website details and highlights for the words."
-msgstr "A cor secundária é usada em detalhes do site e destaques para as palavras."
+#: admin/class-lkn-give-free-form-admin.php:91
+msgid ""
+"The secondary color is used in website details and highlights for the words."
+msgstr ""
+"A cor secundária é usada em detalhes do site e destaques para as palavras."
 
+#: admin/class-lkn-give-free-form-admin.php:97
 msgid "Titles color."
 msgstr "Cor dos títulos."
 
+#: admin/class-lkn-give-free-form-admin.php:98
 msgid "Sets the font color for form sections."
 msgstr "Define a cor da fonte das seções do formulário."
 
+#: admin/class-lkn-give-free-form-admin.php:104
 msgid "Color of buttons border."
 msgstr "Cor da borda dos botões."
 
-msgid "Sets the border color for the amount selection and payment method buttons."
-msgstr "Define a cor da borda para os botões de seleção de valor e método de pagamento."
+#: admin/class-lkn-give-free-form-admin.php:105
+msgid ""
+"Sets the border color for the amount selection and payment method buttons."
+msgstr ""
+"Define a cor da borda para os botões de seleção de valor e método de "
+"pagamento."
 
+#: admin/class-lkn-give-free-form-admin.php:111
 msgid "Titles size."
 msgstr "Tamanho dos títulos."
 
-msgid "Sets the font size for form sections. Can use units of measurement in px, em, rem or vw."
-msgstr "Define o tamanho da fonte das seções do formulário. Pode utilizar unidades de medida em px, em, rem ou vw."
+#: admin/class-lkn-give-free-form-admin.php:112
+msgid ""
+"Sets the font size for form sections. Can use units of measurement in px, "
+"em, rem or vw."
+msgstr ""
+"Define o tamanho da fonte das seções do formulário. Pode utilizar unidades "
+"de medida em px, em, rem ou vw."
 
+#: admin/class-lkn-give-free-form-admin.php:118
 msgid "Spacing between sections."
 msgstr "Espaçamento entre as seções."
 
-msgid "The margin used to separate sections of the form (only vertical margin). Can use units of measurement in px, em, rem or vw."
-msgstr "A margem utilizada para separar as seções do formulário (apenas margem vertical). Pode utilizar unidades de medida em px, em, rem ou vw."
+#: admin/class-lkn-give-free-form-admin.php:119
+msgid ""
+"The margin used to separate sections of the form (only vertical margin). Can "
+"use units of measurement in px, em, rem or vw."
+msgstr ""
+"A margem utilizada para separar as seções do formulário (apenas margem "
+"vertical). Pode utilizar unidades de medida em px, em, rem ou vw."
 
+#: admin/class-lkn-give-free-form-admin.php:125
 msgid "Size of buttons border."
 msgstr "Tamanho da borda dos botões."
 
-msgid "Sets the border size for the amount selection and payment method buttons. Can use units of measurement in px, em, rem or vw."
-msgstr "Define o tamanho da borda dos botões de seleção de valor e método de pagamentos. Pode utilizar unidades de medida em px, em, rem ou vw."
+#: admin/class-lkn-give-free-form-admin.php:126
+msgid ""
+"Sets the border size for the amount selection and payment method buttons. "
+"Can use units of measurement in px, em, rem or vw."
+msgstr ""
+"Define o tamanho da borda dos botões de seleção de valor e método de "
+"pagamentos. Pode utilizar unidades de medida em px, em, rem ou vw."
 
+#: admin/class-lkn-give-free-form-admin.php:132
 msgid "Curvature of buttons border."
 msgstr "Curvatura da borda dos botões."
 
-msgid "Choose the curvature of the buttons border, the lower the value, the more square it will be. Can use units of measurement in px, em, rem or vw."
-msgstr "Escolha a curvatura da borda dos botões, quanto menor o valor, mais quadrada será. Pode utilizar unidades de medida em px, em, rem ou vw."
+#: admin/class-lkn-give-free-form-admin.php:134
+msgid ""
+"Choose the curvature of the buttons border, the lower the value, the more "
+"square it will be. Can use units of measurement in px, em, rem or vw."
+msgstr ""
+"Escolha a curvatura da borda dos botões, quanto menor o valor, mais quadrada "
+"será. Pode utilizar unidades de medida em px, em, rem ou vw."
 
+#: admin/class-lkn-give-free-form-admin.php:139
 msgid "Height of buttons."
 msgstr "Altura dos botões."
 
-msgid "Choose the height of buttons box. Can use units of measurement in px, em, rem or vw."
-msgstr "Escolha a altura da caixa dos botões. Pode utilizar unidades de medida em px, em, rem ou vw."
+#: admin/class-lkn-give-free-form-admin.php:140
+msgid ""
+"Choose the height of buttons box. Can use units of measurement in px, em, "
+"rem or vw."
+msgstr ""
+"Escolha a altura da caixa dos botões. Pode utilizar unidades de medida em "
+"px, em, rem ou vw."
 
+#: admin/class-lkn-give-free-form-admin.php:146
 msgid "Width of buttons."
 msgstr "Largura dos botões."
 
-msgid "Choose the width of buttons box. Can use units of measurement in px, em, rem or vw."
-msgstr "Escolha a largura da caixa dos botões. Pode utilizar unidades de medida em px, em, rem ou vw."
+#: admin/class-lkn-give-free-form-admin.php:147
+msgid ""
+"Choose the width of buttons box. Can use units of measurement in px, em, rem "
+"or vw."
+msgstr ""
+"Escolha a largura da caixa dos botões. Pode utilizar unidades de medida em "
+"px, em, rem ou vw."
 
+#: admin/class-lkn-give-free-form-admin.php:153
 msgid "Text font size of buttons."
 msgstr "Tamanho da fonte do texto dos botões."
 
-msgid "Choose the text font size of buttons content. Can use units of measurement in px, em, rem or vw."
-msgstr "Escolha o tamanho da fonte do texto do conteúdo dos botões. Pode utilizar unidades de medida em px, em, rem ou vw."
+#: admin/class-lkn-give-free-form-admin.php:154
+msgid ""
+"Choose the text font size of buttons content. Can use units of measurement "
+"in px, em, rem or vw."
+msgstr ""
+"Escolha o tamanho da fonte do texto do conteúdo dos botões. Pode utilizar "
+"unidades de medida em px, em, rem ou vw."
 
+#: admin/class-lkn-give-free-form-admin.php:160
 msgid "Field for advanced styling of Stripe fields."
 msgstr "Campo para estilização avançada de campos do Stripe."
 
+#: admin/class-lkn-give-free-form-admin.php:161
 msgid "Use CSS, without classes, to customize Stripe fields the way you want."
-msgstr "Utilize CSS, sem classes, para customizar os campos do Stripe do seu jeito."
+msgstr ""
+"Utilize CSS, sem classes, para customizar os campos do Stripe do seu jeito."
 
+#: admin/class-lkn-give-free-form-admin.php:172
 msgid "Field for advanced styling."
 msgstr "Campo para estilização avançada."
 
+#: admin/class-lkn-give-free-form-admin.php:173
 msgid "Use CSS to customize the form the way you want."
 msgstr "Utilize CSS para customizar o formulário do seu jeito."
 
-msgid "The form customization is not relevant for Multi-step form of GiveWP. If you want to use the Donation Form Customization for GiveWP, you need to change the Form Template to the `Legacy` option."
-msgstr "A estilização de formulário não é relevante para o formulário Multi-step do GiveWP. Caso você deseje utilizar o Donation Form Customization for GiveWP, você precisa mudar o template do formulário para a opção `Legado`."
+#: admin/class-lkn-give-free-form-admin.php:203
+msgid ""
+"The form customization is not relevant for Multi-step form of GiveWP. If you "
+"want to use the Donation Form Customization for GiveWP, you need to change "
+"the Form Template to the `Legacy` option."
+msgstr ""
+"A estilização de formulário não é relevante para o formulário Multi-step do "
+"GiveWP. Caso você deseje utilizar o Donation Form Customization for GiveWP, "
+"você precisa mudar o template do formulário para a opção `Legado`."
 
+#: admin/class-lkn-give-free-form-admin.php:204
 msgid "Warning: "
 msgstr "Aviso: "
 
+#: includes/class-lkn-give-free-form-helper.php:83
+#: includes/class-lkn-give-free-form-helper.php:105
 msgid "Activation Error:"
 msgstr "Erro de Ativação:"
 
+#: includes/class-lkn-give-free-form-helper.php:84
+#: includes/class-lkn-give-free-form-helper.php:106
 msgid "You must have"
 msgstr "Você precisa ter o"
 
+#: includes/class-lkn-give-free-form-helper.php:86
+#: includes/class-lkn-give-free-form-helper.php:108
 msgid "Give"
 msgstr "Give"
 
+#: includes/class-lkn-give-free-form-helper.php:87
 msgid "version"
 msgstr "versão"
 
+#: includes/class-lkn-give-free-form-helper.php:89
 msgid "for the Donation Form Customization for GiveWP to activate."
 msgstr "para ativar o Donation Form Customization for GiveWP."
 
-msgid "plugin installed and activated for the Donation Form Customization for GiveWP."
-msgstr "plugin, instalado e ativado para o Donation Form customization for GiveWP."
+#: includes/class-lkn-give-free-form-helper.php:109
+msgid ""
+"plugin installed and activated for the Donation Form Customization for "
+"GiveWP."
+msgstr ""
+"plugin, instalado e ativado para o Donation Form customization for GiveWP."
 
+#: includes/class-lkn-give-free-form-helper.php:128
+msgid "GiveWP Checkbox"
+msgstr "GiveWP Checkbox"
+
+#: includes/class-lkn-give-free-form-helper.php:129
+msgid "A simple checkbox block for GiveWP forms."
+msgstr "Um bloco simples de checkbox para formulários do GiveWP."
+
+#: includes/class-lkn-give-free-form-helper.php:130
+msgid "Field Settings"
+msgstr "Configurações do Campo"
+
+#: includes/class-lkn-give-free-form-helper.php:131
+msgid "Label"
+msgstr "Label"
+
+#: includes/class-lkn-give-free-form-helper.php:132
+msgid "Required"
+msgstr "Obrigatório"
+
+#: includes/class-lkn-give-free-form-helper.php:133
+msgid "Checked by Default"
+msgstr "Selecionado por Padrão"
+
+#: includes/class-lkn-give-free-form-helper.php:134
+msgid "Display Settings"
+msgstr "Configurações de Exibição"
+
+#: includes/class-lkn-give-free-form-helper.php:135
+msgid "Show in Admin Panel"
+msgstr "Exibir no Painel de Administração"
+
+#: includes/class-lkn-give-free-form-helper.php:136
+msgid "Show in Receipt"
+msgstr "Exibir no Recibo"
+
+#: includes/class-lkn-give-free-form-helper.php:137
+msgid "Input Fields"
+msgstr "Campos de Entrada"
+
+#: includes/class-lkn-give-free-form-helper.php:138
+msgid "Custom"
+msgstr "Personalizado"
+
+#: includes/class-lkn-give-free-form-helper.php:139
+msgid "Layout"
+msgstr "Layout"
+
+#: includes/plugin-updater/Puc/Plugin/Ui.php:54
+msgid "View details"
+msgstr "Ver detalhes"
+
+#: includes/plugin-updater/Puc/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "Mais informações sobre %s"
+
+#: includes/plugin-updater/Puc/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "Verificar atualizações"
+
+#: includes/plugin-updater/Puc/Plugin/Ui.php:214
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "O plugin %s está atualizado."
+
+#: includes/plugin-updater/Puc/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Uma nova versão do plugin %s está disponível."
+
+#: includes/plugin-updater/Puc/Plugin/Ui.php:220
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "Não foi possível determinar se há atualizações disponíveis para %s."
+
+#: includes/plugin-updater/Puc/Plugin/Ui.php:226
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "Status do verificador de atualizações desconhecido \"%s\""
+
+#: public/class-lkn-give-free-form-public.php:461
+msgid "https://www.linknacional.com.br/plataforma-de-doacoes/"
+msgstr "https://www.linknacional.com.br/plataforma-de-doacoes/"
+
+#: public/class-lkn-give-free-form-public.php:462
 msgid "Secure donation platform"
 msgstr "Plataforma de doação segura"
+
+#~ msgid "Form styling plugin for GiveWP."
+#~ msgstr "Plugin de estilização de formulário para GiveWP."
