@@ -198,7 +198,7 @@ final class Lkn_Form_Customization_for_Give
                 return Checkbox::make($metaKey, $block)
                     ->label($block->getAttribute('label'))
                     ->checked($block->getAttribute('isRequired') == 1 && $block->getAttribute('isCheckedByDefault') == 1 ? '1' : ($block->getAttribute('isCheckedByDefault') == 1 ? true : ''))
-                    ->value($block->getAttribute('isRequired') == 1 && $block->getAttribute('isCheckedByDefault') == 1 ? '1' : ($block->getAttribute('isCheckedByDefault') == 1 ? true : ''))
+                    ->value($block->getAttribute('isRequired') == 1 ? '1' : ($block->getAttribute('isCheckedByDefault') == 1 ? true : ''))
                     ->helpText($block->getAttribute('description'))
                     ->showInAdmin($block->getAttribute('showInAdmin'))
                     ->showInReceipt($block->getAttribute('showInReceipt'))
