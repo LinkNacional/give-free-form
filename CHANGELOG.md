@@ -1,3 +1,6 @@
+# 2.1.0 - 19/02/2025
+* Givewp-form-builder checkbox field
+
 # 2.0.2 - 24/10/2023
 * Adjust slug
 

@@ -13,6 +13,10 @@
  * @subpackage Lkn_Form_Customization_for_Give/includes
  */
 
+use Give\Framework\Blocks\BlockModel;
+use Give\Framework\FieldsAPI\Checkbox;
+use Give\Framework\FieldsAPI\Contracts\Node;
+
 /**
  * The core plugin class.
  *
@@ -27,7 +31,8 @@
  * @subpackage Lkn_Form_Customization_for_Give/includes
  * @author     Link Nacional
  */
-final class Lkn_Form_Customization_for_Give {
+final class Lkn_Form_Customization_for_Give
+{
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
      * the plugin.
@@ -65,8 +70,9 @@ final class Lkn_Form_Customization_for_Give {
      *
      * @since    1.0.0
      */
-    public function __construct() {
-        if ( defined( 'LKN_DONATION_FORM_CUSTOMIZATION_VERSION' ) ) {
+    public function __construct()
+    {
+        if (defined('LKN_DONATION_FORM_CUSTOMIZATION_VERSION')) {
             $this->version = LKN_DONATION_FORM_CUSTOMIZATION_VERSION;
         } else {
             $this->version = '1.0.0';
@@ -95,39 +101,40 @@ final class Lkn_Form_Customization_for_Give {
      * @since    1.0.0
      * @access   private
      */
-    private function load_dependencies(): void {
+    private function load_dependencies(): void
+    {
         /**
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
          */
-        require_once plugin_dir_path( __DIR__ ) . 'includes/class-lkn-give-free-form-loader.php';
+        require_once plugin_dir_path(__DIR__) . 'includes/class-lkn-give-free-form-loader.php';
 
         /**
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        require_once plugin_dir_path( __DIR__ ) . 'includes/class-lkn-give-free-form-i18n.php';
+        require_once plugin_dir_path(__DIR__) . 'includes/class-lkn-give-free-form-i18n.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path( __DIR__ ) . 'admin/class-lkn-give-free-form-admin.php';
+        require_once plugin_dir_path(__DIR__) . 'admin/class-lkn-give-free-form-admin.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
-        require_once plugin_dir_path( __DIR__ ) . 'public/class-lkn-give-free-form-public.php';
+        require_once plugin_dir_path(__DIR__) . 'public/class-lkn-give-free-form-public.php';
 
         /**
          * The class responsible for useful functions of plugin.
          */
-        require_once plugin_dir_path( __DIR__ ) . 'includes/class-lkn-give-free-form-helper.php';
+        require_once plugin_dir_path(__DIR__) . 'includes/class-lkn-give-free-form-helper.php';
 
         /**
          * The class responsible for plugin updater checker of plugin.
          */
-        include_once plugin_dir_path( __DIR__ ) . 'includes/plugin-updater/plugin-update-checker.php';
+        include_once plugin_dir_path(__DIR__) . 'includes/plugin-updater/plugin-update-checker.php';
 
         $this->loader = new Lkn_Form_Customization_for_Give_Loader();
     }
@@ -141,13 +148,15 @@ final class Lkn_Form_Customization_for_Give {
      * @since    1.0.0
      * @access   private
      */
-    private function set_locale(): void {
+    private function set_locale(): void
+    {
         $plugin_i18n = new Lkn_Form_Customization_for_Give_i18n();
 
-        $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
     }
 
-    public function updater_init(): ?object {
+    public function updater_init(): ?object
+    {
         if (class_exists('Lkn_Puc_Plugin_UpdateChecker')) {
             return new Lkn_Puc_Plugin_UpdateChecker(
                 'https://api.linknacional.com.br/v2/u/?slug=give-free-form',
@@ -166,14 +175,70 @@ final class Lkn_Form_Customization_for_Give {
      * @since    1.0.0
      * @access   private
      */
-    private function define_admin_hooks(): void {
-        $plugin_admin = new Lkn_Form_Customization_for_Give_Admin( $this->get_plugin_name(), $this->get_version() );
+    private function define_admin_hooks(): void
+    {
+        $plugin_admin = new Lkn_Form_Customization_for_Give_Admin($this->get_plugin_name(), $this->get_version());
 
-        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
-        $this->loader->add_action( 'init', $this, 'updater_init' );
-        $this->loader->add_filter( 'give_metabox_form_data_settings', $plugin_admin, 'lkn_give_free_form_setup_setting', 999 );
-        $this->loader->add_action( 'plugins_loaded', 'Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999 );
+        $this->loader->add_action('init', $this, 'updater_init');
+        $this->loader->add_filter('give_metabox_form_data_settings', $plugin_admin, 'lkn_give_free_form_setup_setting', 999);
+        $this->loader->add_action('plugins_loaded', 'Lkn_Form_Customization_for_Give_Helper', 'lkn_give_free_form_verify_plugin_dependencies', 999);
+
+        $this->loader->add_action('givewp_form_builder_enqueue_scripts', $this, 'lkn_enqueue_givewp_block_editor_assets', 999, 1);
+        $this->loader->add_filter('givewp_donation_form_block_render', $this, 'lkn_render_field', 10, 4);
+    }
+
+    public function lkn_render_field(?Node $node, BlockModel $block, int $index)
+    {
+        switch ($block->name) {
+            case 'givewp/lkn-form-checkbox':
+                $metaKey = 'lkn-form-checkbox-' . substr($block->clientId, 0, 8);
+
+                return Checkbox::make($metaKey, $block)
+                    ->label($block->getAttribute('label'))
+                    ->checked($block->getAttribute('isRequired') == 1 && $block->getAttribute('isCheckedByDefault') == 1 ? '1' : ($block->getAttribute('isCheckedByDefault') == 1 ? true : ''))
+                    ->value($block->getAttribute('isRequired') == 1 ? '1' : ($block->getAttribute('isCheckedByDefault') == 1 ? true : ''))
+                    ->helpText($block->getAttribute('description'))
+                    ->showInAdmin($block->getAttribute('showInAdmin'))
+                    ->showInReceipt($block->getAttribute('showInReceipt'))
+                    ->rules($block->getAttribute('isRequired') ? 'required' : 'boolean');
+        }
+
+        return $node;
+    }
+
+    public function lkn_enqueue_givewp_block_editor_assets()
+    {
+        wp_enqueue_script(
+            'lkn-give-free-classnames',
+            plugin_dir_url(__FILE__) . '../admin/js/lkn-give-free-form-classnames.js',
+            array(),
+            LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION,
+            true
+        );
+
+        wp_enqueue_script(
+            'lkn-give-free-form-checkbox-field',
+            plugin_dir_url(__FILE__) . '../admin/js/lkn-give-free-form-checkbox-field.js',
+            ['wp-blocks', 'wp-element', 'wp-editor'],
+            LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION,
+            true
+        );
+
+        wp_localize_script(
+            'lkn-give-free-form-checkbox-field',
+            'lknGiveFreeFormTranslations',
+            Lkn_Form_Customization_for_Give_Helper::lkn_give_free_form_translations()
+        );
+
+        wp_enqueue_style(
+            'lkn-give-free-form',
+            plugin_dir_url(__FILE__) . '../admin/css/lkn-give-free-form.css',
+            LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION,
+            'all'
+        );
+
     }
 
     /**
@@ -183,13 +248,14 @@ final class Lkn_Form_Customization_for_Give {
      * @since    1.0.0
      * @access   private
      */
-    private function define_public_hooks(): void {
-        $plugin_public = new Lkn_Form_Customization_for_Give_Public( $this->get_plugin_name(), $this->get_version() );
+    private function define_public_hooks(): void
+    {
+        $plugin_public = new Lkn_Form_Customization_for_Give_Public($this->get_plugin_name(), $this->get_version());
 
-        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+        $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
-        $this->loader->add_action( 'give_donation_form_top', $plugin_public, 'form_customization', 10, 2 ); // Também realiza o enqueue_styles, caso contrário todos formulários seriam customizados ignorando a opção de "Habilitar".
-        $this->loader->add_action( 'give_donation_form_bottom', $plugin_public, 'lkn_give_free_form_footer_notice', 10, 3 );
+        $this->loader->add_action('give_donation_form_top', $plugin_public, 'form_customization', 10, 2); // Também realiza o enqueue_styles, caso contrário todos formulários seriam customizados ignorando a opção de "Habilitar".
+        $this->loader->add_action('give_donation_form_bottom', $plugin_public, 'lkn_give_free_form_footer_notice', 10, 3);
     }
 
     /**
@@ -197,7 +263,8 @@ final class Lkn_Form_Customization_for_Give {
      *
      * @since    1.0.0
      */
-    public function run(): void {
+    public function run(): void
+    {
         $this->loader->run();
     }
 
@@ -208,7 +275,8 @@ final class Lkn_Form_Customization_for_Give {
      * @since     1.0.0
      * @return    string    The name of the plugin.
      */
-    public function get_plugin_name() {
+    public function get_plugin_name()
+    {
         return $this->plugin_name;
     }
 
@@ -218,7 +286,8 @@ final class Lkn_Form_Customization_for_Give {
      * @since     1.0.0
      * @return    Lkn_Form_Customization_for_Give_Loader    Orchestrates the hooks of the plugin.
      */
-    public function get_loader() {
+    public function get_loader()
+    {
         return $this->loader;
     }
 
@@ -228,7 +297,8 @@ final class Lkn_Form_Customization_for_Give {
      * @since     1.0.0
      * @return    string    The version number of the plugin.
      */
-    public function get_version() {
+    public function get_version()
+    {
         return $this->version;
     }
 }
