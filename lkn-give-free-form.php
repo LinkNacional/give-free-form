@@ -26,7 +26,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (! defined('WPINC')) {
     die;
 }
 
@@ -38,32 +38,32 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 1.0.0
  */
 // Defines plugin version number for easy reference.
-if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_VERSION')) {
+if (! defined('LKN_DONATION_FORM_CUSTOMIZATION_VERSION')) {
     define('LKN_DONATION_FORM_CUSTOMIZATION_VERSION', '2.0.0');
 }
 
 // Set it to latest.
-if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION')) {
+if (! defined('LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION')) {
     define('LKN_DONATION_FORM_CUSTOMIZATION_MIN_GIVE_VERSION', '2.3.0');
 }
 
-if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_FILE')) {
+if (! defined('LKN_DONATION_FORM_CUSTOMIZATION_FILE')) {
     define('LKN_DONATION_FORM_CUSTOMIZATION_FILE', __FILE__);
 }
 
-if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_DIR')) {
+if (! defined('LKN_DONATION_FORM_CUSTOMIZATION_DIR')) {
     define('LKN_DONATION_FORM_CUSTOMIZATION_DIR', plugin_dir_path(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
 }
 
-if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_URL')) {
+if (! defined('LKN_DONATION_FORM_CUSTOMIZATION_URL')) {
     define('LKN_DONATION_FORM_CUSTOMIZATION_URL', plugin_dir_url(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
 }
 
-if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_BASENAME')) {
+if (! defined('LKN_DONATION_FORM_CUSTOMIZATION_BASENAME')) {
     define('LKN_DONATION_FORM_CUSTOMIZATION_BASENAME', plugin_basename(LKN_DONATION_FORM_CUSTOMIZATION_FILE));
 }
 
-if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN')) {
+if (! defined('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN')) {
     define('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN', 'lkn-give-free-form');
 }
 
@@ -71,8 +71,9 @@ if ( ! defined('LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN')) {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-lkn-give-free-form-activator.php
  */
-function activate_lkn_give_free_form(): void {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form-activator.php';
+function activate_lkn_give_free_form(): void
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-lkn-give-free-form-activator.php';
     Lkn_Form_Customization_for_Give_Activator::activate();
 }
 
@@ -80,19 +81,20 @@ function activate_lkn_give_free_form(): void {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-lkn-give-free-form-deactivator.php
  */
-function deactivate_lkn_give_free_form(): void {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form-deactivator.php';
+function deactivate_lkn_give_free_form(): void
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-lkn-give-free-form-deactivator.php';
     Lkn_Form_Customization_for_Give_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_lkn_give_free_form' );
-register_deactivation_hook( __FILE__, 'deactivate_lkn_give_free_form' );
+register_activation_hook(__FILE__, 'activate_lkn_give_free_form');
+register_deactivation_hook(__FILE__, 'deactivate_lkn_give_free_form');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form.php';
+require plugin_dir_path(__FILE__) . 'includes/class-lkn-give-free-form.php';
 
 /**
  * Begins execution of the plugin.
@@ -103,7 +105,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-lkn-give-free-form.php';
  *
  * @since    1.0.0
  */
-function run_lkn_give_free_form(): void {
+function run_lkn_give_free_form(): void
+{
     $plugin = new Lkn_Form_Customization_for_Give();
     $plugin->run();
 }

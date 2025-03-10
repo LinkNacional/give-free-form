@@ -3,7 +3,7 @@ Contributors: linknacional
 Donate link: https://www.linknacional.com.br/wordpress/givewp/give-free-form/
 Tags: givewp, donate, form, customization, styling
 Requires at least: 5.5
-Tested up to: 6.3
+Tested up to: 6.7
 Stable tag: 2.1.0
 Requires PHP: 7.2
 License: GPLv3 or later
