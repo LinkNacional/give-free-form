@@ -89,7 +89,7 @@ final class Lkn_Form_Customization_for_Give_Helper
             esc_html__('for the Donation Form Customization for GiveWP to activate.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN)
         );
 
-        echo $message;
+        echo wp_kses_post($message);
     }
 
     /**
@@ -109,7 +109,7 @@ final class Lkn_Form_Customization_for_Give_Helper
             esc_html__('plugin installed and activated for the Donation Form Customization for GiveWP.', LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN)
         );
 
-        echo $message;
+        echo wp_kses_post($message);
     }
 
     final public static function lkn_give_free_form_dependency_alert(): void
