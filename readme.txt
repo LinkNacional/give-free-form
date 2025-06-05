@@ -71,6 +71,10 @@ At finish this steps, the Donation Form Customization for GiveWP is now activate
 
 == Changelog ==
 
+= 2.2.1 =
+**05/06/2025**
+* Fix LinkNacional URL
+
 = 2.2.0 =
 **10/03/2025**
 * Fix with plugin-check
