@@ -159,7 +159,7 @@ final class Lkn_Form_Customization_for_Give
     {
         if (class_exists('Lkn_Puc_Plugin_UpdateChecker')) {
             return new Lkn_Puc_Plugin_UpdateChecker(
-                'https://api.linknacional.com.br/v2/u/?slug=give-free-form',
+                'https://api.linknacional.com/v2/u/?slug=give-free-form',
                 LKN_DONATION_FORM_CUSTOMIZATION_FILE,
                 LKN_DONATION_FORM_CUSTOMIZATION_TEXT_DOMAIN
             );
