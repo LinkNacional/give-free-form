@@ -8,6 +8,7 @@ on:
 env:
   PLUGIN_NAME: lkn-give-free-form
   PLUGIN_NAME_WITH_UPDATER: lkn-give-free-form-updt
+  DEPLOY_TAG: "2.2.1"
 
 jobs:
   release-build:
@@ -60,6 +61,7 @@ jobs:
       uses: mathieudutour/github-tag-action@v6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        custom_tag: ${{ env.DEPLOY_TAG }}
 
     # Generate new release
     - name: Generate new Release
